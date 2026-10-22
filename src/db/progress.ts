@@ -40,9 +40,10 @@ export async function initProgress(): Promise<void> {
     }
   });
   try {
-    if (navigator.storage?.persist && !(await navigator.storage.persisted())) {
-      await navigator.storage.persist();
-    }
+    // Тип описан вручную: этот файл проверяется и в тестах под Node, где DOM-типов нет
+    type PersistApi = { persisted(): Promise<boolean>; persist(): Promise<boolean> };
+    const storage = (globalThis as { navigator?: { storage?: PersistApi } }).navigator?.storage;
+    if (storage?.persist && !(await storage.persisted())) await storage.persist();
   } catch {
     // Браузер может не поддерживать — не страшно
   }

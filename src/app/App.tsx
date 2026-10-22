@@ -10,6 +10,8 @@ import { StatsScreen } from '../screens/StatsScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { AudioTestScreen } from '../screens/AudioTestScreen';
 import { LessonScreen } from '../screens/LessonScreen';
+import { ReviewScreen } from '../screens/ReviewScreen';
+import { VocabScreen } from '../screens/VocabScreen';
 import { db } from '../db/db';
 import { initProgress } from '../db/progress';
 import { startActivityTracking } from '../lib/activity';
@@ -34,12 +36,14 @@ export function App() {
       <HashRouter>
         <Routes>
           <Route path="lesson/:lessonId" element={<LessonScreen />} />
+          <Route path="review" element={<ReviewScreen />} />
           <Route element={<AppLayout />}>
             <Route index element={<HomeScreen />} />
             <Route path="course" element={<CourseScreen />} />
             <Route path="course/:weekId" element={<TopicScreen />} />
             <Route path="stats" element={<StatsScreen />} />
             <Route path="profile" element={<ProfileScreen />} />
+            <Route path="vocab" element={<VocabScreen />} />
             <Route path="dev/audio" element={<AudioTestScreen />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

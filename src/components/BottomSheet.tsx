@@ -17,11 +17,17 @@ type BottomSheetProps = {
 export function BottomSheet({ open, onClose, title, children }: BottomSheetProps) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
+  // onClose часто передают стрелочной функцией, новой на каждой перерисовке. Держим её в ref,
+  // чтобы эффект ниже срабатывал только при открытии — иначе фокус уходил бы из полей ввода
+  const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  });
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') closeRef.current();
     };
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -31,7 +37,7 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
       document.body.style.overflow = prevOverflow;
       document.removeEventListener('keydown', onKey);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return createPortal(
     <AnimatePresence>

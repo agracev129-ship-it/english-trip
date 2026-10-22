@@ -14,6 +14,7 @@ import { uniqueClips, weekClips } from '../content/clips';
 import { db } from '../db/db';
 import { useCourseProgress } from '../db/courseProgress';
 import { markNameAsked, setName } from '../db/progress';
+import { backupDue } from '../db/backup';
 import { preload } from '../lib/audio';
 import { dayKey } from '../lib/day';
 import { lessonBlocks } from '../lib/lessonBlocks';
@@ -155,6 +156,22 @@ export function HomeScreen() {
           </Card>
         )}
 
+        {profile && progress && progress.finished.size > 0 && backupDue(profile) && (
+          <button
+            type="button"
+            onClick={() => navigate('/profile')}
+            className="flex items-center gap-3 rounded-card bg-yellow-soft p-4 text-left"
+          >
+            <Icon3D name="gear" size={40} />
+            <span>
+              <span className="block text-base font-bold">Пора сохранить резервную копию</span>
+              <span className="block text-sm text-muted">
+                Прогресс живёт только в телефоне. Копия займёт минуту — Профиль → Резервная копия.
+              </span>
+            </span>
+          </button>
+        )}
+
         <section aria-labelledby="skills-title">
           <h2 id="skills-title" className="mt-2 mb-3 text-xl font-extrabold">
             Навыки
@@ -164,7 +181,13 @@ export function HomeScreen() {
               <li key={key}>
                 <button
                   type="button"
-                  onClick={() => setSoon(`Тренировка «${title}»`)}
+                  onClick={() =>
+                    key === 'vocab'
+                      ? navigate('/vocab')
+                      : key === 'listening'
+                        ? navigate('/stats')
+                        : setSoon(`Тренировка «${title}»`)
+                  }
                   className="flex w-full flex-col items-start gap-4 rounded-card bg-surface p-4 text-left shadow-soft"
                 >
                   <ProgressRing
