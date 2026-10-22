@@ -70,7 +70,7 @@ export function ProfileScreen() {
       </Link>
 
       <p className="pt-2 pb-4 text-center text-xs font-semibold text-muted">
-        English Trip · версия 0.2 · этап 1
+        English Trip · версия 0.3 · этап 2, часть 1
       </p>
 
       <ComingSoonSheet feature={soon} onClose={() => setSoon(null)} />

@@ -25,3 +25,38 @@ export const weeks: Week[] = course.months.flatMap((m) =>
 export function getWeek(id: string): Week | undefined {
   return weeks.find((w) => w.id === id);
 }
+
+/** Все уроки курса по порядку. */
+export const allLessons = weeks.flatMap((w) => w.lessons.map((plan) => ({ week: w, plan })));
+
+export function findLesson(lessonId: string) {
+  return allLessons.find((l) => l.plan.id === lessonId);
+}
+
+const wordsByKey = new Map<string, { week: Week; word: Week['words'][number] }>(
+  weeks.flatMap((w) => w.words.map((word) => [`${w.id}/${word.id}`, { week: w, word }] as const)),
+);
+
+/** Слово курса по ключу «m1w1/boarding-pass». */
+export function wordByKey(key: string) {
+  return wordsByKey.get(key);
+}
+
+export const POS_RU: Record<string, string> = {
+  noun: 'существительное',
+  verb: 'глагол',
+  adj: 'прилагательное',
+  adv: 'наречие',
+  phrase: 'фраза',
+  other: 'служебное слово',
+};
+
+/** Короткое название урока по его плану: тема главного аудиотекста или повторение. */
+export function lessonTitle(week: Week, day: number): string {
+  const plan = week.lessons.find((l) => l.day === day);
+  const main = plan?.steps.find((s) => s.type === 'dialog_comprehension');
+  if (day <= 4 && main?.ref?.[0]) {
+    return week.listenings.find((l) => l.id === main.ref![0])?.title ?? `День ${day}`;
+  }
+  return day === 7 ? 'Большое повторение и разговор с ИИ' : 'Те же тексты, но быстрее';
+}

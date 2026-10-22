@@ -52,11 +52,15 @@ canvas-confetti — ставить, когда понадобятся.
 
 ```txt
 src/
-  app/          App (роутинг), AppLayout, BottomNav
-  screens/      экраны по одному файлу
-  components/   Card, Tile, PillButton, ProgressRing, BottomSheet, Icon3D, tones.ts
+  app/          App (роутинг; урок — вне AppLayout, без нижнего меню), AppLayout, BottomNav
+  screens/      экраны по одному файлу; LessonScreen — движок урока, LessonDone — завершение
+  exercises/    по компоненту на тип задания, общий интерфейс ExerciseProps (exercises/types.ts)
+  components/   Card, Tile, PillButton, ProgressRing, BottomSheet, Icon3D, SoundButton, AnswerBar,
+                OptionButton, KaraokeText, ListeningPlayer, WordSheet, tones.ts
   content/      схема контента (zod), audioId, clips (что озвучивается), validate, загрузка
-  lib/          чистая логика + тесты рядом (*.test.ts); audio.ts — проигрыватель, karaoke.ts
+  db/           Dexie-схема (db.ts), все изменения прогресса (progress.ts), useCourseProgress
+  lib/          чистая логика + тесты рядом (*.test.ts): audio, karaoke, day (граница 03:00), streak,
+                xp, srs (ts-fsrs), check, lessonBuilder, lessonBlocks, vocabMatch, random, activity
   config.ts     имя ученицы, стартовый EF SET, константы
 content/
   course.json   месяцы и порядок недель
@@ -87,6 +91,23 @@ docs/design-refs/  скриншоты-референсы (только лока�
 - Перед коммитом: `npm run lint && npm run validate && npm test && npm run build`.
 - В Bash не передавать текст с обратными кавычками внутри `"…"` (например, `node -e "…"`): оболочка
   выполнит их как команды. Файлы правь через Edit/Write.
+
+## Уроки и прогресс
+
+- Урок собирается `buildLesson` из плана дня один раз (с «зерном») и целиком сохраняется в `lessonRuns`:
+  при выходе и возвращении задания те же. Новое задание = компонент в `src/exercises/` + запись в
+  `EXERCISES` (LessonScreen) + `SUPPORTED` и ветка в `buildLesson`. Типы этапа 3 в планах уроков
+  пока пропускаются.
+- Задание сообщает ответы через `report()` (можно несколько раз) и заканчивает `done()`.
+  Ошибка в `word_listen_choice` повторяется в конце урока один раз (`isRetryable`).
+- Точность на слух = первые попытки заданий с навыком `listening` без «улитки» (`normalSpeed`).
+- Звук играет через fetch → blob (иначе mp3 не кешируется для офлайна); звук текущей недели
+  предзагружается с главной.
+- Схема Dexie — версия 1. Любое изменение — только `db.version(2).stores(...).upgrade(...)`.
+- Слова: ключ `m1w1/boarding-pass`; свои слова из диалогов — `user/<слово>` с репликой как контекстом.
+- Имя ученицы вводится на телефоне и хранится только в IndexedDB (в коде его нет).
+- Проверка урока целиком: робот на puppeteer-core + Edge проходит урок по тексту на экране
+  (в репозиторий не входит; при необходимости написать заново).
 
 ## Контент и звук
 

@@ -16,8 +16,10 @@
   --color-cta: #1c1c1e;
   --color-success: #22b07d;
   --color-success-soft: #e3f6ee;
+  --color-success-ink: #16794f; /* текст на светло-зелёном (AA) */
   --color-error: #f05252;
   --color-error-soft: #fde8e8;
+  --color-error-ink: #b42318; /* текст на светло-красном (AA) */
 
   /* Пастельные пары: *-soft — фон плитки, без суффикса — акцент */
   --color-lilac-soft: #f1e7fd;

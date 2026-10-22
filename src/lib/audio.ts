@@ -110,6 +110,8 @@ export function play(id: string, rate = 1): Promise<void> {
   });
 }
 
+export const isPlaying = () => state.playing;
+
 export function stop() {
   token++;
   if (!audio.paused) audio.pause();
