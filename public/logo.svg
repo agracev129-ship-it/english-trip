@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Временная иконка: маскот «Эхо» (круглая фигурка в наушниках) -->
+  <g transform="translate(0 -40)">
+  <path d="M120 300 A136 136 0 0 1 392 300" fill="none" stroke="#1B1A23" stroke-width="30" stroke-linecap="round"/>
+  <circle cx="256" cy="312" r="132" fill="#FFFFFF"/>
+  <rect x="92" y="262" width="62" height="112" rx="31" fill="#1B1A23"/>
+  <rect x="358" y="262" width="62" height="112" rx="31" fill="#1B1A23"/>
+  <rect x="108" y="282" width="20" height="44" rx="10" fill="#9B5DE5"/>
+  <rect x="384" y="282" width="20" height="44" rx="10" fill="#9B5DE5"/>
+  <ellipse cx="214" cy="300" rx="20" ry="27" fill="#1B1A23"/>
+  <ellipse cx="298" cy="300" rx="20" ry="27" fill="#1B1A23"/>
+  <circle cx="221" cy="290" r="7" fill="#FFFFFF"/>
+  <circle cx="305" cy="290" r="7" fill="#FFFFFF"/>
+  <circle cx="186" cy="346" r="16" fill="#F9A8D4" opacity="0.8"/>
+  <circle cx="326" cy="346" r="16" fill="#F9A8D4" opacity="0.8"/>
+  <path d="M234 352 Q256 372 278 352" fill="none" stroke="#1B1A23" stroke-width="11" stroke-linecap="round"/>
+  </g>
+</svg>

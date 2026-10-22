@@ -1,0 +1,3 @@
+#!/bin/sh
+# Защита от утечки личных данных в публичный репозиторий (см. .githooks/check-private.mjs).
+exec node .githooks/check-private.mjs

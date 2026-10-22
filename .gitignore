@@ -1,0 +1,24 @@
+node_modules
+dist
+dev-dist
+*.local
+.env
+.env.*
+!.env.example
+
+# Python (аудио-конвейер, этап 1)
+__pycache__/
+.venv/
+
+# Редакторы и ОС
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.log
+
+# Личное — только на этом компьютере, никогда в публичный репозиторий
+PROJECT.md
+private/
+docs/design-refs/

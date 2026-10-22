@@ -1,0 +1,80 @@
+@import 'tailwindcss';
+
+/* Дизайн-токены из PROJECT.md, раздел 4. Каждый токен становится классом Tailwind:
+   --color-primary → bg-primary / text-primary, --radius-card → rounded-card и т.д. */
+@theme {
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-bg: #f5f3fc;
+  --color-surface: #ffffff;
+  --color-ink: #1b1a23;
+  --color-muted: #6f6c80; /* в PROJECT.md #8C8A99, затемнён до контраста AA */
+  --color-line: #eceaf3;
+  --color-primary: #9b5de5;
+  --color-primary-700: #7c3aed;
+  --color-primary-100: #efe6fd;
+  --color-cta: #1c1c1e;
+  --color-success: #22b07d;
+  --color-success-soft: #e3f6ee;
+  --color-error: #f05252;
+  --color-error-soft: #fde8e8;
+
+  /* Пастельные пары: *-soft — фон плитки, без суффикса — акцент */
+  --color-lilac-soft: #f1e7fd;
+  --color-lilac: #9b5de5;
+  --color-sky-soft: #ddeffc;
+  --color-sky: #2f8ceb;
+  --color-pink-soft: #fce4ef;
+  --color-pink: #e5578f;
+  --color-peach-soft: #fdeadb;
+  --color-peach: #f28c28;
+  --color-mint-soft: #ddf5ec;
+  --color-mint: #1faf85;
+  --color-yellow-soft: #fff4cc;
+  --color-yellow: #f5b700;
+
+  /* Насыщенные плитки. Текст на них тёмный: белый на таких светлых цветах не проходит AA */
+  --color-tile-violet: #c68af0;
+  --color-tile-blue: #3eb2f5;
+
+  --radius-chip: 12px;
+  --radius-tile: 20px;
+  --radius-card: 24px;
+
+  --shadow-soft: 0 8px 24px rgba(124, 58, 237, 0.08);
+  --shadow-float: 0 -4px 24px rgba(124, 58, 237, 0.08);
+}
+
+/* Градиент шапки чуть темнее, чем в PROJECT.md (#C38BF0 → #9B5DE5): белый текст на нём проходит AA */
+@utility bg-header {
+  background-image: linear-gradient(160deg, #8e50de 0%, #7c3aed 100%);
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-bg font-sans font-medium text-ink antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary-700);
+    outline-offset: 2px;
+  }
+}
