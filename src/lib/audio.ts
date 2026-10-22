@@ -36,13 +36,43 @@ function tick() {
   if (!audio.paused) raf = requestAnimationFrame(tick);
 }
 
-/** Проиграть файл. Промис завершается, когда звук доиграл или был остановлен. */
+// Файлы скачиваются целиком через fetch и играются из blob: так Service Worker кладёт в кеш
+// полный ответ и звук работает офлайн. Если отдать <audio> прямую ссылку, браузер просит mp3
+// кусками (206 Partial Content), а такие ответы не кешируются.
+const MAX_BLOBS = 300;
+const blobUrls = new Map<string, string>();
+let token = 0;
+
+async function sourceFor(id: string): Promise<string> {
+  const hit = blobUrls.get(id);
+  if (hit) return hit;
+  const res = await fetch(audioUrl(id));
+  if (!res.ok) throw new Error(`Нет звука ${id}`);
+  const url = URL.createObjectURL(await res.blob());
+  blobUrls.set(id, url);
+  if (blobUrls.size > MAX_BLOBS) {
+    const [oldId, oldUrl] = blobUrls.entries().next().value!;
+    URL.revokeObjectURL(oldUrl);
+    blobUrls.delete(oldId);
+  }
+  return url;
+}
+
+/** Скачать файлы заранее (они попадут в кеш Service Worker). Ошибки молча пропускаются. */
+export async function preload(ids: string[]): Promise<void> {
+  await Promise.all(
+    ids.map((id) =>
+      fetch(audioUrl(id))
+        .then((r) => r.blob())
+        .catch(() => undefined),
+    ),
+  );
+}
+
+/** Проиграть файл. Промис завершается, когда звук доиграл, был остановлен или не загрузился. */
 export function play(id: string, rate = 1): Promise<void> {
   stop();
-  audio.src = audioUrl(id);
-  // При смене src браузер сбрасывает скорость к defaultPlaybackRate, поэтому задаём обе
-  audio.defaultPlaybackRate = rate;
-  audio.playbackRate = rate;
+  const my = ++token;
   set({ id, playing: true, time: 0 });
 
   return new Promise<void>((resolve) => {
@@ -56,16 +86,32 @@ export function play(id: string, rate = 1): Promise<void> {
     };
     audio.onended = () => finish?.();
     audio.onerror = () => finish?.();
-    audio
-      .play()
-      .then(() => {
-        raf = requestAnimationFrame(tick);
-      })
-      .catch(() => finish?.());
+
+    const start = (src: string) => {
+      if (my !== token) return; // пока файл качался, включили другой звук или нажали «стоп»
+      audio.src = src;
+      // При смене src браузер сбрасывает скорость к defaultPlaybackRate, поэтому задаём обе
+      audio.defaultPlaybackRate = rate;
+      audio.playbackRate = rate;
+      audio
+        .play()
+        .then(() => {
+          raf = requestAnimationFrame(tick);
+        })
+        .catch(() => finish?.());
+    };
+    // Уже скачанный файл запускаем синхронно, прямо в обработчике нажатия
+    const hit = blobUrls.get(id);
+    if (hit) start(hit);
+    else
+      sourceFor(id)
+        .then(start)
+        .catch(() => my === token && finish?.());
   });
 }
 
 export function stop() {
+  token++;
   if (!audio.paused) audio.pause();
   finish?.();
 }
