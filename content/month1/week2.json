@@ -1,0 +1,249 @@
+{
+  "id": "m1w2",
+  "n": 2,
+  "title": "Отель и город",
+  "description": "Заселение, проблемы в номере, дорога до музея и экскурсия по реке: понимаем на слух отель и город.",
+  "icon": "hotel",
+  "baseSpeed": 0.85,
+  "words": [
+    { "id": "reservation", "en": "reservation", "ru": "бронь, бронирование", "pos": "noun", "example": "I have a reservation for tonight.", "exampleRu": "У меня бронь на сегодня." },
+    { "id": "double-room", "en": "double room", "ru": "номер с одной большой кроватью для двоих", "pos": "noun", "example": "A double room for three nights, please.", "exampleRu": "Номер на двоих на три ночи, пожалуйста." },
+    { "id": "included", "en": "included", "ru": "включён, включено", "pos": "adj", "example": "Is breakfast included?", "exampleRu": "Завтрак включён?" },
+    { "id": "ground-floor", "en": "ground floor", "ru": "первый этаж (в Британии)", "pos": "noun", "example": "The restaurant is on the ground floor.", "exampleRu": "Ресторан на первом этаже." },
+    { "id": "floor", "en": "floor", "ru": "этаж", "pos": "noun", "example": "My room is on the fourth floor.", "exampleRu": "Мой номер на четвёртом этаже (по-нашему — на пятом)." },
+    { "id": "key-card", "en": "key card", "ru": "ключ-карта", "pos": "noun", "example": "Here is your key card.", "exampleRu": "Вот ваша ключ-карта." },
+    { "id": "password", "en": "password", "ru": "пароль", "pos": "noun", "example": "What's the Wi-Fi password?", "exampleRu": "Какой пароль от вайфая?" },
+    { "id": "receptionist", "en": "receptionist", "ru": "администратор (на ресепшене)", "pos": "noun", "example": "Please ask the receptionist.", "exampleRu": "Спросите, пожалуйста, администратора." },
+    { "id": "air-conditioning", "en": "air conditioning", "ru": "кондиционер", "pos": "noun", "example": "The air conditioning is too loud.", "exampleRu": "Кондиционер слишком шумный." },
+    { "id": "isnt-working", "en": "isn't working", "ru": "не работает", "pos": "phrase", "example": "The shower isn't working.", "exampleRu": "Душ не работает." },
+    { "id": "fix", "en": "fix", "ru": "чинить, починить", "pos": "verb", "example": "Can you fix it, please?", "exampleRu": "Можете это починить, пожалуйста?" },
+    { "id": "towel", "en": "towel", "ru": "полотенце", "pos": "noun", "example": "Could I have a clean towel?", "exampleRu": "Можно мне чистое полотенце?" },
+    { "id": "housekeeping", "en": "housekeeping", "ru": "служба уборки (горничные)", "pos": "noun", "example": "Housekeeping cleans the rooms every morning.", "exampleRu": "Горничные убирают номера каждое утро." },
+    { "id": "check-out", "en": "check out", "ru": "выехать из отеля, освободить номер", "pos": "verb", "example": "What time do I need to check out?", "exampleRu": "Во сколько мне нужно освободить номер?" },
+    { "id": "bus-stop", "en": "bus stop", "ru": "автобусная остановка", "pos": "noun", "example": "The bus stop is near the hotel.", "exampleRu": "Автобусная остановка рядом с отелем." },
+    { "id": "across-the-street", "en": "across the street", "ru": "через дорогу, на другой стороне улицы", "pos": "phrase", "example": "There's a nice café across the street.", "exampleRu": "Через дорогу есть хорошее кафе." },
+    { "id": "get-off", "en": "get off", "ru": "выйти (из автобуса, поезда)", "pos": "verb", "example": "Where do I get off?", "exampleRu": "Где мне выходить?" },
+    { "id": "how-long-does-it-take", "en": "How long does it take?", "ru": "Сколько времени это занимает?", "pos": "phrase", "example": "How long does it take to get to the museum?", "exampleRu": "Сколько времени добираться до музея?" },
+    { "id": "stop", "en": "stop", "ru": "остановка", "pos": "noun", "example": "The museum is the next stop.", "exampleRu": "Музей — на следующей остановке." },
+    { "id": "cost", "en": "cost", "ru": "стоить", "pos": "verb", "example": "The ticket costs two pounds.", "exampleRu": "Билет стоит два фунта." },
+    { "id": "museum", "en": "museum", "ru": "музей", "pos": "noun", "example": "The museum is closed on Mondays.", "exampleRu": "По понедельникам музей закрыт." },
+    { "id": "old-town", "en": "old town", "ru": "старый город", "pos": "noun", "example": "Let's walk around the old town.", "exampleRu": "Давай погуляем по старому городу." },
+    { "id": "boat-tour", "en": "boat tour", "ru": "экскурсия на лодке (по реке)", "pos": "noun", "example": "The boat tour leaves every hour.", "exampleRu": "Экскурсия на лодке отправляется каждый час." },
+    { "id": "adult", "en": "adult", "ru": "взрослый", "pos": "noun", "example": "It's twelve pounds for adults.", "exampleRu": "Для взрослых — двенадцать фунтов." },
+    { "id": "bridge", "en": "bridge", "ru": "мост", "pos": "noun", "example": "Let's meet at the bridge.", "exampleRu": "Давай встретимся у моста." },
+    { "id": "book-in-advance", "en": "book in advance", "ru": "забронировать заранее", "pos": "phrase", "example": "Do I need to book in advance?", "exampleRu": "Нужно бронировать заранее?" },
+    { "id": "weekday", "en": "weekday", "ru": "будний день", "pos": "noun", "example": "It's quiet here on weekdays.", "exampleRu": "В будни здесь тихо." },
+    { "id": "at-the-weekend", "en": "at the weekend", "ru": "на выходных", "pos": "phrase", "example": "It's very busy at the weekend.", "exampleRu": "На выходных здесь очень много людей." }
+  ],
+  "listenings": [
+    {
+      "id": "d1",
+      "kind": "dialog",
+      "title": "Заселение в отель",
+      "speakers": [
+        { "id": "receptionist", "name": "Receptionist", "voice": "woman2" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "receptionist", "text": "Hello, welcome to the Park Hotel. How can I help you?", "ru": "Здравствуйте, добро пожаловать в отель «Парк». Чем могу помочь?" },
+        { "speaker": "anna", "text": "Hi, I have a reservation. My name is Anna Sokolova.", "ru": "Здравствуйте, у меня бронь. Меня зовут Анна Соколова." },
+        { "speaker": "receptionist", "text": "Let me check. Yes, a double room for three nights.", "ru": "Сейчас проверю. Да, номер на двоих на три ночи." },
+        { "speaker": "anna", "text": "That's right. Is breakfast included?", "ru": "Всё верно. Завтрак включён?" },
+        { "speaker": "receptionist", "text": "Yes. Breakfast is from seven to ten.", "ru": "Да. Завтрак с семи до десяти." },
+        { "speaker": "receptionist", "text": "It's in the restaurant on the ground floor.", "ru": "Он в ресторане на первом этаже." },
+        { "speaker": "anna", "text": "Great. What's the Wi-Fi password?", "ru": "Отлично. Какой пароль от вайфая?" },
+        { "speaker": "receptionist", "text": "It's on your key card.", "ru": "Он написан на вашей ключ-карте." },
+        { "speaker": "receptionist", "text": "Your room is four oh six, on the fourth floor.", "ru": "Ваш номер — четыреста шесть, на четвёртом этаже." }
+      ],
+      "questions": [
+        { "q": "How many nights is the reservation for?", "options": ["Two nights", "Three nights", "Four nights"], "correct": 1, "explainRu": "Администратор говорит: «a double room for three nights» — номер на три ночи." },
+        { "q": "When is breakfast?", "options": ["From seven to ten", "From six to nine", "From eight to eleven"], "correct": 0, "explainRu": "«Breakfast is from seven to ten» — завтрак с семи до десяти." },
+        { "q": "Where can Anna find the Wi-Fi password?", "options": ["On her key card", "In the restaurant", "On the door of her room"], "correct": 0, "explainRu": "«It's on your key card» — пароль написан на ключ-карте." },
+        { "q": "What is her room number?", "options": ["Six oh four", "Four sixteen", "Four oh six"], "correct": 2, "explainRu": "«Your room is four oh six» — номер 406. В номерах комнат ноль часто произносят как «oh»." }
+      ]
+    },
+    {
+      "id": "d2",
+      "kind": "dialog",
+      "title": "Проблема в номере",
+      "speakers": [
+        { "id": "anna", "name": "Anna", "voice": "anna" },
+        { "id": "receptionist", "name": "Receptionist", "voice": "woman2" }
+      ],
+      "lines": [
+        { "speaker": "anna", "text": "Hello, this is room four oh six.", "ru": "Здравствуйте, это номер четыреста шесть." },
+        { "speaker": "anna", "text": "The air conditioning isn't working.", "ru": "У меня не работает кондиционер." },
+        { "speaker": "receptionist", "text": "I'm sorry about that. I'll send someone to fix it.", "ru": "Извините, пожалуйста. Я пришлю кого-нибудь его починить." },
+        { "speaker": "anna", "text": "Thank you. Also, there are no towels in the bathroom.", "ru": "Спасибо. И ещё в ванной нет полотенец." },
+        { "speaker": "receptionist", "text": "Housekeeping will bring some towels in ten minutes.", "ru": "Горничная принесёт полотенца через десять минут." },
+        { "speaker": "anna", "text": "And can I check out late tomorrow?", "ru": "А можно мне завтра выехать попозже?" },
+        { "speaker": "receptionist", "text": "Yes, you can stay until one o'clock.", "ru": "Да, вы можете остаться до часу дня." }
+      ],
+      "questions": [
+        { "q": "What is wrong in Anna's room?", "options": ["The TV isn't working", "The air conditioning isn't working", "The shower isn't working"], "correct": 1, "explainRu": "Anna говорит: «The air conditioning isn't working» — не работает кондиционер." },
+        { "q": "What is missing in the bathroom?", "options": ["Towels", "Soap", "Shampoo"], "correct": 0, "explainRu": "«There are no towels in the bathroom» — в ванной нет полотенец. Их принесут через десять минут." },
+        { "q": "Until what time can she stay tomorrow?", "options": ["Until twelve o'clock", "Until three o'clock", "Until one o'clock"], "correct": 2, "explainRu": "«You can stay until one o'clock» — до часу дня." }
+      ]
+    },
+    {
+      "id": "d3",
+      "kind": "dialog",
+      "title": "Как доехать до музея",
+      "speakers": [
+        { "id": "anna", "name": "Anna", "voice": "anna" },
+        { "id": "man", "name": "Man", "voice": "man1" }
+      ],
+      "lines": [
+        { "speaker": "anna", "text": "Excuse me, how do I get to the museum?", "ru": "Простите, как добраться до музея?" },
+        { "speaker": "man", "text": "Take the number nine bus.", "ru": "Садитесь на девятый автобус." },
+        { "speaker": "man", "text": "The bus stop is across the street.", "ru": "Остановка через дорогу." },
+        { "speaker": "anna", "text": "How long does it take?", "ru": "Сколько ехать?" },
+        { "speaker": "man", "text": "About fifteen minutes. Get off at the third stop.", "ru": "Минут пятнадцать. Выходите на третьей остановке." },
+        { "speaker": "anna", "text": "Can I pay on the bus?", "ru": "Можно заплатить в автобусе?" },
+        { "speaker": "man", "text": "Yes, with a card. It costs two pounds.", "ru": "Да, картой. Это стоит два фунта." }
+      ],
+      "questions": [
+        { "q": "Which bus goes to the museum?", "options": ["Number nine", "Number nineteen", "Number five"], "correct": 0, "explainRu": "«Take the number nine bus» — девятый автобус. Nine (9) и nineteen (19) различаются концовкой -teen." },
+        { "q": "How long is the trip?", "options": ["About five minutes", "About fifteen minutes", "About fifty minutes"], "correct": 1, "explainRu": "«About fifteen minutes» — около пятнадцати минут. В fifteen ударение на конце: fifTEEN, в fifty — в начале: FIFty." },
+        { "q": "Where does she get off?", "options": ["At the last stop", "At the second stop", "At the third stop"], "correct": 2, "explainRu": "«Get off at the third stop» — выходить на третьей остановке." },
+        { "q": "How can she pay?", "options": ["By card", "Only in cash", "At the museum"], "correct": 0, "explainRu": "«Yes, with a card» — заплатить можно картой, это два фунта." }
+      ]
+    },
+    {
+      "id": "d4",
+      "kind": "monologue",
+      "title": "Экскурсия на лодке",
+      "speakers": [{ "id": "guide", "name": "Guide", "voice": "man2" }],
+      "lines": [
+        { "speaker": "guide", "text": "Hello, everyone, and welcome to our boat tour!", "ru": "Всем привет и добро пожаловать на нашу экскурсию на лодке!" },
+        { "speaker": "guide", "text": "The tour takes about one hour.", "ru": "Экскурсия длится около часа." },
+        { "speaker": "guide", "text": "First, we go under the old bridge.", "ru": "Сначала мы проплывём под старым мостом." },
+        { "speaker": "guide", "text": "On your left, you can see the old town.", "ru": "Слева вы видите старый город." },
+        { "speaker": "guide", "text": "We stop near the museum for fifteen minutes.", "ru": "У музея мы остановимся на пятнадцать минут." },
+        { "speaker": "guide", "text": "The evening tour is twelve pounds for adults.", "ru": "Вечерняя экскурсия стоит двенадцать фунтов для взрослых." },
+        { "speaker": "guide", "text": "On weekdays, you can buy tickets here.", "ru": "В будни билеты можно купить прямо здесь." },
+        { "speaker": "guide", "text": "But at the weekend, please book in advance online.", "ru": "Но на выходных, пожалуйста, бронируйте заранее онлайн." }
+      ],
+      "questions": [
+        { "q": "How long is the boat tour?", "options": ["About one hour", "About two hours", "Fifteen minutes"], "correct": 0, "explainRu": "«The tour takes about one hour» — около часа. Пятнадцать минут — это остановка у музея." },
+        { "q": "What can people see on the left?", "options": ["The museum", "The old town", "A new bridge"], "correct": 1, "explainRu": "«On your left, you can see the old town» — слева старый город." },
+        { "q": "How much is the evening tour for an adult?", "options": ["Twelve pounds", "Twenty pounds", "Two pounds"], "correct": 0, "explainRu": "«Twelve pounds for adults» — двенадцать фунтов. Twelve (12) и twenty (20) легко перепутать." },
+        { "q": "When should people book online?", "options": ["On weekdays", "At the weekend", "Every evening"], "correct": 1, "explainRu": "«At the weekend, please book in advance online» — на выходных нужно бронировать заранее. В будни билеты продают на месте." }
+      ]
+    }
+  ],
+  "minimalPairs": [
+    { "id": "fourteen-forty", "a": "fourteen", "b": "forty", "aRu": "четырнадцать", "bRu": "сорок" },
+    { "id": "sixteen-sixty", "a": "sixteen", "b": "sixty", "aRu": "шестнадцать", "bRu": "шестьдесят" },
+    { "id": "cap-cup", "a": "cap", "b": "cup", "aRu": "кепка", "bRu": "чашка" },
+    { "id": "three-tree", "a": "three", "b": "tree", "aRu": "три", "bRu": "дерево" },
+    { "id": "think-sink", "a": "think", "b": "sink", "aRu": "думать", "bRu": "раковина" },
+    { "id": "pull-pool", "a": "pull", "b": "pool", "aRu": "тянуть", "bRu": "бассейн" },
+    { "id": "chip-cheap", "a": "chip", "b": "cheap", "aRu": "чипс, фишка", "bRu": "дешёвый" },
+    { "id": "man-men", "a": "man", "b": "men", "aRu": "мужчина", "bRu": "мужчины" }
+  ],
+  "numberDrills": [
+    { "id": "n-room", "text": "Your room is four oh six.", "answers": ["406"], "promptRu": "Номер комнаты" },
+    { "id": "n-breakfast", "text": "Breakfast is from seven to ten.", "answers": ["7", "10"], "promptRu": "Завтрак: с какого часа и до какого" },
+    { "id": "n-price-night", "text": "It's one hundred and twenty pounds per night.", "answers": ["120"], "promptRu": "Цена за ночь (в фунтах)" },
+    { "id": "n-bus-19", "text": "Take the number nineteen bus.", "answers": ["19"], "promptRu": "Номер автобуса" },
+    { "id": "n-museum-opens", "text": "The museum opens at nine thirty.", "answers": ["9:30"], "promptRu": "Во сколько открывается музей?" },
+    { "id": "n-tour-price", "text": "The boat tour is twelve pounds fifty.", "answers": ["12.50"], "promptRu": "Цена экскурсии (в фунтах)" },
+    { "id": "n-wifi", "text": "The Wi-Fi password is park two oh two six.", "answers": ["2026"], "promptRu": "Цифры в пароле от Wi-Fi" },
+    { "id": "n-every-15", "text": "The bus comes every fifteen minutes.", "answers": ["15"], "promptRu": "Как часто ходит автобус (минуты)?" }
+  ],
+  "aiPrompt": "You are a hotel receptionist. I am a guest checking in. My English level is A2. Speak slowly and use simple words. Give me one small problem to solve, for example, my room is not ready. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
+  "lessons": [
+    {
+      "id": "m1w2-l1",
+      "day": 1,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "word_intro", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"] },
+        { "type": "word_listen_choice", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"] },
+        { "type": "dialog_comprehension", "ref": ["d1"] },
+        { "type": "interactive_transcript", "ref": ["d1"] },
+        { "type": "minimal_pairs", "ref": ["fourteen-forty", "sixteen-sixty", "man-men"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#2", "d1#4", "d1#8"] }
+      ]
+    },
+    {
+      "id": "m1w2-l2",
+      "day": 2,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"] },
+        { "type": "word_listen_choice", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"] },
+        { "type": "dialog_comprehension", "ref": ["d2"] },
+        { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "numbers_listen", "ref": ["n-room", "n-breakfast", "n-price-night"] },
+        { "type": "dictation_tiles", "ref": ["d2#1", "d2#4", "d2#6"] }
+      ]
+    },
+    {
+      "id": "m1w2-l3",
+      "day": 3,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"] },
+        { "type": "word_listen_choice", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"] },
+        { "type": "dialog_comprehension", "ref": ["d3"] },
+        { "type": "interactive_transcript", "ref": ["d3"] },
+        { "type": "minimal_pairs", "ref": ["cap-cup", "three-tree", "think-sink", "fourteen-forty"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d3#1", "d3#4", "d3#6"] }
+      ]
+    },
+    {
+      "id": "m1w2-l4",
+      "day": 4,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["old-town", "boat-tour", "adult", "bridge", "book-in-advance", "weekday", "at-the-weekend"] },
+        { "type": "word_listen_choice", "ref": ["old-town", "boat-tour", "adult", "bridge", "book-in-advance", "weekday", "at-the-weekend"] },
+        { "type": "dialog_comprehension", "ref": ["d4"] },
+        { "type": "interactive_transcript", "ref": ["d4"] },
+        { "type": "numbers_listen", "ref": ["n-bus-19", "n-museum-opens", "n-tour-price", "n-every-15"] },
+        { "type": "dictation_tiles", "ref": ["d4#2", "d4#4", "d4#5"] }
+      ]
+    },
+    {
+      "id": "m1w2-l5",
+      "day": 5,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
+        { "type": "minimal_pairs", "ref": ["pull-pool", "chip-cheap", "cap-cup", "sixteen-sixty"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#5", "d1#7", "d2#2", "d2#3"] }
+      ]
+    },
+    {
+      "id": "m1w2-l6",
+      "day": 6,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
+        { "type": "numbers_listen", "ref": ["n-room", "n-price-night", "n-bus-19", "n-wifi", "n-tour-price"] },
+        { "type": "dictation_tiles", "ref": ["d3#2", "d3#5", "d4#6", "d4#7"] }
+      ]
+    },
+    {
+      "id": "m1w2-l7",
+      "day": 7,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 25 } },
+        { "type": "word_listen_choice", "params": { "count": 12 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "minimal_pairs", "params": { "count": 8 } },
+        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "ai_conversation" }
+      ]
+    }
+  ]
+}

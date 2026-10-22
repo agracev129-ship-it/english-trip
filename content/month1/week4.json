@@ -1,0 +1,247 @@
+{
+  "id": "m1w4",
+  "n": 4,
+  "title": "Работа: знакомство, встречи, созвоны",
+  "description": "Первый день в международной команде, договариваемся о встрече, справляемся с плохой связью на созвоне и слушаем голосовое сообщение от руководителя.",
+  "icon": "briefcase",
+  "baseSpeed": 0.95,
+  "words": [
+    { "id": "nice-to-meet-you", "en": "Nice to meet you.", "ru": "Приятно познакомиться.", "pos": "phrase", "example": "Hi, I'm Tom. Nice to meet you.", "exampleRu": "Привет, я Том. Приятно познакомиться." },
+    { "id": "project-manager", "en": "project manager", "ru": "руководитель проекта", "pos": "noun", "example": "Tom is our project manager.", "exampleRu": "Том — наш руководитель проекта." },
+    { "id": "team", "en": "team", "ru": "команда", "pos": "noun", "example": "Welcome to the team!", "exampleRu": "Добро пожаловать в команду!" },
+    { "id": "colleague", "en": "colleague", "ru": "коллега", "pos": "noun", "example": "This is my new colleague, Kate.", "exampleRu": "Это моя новая коллега, Кейт." },
+    { "id": "introduce", "en": "introduce", "ru": "представить, познакомить", "pos": "verb", "example": "Let me introduce you to everyone.", "exampleRu": "Давай я познакомлю тебя со всеми." },
+    { "id": "work-in-marketing", "en": "work in marketing", "ru": "работать в маркетинге", "pos": "phrase", "example": "Kate works in marketing.", "exampleRu": "Кейт работает в маркетинге." },
+    { "id": "developer", "en": "developer", "ru": "разработчик", "pos": "noun", "example": "Ben is our developer.", "exampleRu": "Бен — наш разработчик." },
+    { "id": "free", "en": "free", "ru": "свободен (о времени)", "pos": "adj", "example": "Are you free on Thursday?", "exampleRu": "Ты свободна в четверг?" },
+    { "id": "calendar", "en": "calendar", "ru": "календарь", "pos": "noun", "example": "Let me check my calendar.", "exampleRu": "Сейчас посмотрю в календаре." },
+    { "id": "call", "en": "call", "ru": "звонок, созвон", "pos": "noun", "example": "I have a call at two.", "exampleRu": "У меня созвон в два." },
+    { "id": "works-for-me", "en": "works for me", "ru": "мне подходит", "pos": "phrase", "example": "Three o'clock works for me.", "exampleRu": "Три часа мне подходит." },
+    { "id": "online", "en": "online", "ru": "онлайн", "pos": "adv", "example": "Let's meet online.", "exampleRu": "Давай встретимся онлайн." },
+    { "id": "send-a-link", "en": "send a link", "ru": "отправить ссылку", "pos": "phrase", "example": "I'll send you a link.", "exampleRu": "Я пришлю тебе ссылку." },
+    { "id": "meeting", "en": "meeting", "ru": "встреча, совещание", "pos": "noun", "example": "The meeting takes thirty minutes.", "exampleRu": "Встреча длится тридцать минут." },
+    { "id": "can-you-hear-me", "en": "Can you hear me?", "ru": "Ты меня слышишь?", "pos": "phrase", "example": "Hi, can you hear me?", "exampleRu": "Привет, ты меня слышишь?" },
+    { "id": "youre-breaking-up", "en": "you're breaking up", "ru": "тебя плохо слышно (связь прерывается)", "pos": "phrase", "example": "Sorry, you're breaking up.", "exampleRu": "Извини, тебя плохо слышно." },
+    { "id": "say-that-again", "en": "say that again", "ru": "повторить (ещё раз)", "pos": "phrase", "example": "Can you say that again?", "exampleRu": "Можешь повторить?" },
+    { "id": "share-your-screen", "en": "share your screen", "ru": "показать свой экран", "pos": "phrase", "example": "Can you share your screen?", "exampleRu": "Можешь показать свой экран?" },
+    { "id": "bigger", "en": "bigger", "ru": "больше, крупнее", "pos": "adj", "example": "Can you make it bigger?", "exampleRu": "Можешь сделать покрупнее?" },
+    { "id": "on-mute", "en": "on mute", "ru": "с выключенным микрофоном", "pos": "phrase", "example": "Sorry, you're on mute.", "exampleRu": "Извини, у тебя выключен микрофон." },
+    { "id": "email", "en": "email", "ru": "письмо (по электронной почте)", "pos": "noun", "example": "Did you get my email?", "exampleRu": "Ты получила моё письмо?" },
+    { "id": "report", "en": "report", "ru": "отчёт", "pos": "noun", "example": "The report is almost ready.", "exampleRu": "Отчёт почти готов." },
+    { "id": "deadline", "en": "deadline", "ru": "срок сдачи, дедлайн", "pos": "noun", "example": "When is the deadline?", "exampleRu": "Когда дедлайн?" },
+    { "id": "possible", "en": "possible", "ru": "возможно, реально", "pos": "adj", "example": "Is that possible?", "exampleRu": "Это реально?" },
+    { "id": "sales-team", "en": "sales team", "ru": "отдел продаж", "pos": "noun", "example": "I need the numbers from the sales team.", "exampleRu": "Мне нужны цифры от отдела продаж." },
+    { "id": "draft", "en": "draft", "ru": "черновик", "pos": "noun", "example": "I'll send you a draft on Thursday.", "exampleRu": "Я пришлю тебе черновик в четверг." },
+    { "id": "in-the-office", "en": "in the office", "ru": "в офисе", "pos": "phrase", "example": "Are you in the office today?", "exampleRu": "Ты сегодня в офисе?" },
+    { "id": "first", "en": "first", "ru": "сначала", "pos": "adv", "example": "I need the numbers first.", "exampleRu": "Сначала мне нужны цифры." }
+  ],
+  "listenings": [
+    {
+      "id": "d1",
+      "kind": "dialog",
+      "title": "Первый день в команде",
+      "speakers": [
+        { "id": "tom", "name": "Tom", "voice": "man1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "tom", "text": "Hi, I'm Tom. I'm the project manager. Nice to meet you.", "ru": "Привет, я Том, руководитель проекта. Приятно познакомиться." },
+        { "speaker": "anna", "text": "Nice to meet you too. I'm Anna, the new designer.", "ru": "Мне тоже. Я Анна, новый дизайнер." },
+        { "speaker": "tom", "text": "Welcome to the team! Where are you from?", "ru": "Добро пожаловать в команду! Откуда ты?" },
+        { "speaker": "anna", "text": "I'm from Russia, but I live in Berlin now.", "ru": "Я из России, но сейчас живу в Берлине." },
+        { "speaker": "tom", "text": "Great. Let me introduce you to everyone.", "ru": "Отлично. Давай я познакомлю тебя со всеми." },
+        { "speaker": "tom", "text": "This is Kate. She works in marketing.", "ru": "Это Кейт. Она работает в маркетинге." },
+        { "speaker": "tom", "text": "And this is Ben, our developer.", "ru": "А это Бен, наш разработчик." },
+        { "speaker": "anna", "text": "Nice to meet you all.", "ru": "Рада со всеми познакомиться." }
+      ],
+      "questions": [
+        { "q": "What is Tom's job?", "options": ["He's a developer", "He's the project manager", "He's a designer"], "correct": 1, "explainRu": "Том говорит: «I'm the project manager» — руководитель проекта. Дизайнер — это Anna, разработчик — Бен." },
+        { "q": "Where does Anna live now?", "options": ["In Berlin", "In Moscow", "In London"], "correct": 0, "explainRu": "«I'm from Russia, but I live in Berlin now» — она из России, а живёт сейчас в Берлине." },
+        { "q": "What does Kate do?", "options": ["She works in sales", "She works in design", "She works in marketing"], "correct": 2, "explainRu": "«This is Kate. She works in marketing» — Кейт работает в маркетинге." },
+        { "q": "Who is Ben?", "options": ["The developer", "The manager", "A new designer"], "correct": 0, "explainRu": "«And this is Ben, our developer» — Бен — разработчик." }
+      ]
+    },
+    {
+      "id": "d2",
+      "kind": "dialog",
+      "title": "Договариваемся о встрече",
+      "speakers": [
+        { "id": "tom", "name": "Tom", "voice": "man1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "tom", "text": "Are you free on Thursday afternoon?", "ru": "Ты свободна в четверг после обеда?" },
+        { "speaker": "anna", "text": "Let me check my calendar.", "ru": "Сейчас посмотрю в календаре." },
+        { "speaker": "anna", "text": "I have a call at two. Is three o'clock OK?", "ru": "У меня созвон в два. В три нормально?" },
+        { "speaker": "tom", "text": "Three works for me. It will take about thirty minutes.", "ru": "Три мне подходит. Это займёт около тридцати минут." },
+        { "speaker": "anna", "text": "Should we meet in the office or online?", "ru": "Встретимся в офисе или онлайн?" },
+        { "speaker": "tom", "text": "Online is easier. I'll send you a link.", "ru": "Онлайн проще. Я пришлю тебе ссылку." },
+        { "speaker": "anna", "text": "Perfect. See you on Thursday.", "ru": "Отлично. До четверга." }
+      ],
+      "questions": [
+        { "q": "What day is the meeting?", "options": ["Tuesday", "Thursday", "Friday"], "correct": 1, "explainRu": "«Are you free on Thursday afternoon?» и в конце «See you on Thursday» — встреча в четверг. Thursday и Tuesday легко спутать: в Thursday есть звук «th»." },
+        { "q": "What time is the meeting?", "options": ["At two o'clock", "At three o'clock", "At half past three"], "correct": 1, "explainRu": "В два у Anna уже созвон, поэтому она предлагает «three o'clock», и Тому подходит: «Three works for me»." },
+        { "q": "How long will the meeting take?", "options": ["About thirteen minutes", "About thirty minutes", "About an hour"], "correct": 1, "explainRu": "«It will take about thirty minutes» — около тридцати минут." },
+        { "q": "Where will they meet?", "options": ["Online", "In the office", "In a café"], "correct": 0, "explainRu": "«Online is easier. I'll send you a link» — встретятся онлайн, Том пришлёт ссылку." }
+      ]
+    },
+    {
+      "id": "d3",
+      "kind": "dialog",
+      "title": "Проблемы на созвоне",
+      "speakers": [
+        { "id": "tom", "name": "Tom", "voice": "man1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "tom", "text": "Hi, Anna. Can you hear me?", "ru": "Привет, Анна. Ты меня слышишь?" },
+        { "speaker": "anna", "text": "Sorry, you're breaking up. Can you say that again?", "ru": "Извини, тебя плохо слышно. Можешь повторить?" },
+        { "speaker": "tom", "text": "I said, can you share your screen?", "ru": "Я говорю: можешь показать свой экран?" },
+        { "speaker": "anna", "text": "Yes, one second. Can you see it now?", "ru": "Да, секунду. Теперь видно?" },
+        { "speaker": "tom", "text": "Yes, I can see it. Can you make it a bit bigger?", "ru": "Да, вижу. Можешь сделать чуть крупнее?" },
+        { "speaker": "anna", "text": "Sure. Is that better?", "ru": "Конечно. Так лучше?" },
+        { "speaker": "tom", "text": "Much better, thanks.", "ru": "Гораздо лучше, спасибо." }
+      ],
+      "questions": [
+        { "q": "What is the problem at the start of the call?", "options": ["Anna can't see Tom", "Anna can't hear Tom well", "Anna's laptop is off"], "correct": 1, "explainRu": "«Sorry, you're breaking up» — связь прерывается, Тома плохо слышно, поэтому она просит повторить." },
+        { "q": "What does Tom ask Anna to do?", "options": ["Share her screen", "Turn on her camera", "Send a file"], "correct": 0, "explainRu": "«Can you share your screen?» — показать свой экран." },
+        { "q": "What does Tom ask next?", "options": ["To make it smaller", "To stop sharing", "To make it bigger"], "correct": 2, "explainRu": "«Can you make it a bit bigger?» — сделать чуть крупнее." }
+      ]
+    },
+    {
+      "id": "d4",
+      "kind": "monologue",
+      "title": "Голосовое сообщение от руководителя",
+      "speakers": [{ "id": "tom", "name": "Tom", "voice": "man1" }],
+      "lines": [
+        { "speaker": "tom", "text": "Hi, Anna, it's Tom.", "ru": "Привет, Анна, это Том." },
+        { "speaker": "tom", "text": "I hope you got my email about the report.", "ru": "Надеюсь, ты получила моё письмо про отчёт." },
+        { "speaker": "tom", "text": "The deadline is Friday morning. Is that possible for you?", "ru": "Срок — утро пятницы. Ты успеешь?" },
+        { "speaker": "tom", "text": "You need the numbers from the sales team first.", "ru": "Сначала тебе нужны цифры от отдела продаж." },
+        { "speaker": "tom", "text": "I'll ask them to send them to you today.", "ru": "Я попрошу их прислать тебе цифры сегодня." },
+        { "speaker": "tom", "text": "Could you send me a draft on Thursday?", "ru": "Сможешь прислать мне черновик в четверг?" },
+        { "speaker": "tom", "text": "I'm in the office all day tomorrow, so call me any time.", "ru": "Завтра я весь день в офисе, так что звони в любое время." }
+      ],
+      "questions": [
+        { "q": "What is Tom's email about?", "options": ["A meeting", "A business trip", "A report"], "correct": 2, "explainRu": "«…my email about the report» — письмо про отчёт." },
+        { "q": "When is the deadline?", "options": ["On Friday morning", "On Thursday", "On Monday morning"], "correct": 0, "explainRu": "«The deadline is Friday morning» — утро пятницы. В четверг нужен только черновик." },
+        { "q": "What does Anna need first?", "options": ["A new laptop", "Numbers from the sales team", "More time"], "correct": 1, "explainRu": "«You need the numbers from the sales team first» — сначала цифры от отдела продаж." },
+        { "q": "When does Tom want a draft?", "options": ["On Thursday", "On Friday", "Tomorrow"], "correct": 0, "explainRu": "«Could you send me a draft on Thursday?» — черновик в четверг. «Tomorrow» Том говорит про то, что будет в офисе." }
+      ]
+    }
+  ],
+  "minimalPairs": [
+    { "id": "file-fail", "a": "file", "b": "fail", "aRu": "файл", "bRu": "провалиться, не получиться" },
+    { "id": "desk-disk", "a": "desk", "b": "disk", "aRu": "рабочий стол", "bRu": "диск" },
+    { "id": "send-sand", "a": "send", "b": "sand", "aRu": "отправить", "bRu": "песок" },
+    { "id": "late-let", "a": "late", "b": "let", "aRu": "поздно", "bRu": "позволить" },
+    { "id": "fit-feet", "a": "fit", "b": "feet", "aRu": "подходить по размеру", "bRu": "ступни, ноги" },
+    { "id": "nineteen-ninety", "a": "nineteen", "b": "ninety", "aRu": "девятнадцать", "bRu": "девяносто" },
+    { "id": "call-cold", "a": "call", "b": "cold", "aRu": "звонок, звонить", "bRu": "холодный" },
+    { "id": "first-fast", "a": "first", "b": "fast", "aRu": "первый, сначала", "bRu": "быстрый" }
+  ],
+  "numberDrills": [
+    { "id": "n-meeting-time", "text": "The meeting is at three thirty.", "answers": ["3:30"], "promptRu": "Во сколько встреча?" },
+    { "id": "n-minutes", "text": "It will take about thirty minutes.", "answers": ["30"], "promptRu": "Сколько минут займёт встреча?" },
+    { "id": "n-extension", "text": "My extension number is two four seven.", "answers": ["247"], "promptRu": "Добавочный номер телефона" },
+    { "id": "n-room", "text": "We're on the fifth floor, in room five twelve.", "answers": ["5", "512"], "promptRu": "Этаж и номер переговорной" },
+    { "id": "n-deadline-date", "text": "Please send the report by the nineteenth.", "answers": ["19"], "promptRu": "До какого числа нужно сдать отчёт?" },
+    { "id": "n-team-size", "text": "There are forty people in our team.", "answers": ["40"], "promptRu": "Сколько человек в команде?" },
+    { "id": "n-call-time", "text": "The call starts at a quarter past ten.", "answers": ["10:15"], "promptRu": "Во сколько начинается созвон?" },
+    { "id": "n-sales", "text": "Our sales grew by fifteen percent this year.", "answers": ["15"], "promptRu": "На сколько процентов выросли продажи?" }
+  ],
+  "aiPrompt": "You are my manager at an international company. We have a short video call about my work this week. My English level is A2. Speak slowly and use simple words. Ask me one question at a time and plan a meeting with me. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
+  "lessons": [
+    {
+      "id": "m1w4-l1",
+      "day": 1,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "word_intro", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"] },
+        { "type": "word_listen_choice", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"] },
+        { "type": "dialog_comprehension", "ref": ["d1"] },
+        { "type": "interactive_transcript", "ref": ["d1"] },
+        { "type": "minimal_pairs", "ref": ["desk-disk", "send-sand", "file-fail"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#2", "d1#4", "d1#5"] }
+      ]
+    },
+    {
+      "id": "m1w4-l2",
+      "day": 2,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"] },
+        { "type": "word_listen_choice", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"] },
+        { "type": "dialog_comprehension", "ref": ["d2"] },
+        { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "numbers_listen", "ref": ["n-meeting-time", "n-minutes", "n-call-time"] },
+        { "type": "dictation_tiles", "ref": ["d2#1", "d2#4", "d2#5"] }
+      ]
+    },
+    {
+      "id": "m1w4-l3",
+      "day": 3,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"] },
+        { "type": "word_listen_choice", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"] },
+        { "type": "dialog_comprehension", "ref": ["d3"] },
+        { "type": "interactive_transcript", "ref": ["d3"] },
+        { "type": "minimal_pairs", "ref": ["late-let", "fit-feet", "call-cold", "first-fast"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d3#0", "d3#2", "d3#5"] }
+      ]
+    },
+    {
+      "id": "m1w4-l4",
+      "day": 4,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["report", "deadline", "possible", "sales-team", "draft", "in-the-office", "first"] },
+        { "type": "word_listen_choice", "ref": ["report", "deadline", "possible", "sales-team", "draft", "in-the-office", "first"] },
+        { "type": "dialog_comprehension", "ref": ["d4"] },
+        { "type": "interactive_transcript", "ref": ["d4"] },
+        { "type": "numbers_listen", "ref": ["n-extension", "n-room", "n-deadline-date", "n-team-size"] },
+        { "type": "dictation_tiles", "ref": ["d4#1", "d4#3", "d4#5"] }
+      ]
+    },
+    {
+      "id": "m1w4-l5",
+      "day": 5,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
+        { "type": "minimal_pairs", "ref": ["nineteen-ninety", "file-fail", "desk-disk", "late-let"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#3", "d1#6", "d2#2", "d2#6"] }
+      ]
+    },
+    {
+      "id": "m1w4-l6",
+      "day": 6,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
+        { "type": "numbers_listen", "ref": ["n-meeting-time", "n-room", "n-deadline-date", "n-call-time", "n-sales"] },
+        { "type": "dictation_tiles", "ref": ["d3#1", "d3#4", "d4#2", "d4#6"] }
+      ]
+    },
+    {
+      "id": "m1w4-l7",
+      "day": 7,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 25 } },
+        { "type": "word_listen_choice", "params": { "count": 12 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "minimal_pairs", "params": { "count": 8 } },
+        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "ai_conversation" }
+      ]
+    }
+  ]
+}

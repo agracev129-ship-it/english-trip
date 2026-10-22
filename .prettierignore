@@ -5,3 +5,6 @@ package-lock.json
 public
 docs/design-refs
 PROJECT.md
+private
+# Контент написан компактно (одна строка — одно слово), Prettier его не трогает
+content

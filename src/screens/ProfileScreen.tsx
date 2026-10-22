@@ -4,10 +4,12 @@ import {
   ChevronRight,
   Gauge,
   HardDriveDownload,
+  Headphones,
   RotateCcw,
   Volume2,
   type LucideIcon,
 } from 'lucide-react';
+import { Link } from 'react-router';
 import { Card } from '../components/Card';
 import { ComingSoonSheet } from '../components/ComingSoonSheet';
 import { LEARNER_NAME } from '../config';
@@ -58,8 +60,17 @@ export function ProfileScreen() {
         </ul>
       </Card>
 
+      <Link
+        to="/dev/audio"
+        className="flex min-h-14 items-center gap-3 rounded-card bg-surface px-5 text-base font-semibold shadow-soft"
+      >
+        <Headphones size={22} aria-hidden className="text-primary-700" />
+        <span className="flex-1">Проверка звука</span>
+        <ChevronRight size={20} className="text-muted" aria-hidden />
+      </Link>
+
       <p className="pt-2 pb-4 text-center text-xs font-semibold text-muted">
-        English Trip · версия 0.1 · этап 0
+        English Trip · версия 0.2 · этап 1
       </p>
 
       <ComingSoonSheet feature={soon} onClose={() => setSoon(null)} />

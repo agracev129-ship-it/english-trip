@@ -1,0 +1,6 @@
+# Аудио-конвейер (PROJECT.md, раздел 8.2). Python 3.10–3.12.
+# Ставится командой: npm run audio:setup
+kokoro==0.9.4
+misaki[en]==0.9.4
+faster-whisper==1.2.1
+soundfile==0.14.0

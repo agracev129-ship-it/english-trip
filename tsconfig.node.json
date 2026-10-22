@@ -17,5 +17,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "pwa-assets.config.ts", "eslint.config.js"]
+  "include": [
+    "vite.config.ts",
+    "pwa-assets.config.ts",
+    "eslint.config.js",
+    "scripts/**/*.ts",
+    "src/**/*.test.ts"
+  ]
 }

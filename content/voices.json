@@ -1,0 +1,12 @@
+{
+  "narrator": "bf_emma",
+  "roles": {
+    "anna": "bf_isabella",
+    "woman1": "bf_alice",
+    "woman2": "bf_lily",
+    "man1": "bm_george",
+    "man2": "bm_lewis",
+    "man3": "bm_fable",
+    "announcer": "bm_daniel"
+  }
+}

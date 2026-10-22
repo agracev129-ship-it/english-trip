@@ -1,0 +1,250 @@
+{
+  "id": "m1w1",
+  "n": 1,
+  "title": "Аэропорт и перелёт",
+  "description": "Регистрация на рейс, досмотр, объявления о задержке и сам полёт: учимся понимать на слух всё, что говорят в аэропорту и в самолёте.",
+  "icon": "airplane",
+  "baseSpeed": 0.8,
+  "words": [
+    { "id": "passport", "en": "passport", "ru": "паспорт", "pos": "noun", "example": "Here is my passport.", "exampleRu": "Вот мой паспорт." },
+    { "id": "suitcase", "en": "suitcase", "ru": "чемодан", "pos": "noun", "example": "I have one big suitcase.", "exampleRu": "У меня один большой чемодан." },
+    { "id": "boarding-pass", "en": "boarding pass", "ru": "посадочный талон", "pos": "noun", "example": "Can I see your boarding pass?", "exampleRu": "Можно ваш посадочный талон?" },
+    { "id": "window-seat", "en": "window seat", "ru": "место у окна", "pos": "noun", "example": "I'd like a window seat, please.", "exampleRu": "Я бы хотела место у окна, пожалуйста." },
+    { "id": "aisle-seat", "en": "aisle seat", "ru": "место у прохода", "pos": "noun", "example": "Is there an aisle seat?", "exampleRu": "Есть место у прохода?" },
+    { "id": "check-in", "en": "check in", "ru": "зарегистрироваться (на рейс, в отеле)", "pos": "verb", "example": "I need to check in for my flight.", "exampleRu": "Мне нужно зарегистрироваться на рейс." },
+    { "id": "gate", "en": "gate", "ru": "выход на посадку", "pos": "noun", "example": "Our flight leaves from gate twelve.", "exampleRu": "Наш рейс отправляется от выхода двенадцать." },
+    { "id": "boarding", "en": "boarding", "ru": "посадка (на самолёт)", "pos": "noun", "example": "Boarding starts at ten fifteen.", "exampleRu": "Посадка начинается в десять пятнадцать." },
+    { "id": "security", "en": "security", "ru": "досмотр, контроль безопасности", "pos": "noun", "example": "We go through security first.", "exampleRu": "Сначала мы проходим досмотр." },
+    { "id": "liquids", "en": "liquids", "ru": "жидкости", "pos": "noun", "example": "No liquids in your hand luggage, please.", "exampleRu": "Пожалуйста, никаких жидкостей в ручной клади." },
+    { "id": "laptop", "en": "laptop", "ru": "ноутбук", "pos": "noun", "example": "Please take out your laptop.", "exampleRu": "Пожалуйста, достаньте ноутбук." },
+    { "id": "tray", "en": "tray", "ru": "лоток (на досмотре), поднос", "pos": "noun", "example": "Put your bag in the tray.", "exampleRu": "Положите сумку в лоток." },
+    { "id": "take-out", "en": "take out", "ru": "достать, вынуть", "pos": "verb", "example": "Take out your phone, please.", "exampleRu": "Достаньте телефон, пожалуйста." },
+    { "id": "after", "en": "after", "ru": "после", "pos": "other", "example": "You can buy water after security.", "exampleRu": "Воду можно купить после досмотра." },
+    { "id": "delayed", "en": "delayed", "ru": "задержан (о рейсе, поезде)", "pos": "adj", "example": "Our flight is delayed.", "exampleRu": "Наш рейс задерживается." },
+    { "id": "departure", "en": "departure", "ru": "вылет, отправление", "pos": "noun", "example": "The new departure time is eleven forty.", "exampleRu": "Новое время вылета — одиннадцать сорок." },
+    { "id": "announcement", "en": "announcement", "ru": "объявление", "pos": "noun", "example": "Please listen to the announcement.", "exampleRu": "Пожалуйста, послушайте объявление." },
+    { "id": "turn-left", "en": "turn left", "ru": "повернуть налево", "pos": "phrase", "example": "Turn left after the café.", "exampleRu": "После кафе поверните налево." },
+    { "id": "go-straight", "en": "go straight", "ru": "идти прямо", "pos": "phrase", "example": "Go straight and you'll see the gate.", "exampleRu": "Идите прямо, и увидите выход на посадку." },
+    { "id": "on-foot", "en": "on foot", "ru": "пешком", "pos": "phrase", "example": "It's five minutes on foot.", "exampleRu": "Это пять минут пешком." },
+    { "id": "cancelled", "en": "cancelled", "ru": "отменён", "pos": "adj", "example": "I'm sorry, the flight is cancelled.", "exampleRu": "К сожалению, рейс отменён." },
+    { "id": "flight-attendant", "en": "flight attendant", "ru": "бортпроводник, бортпроводница", "pos": "noun", "example": "The flight attendant brought me some tea.", "exampleRu": "Бортпроводница принесла мне чаю." },
+    { "id": "blanket", "en": "blanket", "ru": "плед, одеяло", "pos": "noun", "example": "Could I have a blanket, please?", "exampleRu": "Можно мне плед, пожалуйста?" },
+    { "id": "land", "en": "land", "ru": "приземляться", "pos": "verb", "example": "We land at two o'clock.", "exampleRu": "Мы приземляемся в два часа." },
+    { "id": "local-time", "en": "local time", "ru": "местное время", "pos": "phrase", "example": "It's three p.m. local time.", "exampleRu": "Сейчас три часа дня по местному времени." },
+    { "id": "take-off", "en": "take off", "ru": "взлетать", "pos": "verb", "example": "The plane takes off in ten minutes.", "exampleRu": "Самолёт взлетает через десять минут." },
+    { "id": "hand-luggage", "en": "hand luggage", "ru": "ручная кладь", "pos": "noun", "example": "My hand luggage is very small.", "exampleRu": "Моя ручная кладь совсем маленькая." },
+    { "id": "arrivals", "en": "arrivals", "ru": "зал прилёта", "pos": "noun", "example": "I'll meet you in arrivals.", "exampleRu": "Я встречу тебя в зале прилёта." }
+  ],
+  "listenings": [
+    {
+      "id": "d1",
+      "kind": "dialog",
+      "title": "Регистрация на рейс",
+      "speakers": [
+        { "id": "agent", "name": "Agent", "voice": "woman1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "agent", "text": "Good morning. Where are you flying today?", "ru": "Доброе утро. Куда вы сегодня летите?" },
+        { "speaker": "anna", "text": "To London. Here is my passport.", "ru": "В Лондон. Вот мой паспорт." },
+        { "speaker": "agent", "text": "Thank you. Do you have any bags to check in?", "ru": "Спасибо. У вас есть багаж, который нужно сдать?" },
+        { "speaker": "anna", "text": "Yes, one suitcase.", "ru": "Да, один чемодан." },
+        { "speaker": "agent", "text": "Please put it on the scale.", "ru": "Поставьте его, пожалуйста, на весы." },
+        { "speaker": "agent", "text": "Would you like a window seat or an aisle seat?", "ru": "Вам место у окна или у прохода?" },
+        { "speaker": "anna", "text": "A window seat, please.", "ru": "У окна, пожалуйста." },
+        { "speaker": "agent", "text": "Here is your boarding pass. Boarding starts at ten fifteen, at gate twelve.", "ru": "Вот ваш посадочный талон. Посадка начинается в десять пятнадцать, у выхода двенадцать." }
+      ],
+      "questions": [
+        { "q": "Where is Anna flying?", "options": ["To London", "To Paris", "To Dublin"], "correct": 0, "explainRu": "Anna сразу отвечает: «To London» — в Лондон. Париж и Дублин в диалоге не звучат." },
+        { "q": "How many bags does she check in?", "options": ["Two bags", "One suitcase", "No bags"], "correct": 1, "explainRu": "На вопрос про багаж она говорит: «Yes, one suitcase» — да, один чемодан." },
+        { "q": "What seat does she choose?", "options": ["An aisle seat", "A seat in the front", "A window seat"], "correct": 2, "explainRu": "Её спрашивают «window or aisle?», и она выбирает «A window seat» — место у окна." },
+        { "q": "When and where does boarding start?", "options": ["At ten fifteen, gate twelve", "At ten fifty, gate twelve", "At ten fifteen, gate twenty"], "correct": 0, "explainRu": "В конце агент говорит: «Boarding starts at ten fifteen, at gate twelve». Fifteen (15) и fifty (50), twelve (12) и twenty (20) легко перепутать на слух." }
+      ]
+    },
+    {
+      "id": "d2",
+      "kind": "dialog",
+      "title": "Досмотр",
+      "speakers": [
+        { "id": "officer", "name": "Officer", "voice": "man1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "officer", "text": "Please put your bag and your jacket in the tray.", "ru": "Пожалуйста, положите сумку и куртку в лоток." },
+        { "speaker": "anna", "text": "Do I need to take out my laptop?", "ru": "Мне нужно доставать ноутбук?" },
+        { "speaker": "officer", "text": "Yes, and any liquids too.", "ru": "Да, и все жидкости тоже." },
+        { "speaker": "anna", "text": "I have a small bottle of water.", "ru": "У меня есть маленькая бутылка воды." },
+        { "speaker": "officer", "text": "Sorry, you can't take water through.", "ru": "Извините, воду проносить нельзя." },
+        { "speaker": "officer", "text": "You can buy some after security.", "ru": "Купить воду можно после досмотра." },
+        { "speaker": "anna", "text": "OK, no problem.", "ru": "Хорошо, без проблем." }
+      ],
+      "questions": [
+        { "q": "What does Anna need to take out of her bag?", "options": ["Her shoes", "Her laptop", "Her phone"], "correct": 1, "explainRu": "Она спрашивает «Do I need to take out my laptop?», и офицер отвечает «Yes» — да, ноутбук нужно достать." },
+        { "q": "What is the problem?", "options": ["Her bottle of water", "Her big bag", "Her jacket"], "correct": 0, "explainRu": "Офицер говорит «you can't take water through» — воду проносить нельзя. Сумку и куртку просто кладут в лоток." },
+        { "q": "Where can she get water?", "options": ["At home", "Only on the plane", "After security"], "correct": 2, "explainRu": "«You can buy some after security» — воду можно купить после досмотра." }
+      ]
+    },
+    {
+      "id": "d3",
+      "kind": "announcement",
+      "title": "Объявление о задержке",
+      "speakers": [
+        { "id": "speaker", "name": "Announcement", "voice": "announcer" },
+        { "id": "anna", "name": "Anna", "voice": "anna" },
+        { "id": "staff", "name": "Staff", "voice": "woman2" }
+      ],
+      "lines": [
+        { "speaker": "speaker", "text": "Attention, please. Flight BA eight seven five to London is delayed.", "ru": "Внимание! Рейс BA восемьсот семьдесят пять в Лондон задерживается." },
+        { "speaker": "speaker", "text": "The new departure time is eleven forty.", "ru": "Новое время вылета — одиннадцать сорок." },
+        { "speaker": "speaker", "text": "The flight will now leave from gate eighteen.", "ru": "Теперь рейс отправляется от выхода восемнадцать." },
+        { "speaker": "anna", "text": "Excuse me, is this the gate for London?", "ru": "Извините, это выход на рейс в Лондон?" },
+        { "speaker": "staff", "text": "Not anymore. It moved to gate eighteen.", "ru": "Уже нет. Его перенесли к выходу восемнадцать." },
+        { "speaker": "anna", "text": "How do I get there?", "ru": "Как мне туда пройти?" },
+        { "speaker": "staff", "text": "Go straight and turn left after the café.", "ru": "Идите прямо и после кафе поверните налево." },
+        { "speaker": "staff", "text": "It's about five minutes on foot.", "ru": "Это примерно пять минут пешком." }
+      ],
+      "questions": [
+        { "q": "What happened to the flight to London?", "options": ["It is cancelled", "It is delayed", "It leaves early"], "correct": 1, "explainRu": "В объявлении: «Flight BA eight seven five to London is delayed» — рейс задерживается. Cancelled значило бы «отменён»." },
+        { "q": "What is the new departure time?", "options": ["Eleven forty", "Ten fifteen", "Eleven fourteen"], "correct": 0, "explainRu": "«The new departure time is eleven forty» — 11:40. Forty (40) и fourteen (14) звучат похоже, разница в ударении: FORty — fourTEEN." },
+        { "q": "How does Anna get to the new gate?", "options": ["She takes a bus", "She goes straight and turns left", "She turns right after the café"], "correct": 1, "explainRu": "Сотрудница говорит: «Go straight and turn left after the café» — прямо, потом после кафе налево. Это пять минут пешком." }
+      ]
+    },
+    {
+      "id": "d4",
+      "kind": "dialog",
+      "title": "В самолёте",
+      "speakers": [
+        { "id": "attendant", "name": "Flight attendant", "voice": "woman1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "attendant", "text": "Would you like something to drink?", "ru": "Хотите что-нибудь выпить?" },
+        { "speaker": "anna", "text": "Yes, a cup of tea with milk, please.", "ru": "Да, чашку чая с молоком, пожалуйста." },
+        { "speaker": "attendant", "text": "Any sugar?", "ru": "Сахар добавить?" },
+        { "speaker": "anna", "text": "No, thanks. Excuse me, how long is the flight?", "ru": "Нет, спасибо. Простите, сколько длится полёт?" },
+        { "speaker": "attendant", "text": "About three and a half hours.", "ru": "Около трёх с половиной часов." },
+        { "speaker": "attendant", "text": "We land at two o'clock local time.", "ru": "Мы приземляемся в два часа по местному времени." },
+        { "speaker": "anna", "text": "Could I have a blanket? It's a bit cold.", "ru": "Можно мне плед? Немного холодно." },
+        { "speaker": "attendant", "text": "Of course. I'll bring one in a minute.", "ru": "Конечно. Сейчас принесу." }
+      ],
+      "questions": [
+        { "q": "What does Anna drink?", "options": ["Coffee with milk", "Water", "Tea with milk"], "correct": 2, "explainRu": "Она просит «a cup of tea with milk» — чай с молоком, без сахара." },
+        { "q": "How long is the flight?", "options": ["Two hours", "About three and a half hours", "About five hours"], "correct": 1, "explainRu": "«About three and a half hours» — около трёх с половиной часов. «Two o'clock» — это время посадки, а не длительность полёта." },
+        { "q": "Why does Anna ask for a blanket?", "options": ["She wants to sleep", "She feels a bit cold", "Her seat is wet"], "correct": 1, "explainRu": "Она объясняет: «It's a bit cold» — ей немного холодно." }
+      ]
+    }
+  ],
+  "minimalPairs": [
+    { "id": "ship-sheep", "a": "ship", "b": "sheep", "aRu": "корабль", "bRu": "овца" },
+    { "id": "sit-seat", "a": "sit", "b": "seat", "aRu": "сидеть", "bRu": "место, сиденье" },
+    { "id": "fifteen-fifty", "a": "fifteen", "b": "fifty", "aRu": "пятнадцать", "bRu": "пятьдесят" },
+    { "id": "thirteen-thirty", "a": "thirteen", "b": "thirty", "aRu": "тринадцать", "bRu": "тридцать" },
+    { "id": "live-leave", "a": "live", "b": "leave", "aRu": "жить", "bRu": "уезжать, уходить", "aSay": "[live](/lˈɪv/)" },
+    { "id": "walk-work", "a": "walk", "b": "work", "aRu": "идти пешком", "bRu": "работать" },
+    { "id": "full-fool", "a": "full", "b": "fool", "aRu": "полный", "bRu": "дурак" },
+    { "id": "bed-bad", "a": "bed", "b": "bad", "aRu": "кровать", "bRu": "плохой" }
+  ],
+  "numberDrills": [
+    { "id": "n-boarding-time", "text": "Boarding starts at ten fifteen.", "answers": ["10:15"], "promptRu": "Во сколько начинается посадка?" },
+    { "id": "n-gate-18", "text": "Your flight leaves from gate eighteen.", "answers": ["18"], "promptRu": "Номер выхода на посадку" },
+    { "id": "n-flight-number", "text": "Flight BA eight seven five is now boarding.", "answers": ["875"], "promptRu": "Номер рейса (только цифры)" },
+    { "id": "n-departure", "text": "The new departure time is eleven forty.", "answers": ["11:40"], "promptRu": "Новое время вылета" },
+    { "id": "n-row", "text": "Your seat is in row fourteen.", "answers": ["14"], "promptRu": "Номер ряда" },
+    { "id": "n-duration", "text": "The flight takes three hours and fifty minutes.", "answers": ["3", "50"], "promptRu": "Сколько длится полёт: часы и минуты" },
+    { "id": "n-gate-13", "text": "Gate thirty is closed. Please go to gate thirteen.", "answers": ["13"], "promptRu": "К какому выходу нужно идти?" },
+    { "id": "n-water-price", "text": "A bottle of water is two pounds fifty.", "answers": ["2.50"], "promptRu": "Сколько стоит вода (в фунтах)?" }
+  ],
+  "aiPrompt": "You are a check-in agent at an airport. I am a passenger flying to London. My English level is A2. Speak slowly and use simple words. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
+  "lessons": [
+    {
+      "id": "m1w1-l1",
+      "day": 1,
+      "steps": [
+        { "type": "word_intro", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"] },
+        { "type": "word_listen_choice", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"] },
+        { "type": "dialog_comprehension", "ref": ["d1"] },
+        { "type": "interactive_transcript", "ref": ["d1"] },
+        { "type": "minimal_pairs", "ref": ["sit-seat", "fifteen-fifty", "ship-sheep"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#1", "d1#3", "d1#6"] }
+      ]
+    },
+    {
+      "id": "m1w1-l2",
+      "day": 2,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"] },
+        { "type": "word_listen_choice", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"] },
+        { "type": "dialog_comprehension", "ref": ["d2"] },
+        { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "numbers_listen", "ref": ["n-boarding-time", "n-gate-18", "n-flight-number"] },
+        { "type": "dictation_tiles", "ref": ["d2#0", "d2#3", "d2#5"] }
+      ]
+    },
+    {
+      "id": "m1w1-l3",
+      "day": 3,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"] },
+        { "type": "word_listen_choice", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"] },
+        { "type": "dialog_comprehension", "ref": ["d3"] },
+        { "type": "interactive_transcript", "ref": ["d3"] },
+        { "type": "minimal_pairs", "ref": ["thirteen-thirty", "live-leave", "walk-work", "fifteen-fifty"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d3#1", "d3#5", "d3#7"] }
+      ]
+    },
+    {
+      "id": "m1w1-l4",
+      "day": 4,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["flight-attendant", "blanket", "land", "local-time", "take-off", "hand-luggage", "arrivals"] },
+        { "type": "word_listen_choice", "ref": ["flight-attendant", "blanket", "land", "local-time", "take-off", "hand-luggage", "arrivals"] },
+        { "type": "dialog_comprehension", "ref": ["d4"] },
+        { "type": "interactive_transcript", "ref": ["d4"] },
+        { "type": "numbers_listen", "ref": ["n-departure", "n-row", "n-duration", "n-gate-13"] },
+        { "type": "dictation_tiles", "ref": ["d4#1", "d4#5", "d4#6"] }
+      ]
+    },
+    {
+      "id": "m1w1-l5",
+      "day": 5,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
+        { "type": "minimal_pairs", "ref": ["ship-sheep", "sit-seat", "full-fool", "bed-bad"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#5", "d1#7", "d2#2", "d2#4"] }
+      ]
+    },
+    {
+      "id": "m1w1-l6",
+      "day": 6,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
+        { "type": "numbers_listen", "ref": ["n-gate-18", "n-row", "n-duration", "n-gate-13", "n-water-price"] },
+        { "type": "dictation_tiles", "ref": ["d3#2", "d3#6", "d4#3", "d4#7"] }
+      ]
+    },
+    {
+      "id": "m1w1-l7",
+      "day": 7,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 25 } },
+        { "type": "word_listen_choice", "params": { "count": 12 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "minimal_pairs", "params": { "count": 8 } },
+        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "ai_conversation" }
+      ]
+    }
+  ]
+}

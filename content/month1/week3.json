@@ -1,0 +1,254 @@
+{
+  "id": "m1w3",
+  "n": 3,
+  "title": "Кафе, магазины, аптека",
+  "description": "Заказываем кофе и ужин, покупаем куртку со скидкой и объясняем, что болит, в аптеке. Главное здесь — цены, размеры и вопросы продавцов.",
+  "icon": "coffee",
+  "baseSpeed": 0.9,
+  "words": [
+    { "id": "what-can-i-get-you", "en": "What can I get you?", "ru": "Что будете заказывать? (в кафе)", "pos": "phrase", "example": "Hi there, what can I get you today?", "exampleRu": "Здравствуйте, что будете заказывать?" },
+    { "id": "large", "en": "large", "ru": "большой (о размере)", "pos": "adj", "example": "A large latte, please.", "exampleRu": "Большой латте, пожалуйста." },
+    { "id": "oat-milk", "en": "oat milk", "ru": "овсяное молоко", "pos": "noun", "example": "Can I have it with oat milk?", "exampleRu": "Можно на овсяном молоке?" },
+    { "id": "take-away", "en": "take away", "ru": "с собой (о еде и напитках)", "pos": "phrase", "example": "Is that to eat in or take away?", "exampleRu": "Будете здесь или с собой?" },
+    { "id": "eat-in", "en": "eat in", "say": "Eat in.", "ru": "поесть на месте, здесь", "pos": "phrase", "example": "We'd like to eat in, please.", "exampleRu": "Мы поедим здесь, пожалуйста." },
+    { "id": "how-much-is-it", "en": "How much is it?", "ru": "Сколько это стоит?", "pos": "phrase", "example": "Excuse me, how much is it?", "exampleRu": "Простите, сколько это стоит?" },
+    { "id": "table-for-two", "en": "table for two", "ru": "столик на двоих", "pos": "noun", "example": "Do you have a table for two?", "exampleRu": "У вас есть столик на двоих?" },
+    { "id": "menu", "en": "menu", "ru": "меню", "pos": "noun", "example": "Can I see the menu, please?", "exampleRu": "Можно посмотреть меню?" },
+    { "id": "recommend", "en": "recommend", "ru": "советовать, рекомендовать", "pos": "verb", "example": "What do you recommend?", "exampleRu": "Что вы посоветуете?" },
+    { "id": "fish-of-the-day", "en": "fish of the day", "ru": "рыба дня", "pos": "noun", "example": "The fish of the day is very good.", "exampleRu": "Рыба дня очень хорошая." },
+    { "id": "tap-water", "en": "tap water", "ru": "вода из-под крана (её дают бесплатно)", "pos": "noun", "example": "Could we have some tap water?", "exampleRu": "Можно нам воды из-под крана?" },
+    { "id": "the-bill", "en": "the bill", "ru": "счёт (в кафе, ресторане)", "pos": "noun", "example": "Could we have the bill, please?", "exampleRu": "Можно нам счёт, пожалуйста?" },
+    { "id": "pay-by-card", "en": "pay by card", "ru": "заплатить картой", "pos": "phrase", "example": "Can I pay by card?", "exampleRu": "Можно заплатить картой?" },
+    { "id": "cash", "en": "cash", "ru": "наличные", "pos": "noun", "example": "Sorry, I don't have any cash.", "exampleRu": "Извините, у меня нет наличных." },
+    { "id": "size", "en": "size", "ru": "размер", "pos": "noun", "example": "Do you have this in a smaller size?", "exampleRu": "Есть такое на размер меньше?" },
+    { "id": "medium", "en": "medium", "ru": "средний (размер M)", "pos": "adj", "example": "A medium, please.", "exampleRu": "Средний, пожалуйста." },
+    { "id": "fitting-room", "en": "fitting room", "ru": "примерочная", "pos": "noun", "example": "The fitting rooms are over there.", "exampleRu": "Примерочные вон там." },
+    { "id": "fit", "en": "fit", "ru": "подходить по размеру, сидеть", "pos": "verb", "example": "This jacket fits really well.", "exampleRu": "Эта куртка очень хорошо сидит." },
+    { "id": "on-sale", "en": "on sale", "ru": "со скидкой, на распродаже", "pos": "phrase", "example": "Is this jacket on sale?", "exampleRu": "Эта куртка со скидкой?" },
+    { "id": "percent-off", "en": "percent off", "ru": "скидка … процентов", "pos": "phrase", "example": "It's thirty percent off today.", "exampleRu": "Сегодня на неё скидка тридцать процентов." },
+    { "id": "ill-take-it", "en": "I'll take it.", "ru": "Я возьму это. Беру.", "pos": "phrase", "example": "Great, I'll take it.", "exampleRu": "Отлично, беру." },
+    { "id": "receipt", "en": "receipt", "ru": "чек", "pos": "noun", "example": "Can I have a receipt, please?", "exampleRu": "Можно чек, пожалуйста?" },
+    { "id": "headache", "en": "headache", "ru": "головная боль", "pos": "noun", "example": "I have a headache.", "exampleRu": "У меня болит голова." },
+    { "id": "sore-throat", "en": "sore throat", "ru": "боль в горле", "pos": "noun", "example": "I have a sore throat.", "exampleRu": "У меня болит горло." },
+    { "id": "temperature", "en": "temperature", "ru": "температура", "pos": "noun", "example": "Do you have a temperature?", "exampleRu": "У вас есть температура?" },
+    { "id": "tablets", "en": "tablets", "ru": "таблетки", "pos": "noun", "example": "Take two tablets with water.", "exampleRu": "Выпейте две таблетки, запивая водой." },
+    { "id": "twice-a-day", "en": "twice a day", "ru": "два раза в день", "pos": "phrase", "example": "Take them twice a day.", "exampleRu": "Принимайте их два раза в день." },
+    { "id": "altogether", "en": "altogether", "ru": "всего, в сумме", "pos": "adv", "example": "How much is it altogether?", "exampleRu": "Сколько всего?" }
+  ],
+  "listenings": [
+    {
+      "id": "d1",
+      "kind": "dialog",
+      "title": "Кофе с собой",
+      "speakers": [
+        { "id": "barista", "name": "Barista", "voice": "woman1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "barista", "text": "Hi, what can I get you?", "ru": "Здравствуйте, что будете заказывать?" },
+        { "speaker": "anna", "text": "Can I have a large latte, please?", "ru": "Можно мне большой латте?" },
+        { "speaker": "barista", "text": "Sure. Regular milk or oat milk?", "ru": "Конечно. На обычном молоке или на овсяном?" },
+        { "speaker": "anna", "text": "Oat milk, please. And a croissant.", "ru": "На овсяном, пожалуйста. И круассан." },
+        { "speaker": "barista", "text": "Is that to eat in or take away?", "ru": "Здесь или с собой?" },
+        { "speaker": "anna", "text": "Take away, please. How much is it?", "ru": "С собой, пожалуйста. Сколько с меня?" },
+        { "speaker": "barista", "text": "That's six pounds fifty.", "ru": "Шесть фунтов пятьдесят." }
+      ],
+      "questions": [
+        { "q": "What drink does Anna order?", "options": ["A small latte", "A large latte", "A large cappuccino"], "correct": 1, "explainRu": "«Can I have a large latte, please?» — большой латте." },
+        { "q": "What milk does she want?", "options": ["Oat milk", "Regular milk", "No milk"], "correct": 0, "explainRu": "Ей предлагают «regular milk or oat milk», и она выбирает «Oat milk» — овсяное." },
+        { "q": "Where will she have her coffee?", "options": ["At a table in the café", "She takes it away", "At the bar"], "correct": 1, "explainRu": "На вопрос «to eat in or take away?» она отвечает «Take away» — берёт с собой." },
+        { "q": "How much is it?", "options": ["Six pounds fifteen", "Sixteen pounds fifty", "Six pounds fifty"], "correct": 2, "explainRu": "«That's six pounds fifty» — £6.50. Fifty (50) и fifteen (15) различаются ударением." }
+      ]
+    },
+    {
+      "id": "d2",
+      "kind": "dialog",
+      "title": "В ресторане",
+      "speakers": [
+        { "id": "waiter", "name": "Waiter", "voice": "man1" },
+        { "id": "anna", "name": "Anna", "voice": "anna" }
+      ],
+      "lines": [
+        { "speaker": "waiter", "text": "Good evening. Do you have a reservation?", "ru": "Добрый вечер. У вас забронировано?" },
+        { "speaker": "anna", "text": "No, we don't. Do you have a table for two?", "ru": "Нет. У вас есть столик на двоих?" },
+        { "speaker": "waiter", "text": "Yes, follow me, please. Here's the menu.", "ru": "Да, пройдёмте, пожалуйста. Вот меню." },
+        { "speaker": "anna", "text": "What do you recommend?", "ru": "Что вы посоветуете?" },
+        { "speaker": "waiter", "text": "The fish of the day is very good.", "ru": "Рыба дня очень хорошая." },
+        { "speaker": "waiter", "text": "It comes with salad and potatoes.", "ru": "Её подают с салатом и картофелем." },
+        { "speaker": "anna", "text": "I'll have that. Could we have some tap water too?", "ru": "Я возьму её. И можно нам воды из-под крана?" },
+        { "speaker": "anna", "text": "Could we have the bill, please? Can I pay by card?", "ru": "Можно нам счёт, пожалуйста? Можно заплатить картой?" },
+        { "speaker": "waiter", "text": "Yes, of course. I'll bring the card machine.", "ru": "Да, конечно. Я принесу терминал." }
+      ],
+      "questions": [
+        { "q": "Do they have a reservation?", "options": ["Yes, they do", "No, they don't", "We don't know"], "correct": 1, "explainRu": "Anna отвечает: «No, we don't» — брони нет, поэтому она спрашивает про столик на двоих." },
+        { "q": "What does the waiter recommend?", "options": ["Pasta", "Steak", "The fish of the day"], "correct": 2, "explainRu": "«The fish of the day is very good» — официант советует рыбу дня." },
+        { "q": "What does the fish come with?", "options": ["Salad and potatoes", "Rice and vegetables", "Bread and soup"], "correct": 0, "explainRu": "«It comes with salad and potatoes» — с салатом и картофелем." },
+        { "q": "How does Anna want to pay?", "options": ["By card", "In cash", "By phone"], "correct": 0, "explainRu": "«Can I pay by card?» — картой. Официант обещает принести терминал (card machine)." }
+      ]
+    },
+    {
+      "id": "d3",
+      "kind": "announcement",
+      "title": "Распродажа в магазине одежды",
+      "speakers": [
+        { "id": "speaker", "name": "Announcement", "voice": "announcer" },
+        { "id": "anna", "name": "Anna", "voice": "anna" },
+        { "id": "assistant", "name": "Shop assistant", "voice": "woman2" }
+      ],
+      "lines": [
+        { "speaker": "speaker", "text": "Good afternoon, shoppers.", "ru": "Добрый день, уважаемые покупатели." },
+        { "speaker": "speaker", "text": "Today, all jackets and coats are thirty percent off.", "ru": "Сегодня на все куртки и пальто скидка тридцать процентов." },
+        { "speaker": "anna", "text": "Excuse me, do you have this jacket in a smaller size?", "ru": "Простите, есть эта куртка на размер меньше?" },
+        { "speaker": "assistant", "text": "What size do you need?", "ru": "Какой размер вам нужен?" },
+        { "speaker": "anna", "text": "A medium, please.", "ru": "Средний, пожалуйста." },
+        { "speaker": "assistant", "text": "Here you are. The fitting rooms are over there.", "ru": "Пожалуйста. Примерочные вон там." },
+        { "speaker": "anna", "text": "It fits well. Is it on sale?", "ru": "Хорошо сидит. Она со скидкой?" },
+        { "speaker": "assistant", "text": "Yes, it's thirty percent off today.", "ru": "Да, сегодня на неё скидка тридцать процентов." },
+        { "speaker": "anna", "text": "Great, I'll take it.", "ru": "Отлично, беру." }
+      ],
+      "questions": [
+        { "q": "What does Anna buy?", "options": ["A dress", "A jacket", "A coat"], "correct": 1, "explainRu": "Она спрашивает про «this jacket» — куртку. Пальто (coats) звучат только в объявлении о скидке." },
+        { "q": "What size does she need?", "options": ["Small", "Large", "Medium"], "correct": 2, "explainRu": "«A medium, please» — средний размер." },
+        { "q": "How big is the discount?", "options": ["Thirty percent", "Thirteen percent", "Fifty percent"], "correct": 0, "explainRu": "«Thirty percent off» — скидка 30%. В thirty ударение в начале: THIRty, в thirteen — в конце: thirTEEN." }
+      ]
+    },
+    {
+      "id": "d4",
+      "kind": "dialog",
+      "title": "В аптеке",
+      "speakers": [
+        { "id": "anna", "name": "Anna", "voice": "anna" },
+        { "id": "pharmacist", "name": "Pharmacist", "voice": "man2" }
+      ],
+      "lines": [
+        { "speaker": "anna", "text": "Hello. I have a headache and a sore throat.", "ru": "Здравствуйте. У меня болит голова и горло." },
+        { "speaker": "pharmacist", "text": "Do you have a temperature?", "ru": "Температура есть?" },
+        { "speaker": "anna", "text": "No, I don't think so.", "ru": "Нет, кажется, нет." },
+        { "speaker": "pharmacist", "text": "Take these tablets twice a day, after meals.", "ru": "Принимайте эти таблетки два раза в день, после еды." },
+        { "speaker": "pharmacist", "text": "And these are for your throat.", "ru": "А эти — для горла." },
+        { "speaker": "anna", "text": "Thank you. How much is it altogether?", "ru": "Спасибо. Сколько всего?" },
+        { "speaker": "pharmacist", "text": "Eight pounds twenty, please.", "ru": "Восемь фунтов двадцать, пожалуйста." }
+      ],
+      "questions": [
+        { "q": "What is Anna's problem?", "options": ["A stomach ache", "A headache and a sore throat", "A bad back"], "correct": 1, "explainRu": "«I have a headache and a sore throat» — болят голова и горло." },
+        { "q": "How often should she take the tablets?", "options": ["Twice a day", "Three times a day", "Once a day"], "correct": 0, "explainRu": "«Take these tablets twice a day» — два раза в день." },
+        { "q": "When should she take them?", "options": ["Before meals", "After meals", "Only at night"], "correct": 1, "explainRu": "«…twice a day, after meals» — после еды." },
+        { "q": "How much is it altogether?", "options": ["Eighteen pounds", "Two pounds eighty", "Eight pounds twenty"], "correct": 2, "explainRu": "«Eight pounds twenty» — £8.20. Eighteen (18) звучит похоже на eight (8), но длиннее и с ударением на конце." }
+      ]
+    }
+  ],
+  "minimalPairs": [
+    { "id": "hat-hot", "a": "hat", "b": "hot", "aRu": "шляпа", "bRu": "горячий" },
+    { "id": "fill-feel", "a": "fill", "b": "feel", "aRu": "наполнять", "bRu": "чувствовать" },
+    { "id": "pepper-paper", "a": "pepper", "b": "paper", "aRu": "перец", "bRu": "бумага" },
+    { "id": "bill-bell", "a": "bill", "b": "bell", "aRu": "счёт", "bRu": "колокольчик, звонок" },
+    { "id": "soup-soap", "a": "soup", "b": "soap", "aRu": "суп", "bRu": "мыло" },
+    { "id": "hungry-angry", "a": "hungry", "b": "angry", "aRu": "голодный", "bRu": "злой" },
+    { "id": "price-prize", "a": "price", "b": "prize", "aRu": "цена", "bRu": "приз" },
+    { "id": "cost-coast", "a": "cost", "b": "coast", "aRu": "стоить", "bRu": "побережье" }
+  ],
+  "numberDrills": [
+    { "id": "n-coffee-price", "text": "That's six pounds fifty, please.", "answers": ["6.50"], "promptRu": "Сколько стоит заказ (в фунтах)?" },
+    { "id": "n-table", "text": "Your table is number twelve.", "answers": ["12"], "promptRu": "Номер столика" },
+    { "id": "n-discount", "text": "Everything is thirty percent off today.", "answers": ["30"], "promptRu": "Какая сегодня скидка (%)?" },
+    { "id": "n-new-price", "text": "The jacket was eighty pounds. Now it's fifty-six.", "answers": ["56"], "promptRu": "Сколько куртка стоит теперь?" },
+    { "id": "n-tablets", "text": "Take two tablets three times a day.", "answers": ["2", "3"], "promptRu": "Сколько таблеток и сколько раз в день" },
+    { "id": "n-altogether", "text": "That's eight pounds twenty altogether.", "answers": ["8.20"], "promptRu": "Сколько всего (в фунтах)?" },
+    { "id": "n-pharmacy-closes", "text": "The pharmacy closes at half past eight.", "answers": ["8:30"], "promptRu": "Во сколько закрывается аптека?" },
+    { "id": "n-change", "text": "Here's your change. Three pounds forty.", "answers": ["3.40"], "promptRu": "Сколько сдачи (в фунтах)?" }
+  ],
+  "aiPrompt": "You are a waiter in a café in London. I am a customer. My English level is A2. Speak slowly and use simple words. Take my order, recommend something, and then bring the bill. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
+  "lessons": [
+    {
+      "id": "m1w3-l1",
+      "day": 1,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "word_intro", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"] },
+        { "type": "word_listen_choice", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"] },
+        { "type": "dialog_comprehension", "ref": ["d1"] },
+        { "type": "interactive_transcript", "ref": ["d1"] },
+        { "type": "minimal_pairs", "ref": ["hat-hot", "soup-soap", "fill-feel"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#1", "d1#4", "d1#6"] }
+      ]
+    },
+    {
+      "id": "m1w3-l2",
+      "day": 2,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"] },
+        { "type": "word_listen_choice", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"] },
+        { "type": "dialog_comprehension", "ref": ["d2"] },
+        { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "numbers_listen", "ref": ["n-coffee-price", "n-table", "n-change"] },
+        { "type": "dictation_tiles", "ref": ["d2#3", "d2#5", "d2#8"] }
+      ]
+    },
+    {
+      "id": "m1w3-l3",
+      "day": 3,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"] },
+        { "type": "word_listen_choice", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"] },
+        { "type": "dialog_comprehension", "ref": ["d3"] },
+        { "type": "interactive_transcript", "ref": ["d3"] },
+        { "type": "minimal_pairs", "ref": ["price-prize", "cost-coast", "bill-bell", "pepper-paper"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d3#3", "d3#5", "d3#7"] }
+      ]
+    },
+    {
+      "id": "m1w3-l4",
+      "day": 4,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"], "params": { "count": 5 } },
+        { "type": "word_intro", "ref": ["receipt", "headache", "sore-throat", "temperature", "tablets", "twice-a-day", "altogether"] },
+        { "type": "word_listen_choice", "ref": ["receipt", "headache", "sore-throat", "temperature", "tablets", "twice-a-day", "altogether"] },
+        { "type": "dialog_comprehension", "ref": ["d4"] },
+        { "type": "interactive_transcript", "ref": ["d4"] },
+        { "type": "numbers_listen", "ref": ["n-discount", "n-new-price", "n-tablets", "n-altogether"] },
+        { "type": "dictation_tiles", "ref": ["d4#0", "d4#3", "d4#5"] }
+      ]
+    },
+    {
+      "id": "m1w3-l5",
+      "day": 5,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
+        { "type": "minimal_pairs", "ref": ["hungry-angry", "hat-hot", "soup-soap", "bill-bell"], "params": { "count": 6 } },
+        { "type": "dictation_tiles", "ref": ["d1#2", "d1#5", "d2#1", "d2#6"] }
+      ]
+    },
+    {
+      "id": "m1w3-l6",
+      "day": 6,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
+        { "type": "numbers_listen", "ref": ["n-coffee-price", "n-new-price", "n-tablets", "n-pharmacy-closes", "n-change"] },
+        { "type": "dictation_tiles", "ref": ["d3#1", "d3#6", "d4#4", "d4#6"] }
+      ]
+    },
+    {
+      "id": "m1w3-l7",
+      "day": 7,
+      "steps": [
+        { "type": "flashcard_swipe", "params": { "max": 25 } },
+        { "type": "word_listen_choice", "params": { "count": 12 } },
+        { "type": "match_pairs", "params": { "count": 5 } },
+        { "type": "minimal_pairs", "params": { "count": 8 } },
+        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "ai_conversation" }
+      ]
+    }
+  ]
+}

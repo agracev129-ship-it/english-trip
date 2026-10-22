@@ -5,6 +5,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { CourseScreen } from '../screens/CourseScreen';
 import { StatsScreen } from '../screens/StatsScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
+import { AudioTestScreen } from '../screens/AudioTestScreen';
 
 // HashRouter: адреса вида /#/stats. GitHub Pages не умеет SPA-роутинг, а хеш работает везде.
 // reducedMotion="user": если в телефоне включено «уменьшить движение», анимации отключаются.
@@ -18,6 +19,7 @@ export function App() {
             <Route path="course" element={<CourseScreen />} />
             <Route path="stats" element={<StatsScreen />} />
             <Route path="profile" element={<ProfileScreen />} />
+            <Route path="dev/audio" element={<AudioTestScreen />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

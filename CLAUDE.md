@@ -24,14 +24,18 @@
 
 ## Команды
 
-| Команда           | Что делает                                                |
-| ----------------- | --------------------------------------------------------- |
-| `npm run dev`     | Локальный сервер для разработки                           |
-| `npm run build`   | Проверка типов + сборка в `dist/` (вместе с иконками PWA) |
-| `npm run preview` | Посмотреть собранную версию                               |
-| `npm run lint`    | ESLint                                                    |
-| `npm run format`  | Prettier                                                  |
-| `npm test`        | Vitest                                                    |
+| Команда                 | Что делает                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`           | Локальный сервер для разработки                                                 |
+| `npm run build`         | Проверка типов + сборка в `dist/` (вместе с иконками PWA)                       |
+| `npm run preview`       | Посмотреть собранную версию                                                     |
+| `npm run lint`          | ESLint                                                                          |
+| `npm run format`        | Prettier                                                                        |
+| `npm test`              | Vitest                                                                          |
+| `npm run validate`      | Проверка всего контента и наличия озвучки (`-- --no-audio` — без звука)         |
+| `npm run audio`         | Озвучить недостающее (`-- --force` — всё заново, `-- --prune` — удалить лишнее) |
+| `npm run audio:setup`   | Один раз: Python-окружение для озвучки                                          |
+| `npm run audio:samples` | Образцы голосов → `private/voice-samples/index.html`                            |
 
 Деплой автоматический: push в `main` → GitHub Actions (`.github/workflows/deploy.yml`) → GitHub Pages.
 
@@ -40,7 +44,9 @@
 Vite 8, React 19, TypeScript 6.0 (strict; TS 7 пока не поддерживается typescript-eslint), Tailwind CSS 4,
 Motion (`motion/react`), React Router 8 (`HashRouter`, импорт из `react-router`), lucide-react, vite-plugin-pwa,
 Manrope через `@fontsource/manrope` (только latin + cyrillic, веса 500–800).
-Будущие этапы: Zustand, Dexie, ts-fsrs, zod, canvas-confetti — ставить, когда понадобятся.
+zod — только для проверки контента (в бандл не попадает). Будущие этапы: Zustand, Dexie, ts-fsrs,
+canvas-confetti — ставить, когда понадобятся.
+Озвучка: Python 3.12, kokoro 0.9.4, faster-whisper 1.2.1, ffmpeg, eSpeak NG (`scripts/audio/requirements.txt`).
 
 ## Структура
 
@@ -49,9 +55,18 @@ src/
   app/          App (роутинг), AppLayout, BottomNav
   screens/      экраны по одному файлу
   components/   Card, Tile, PillButton, ProgressRing, BottomSheet, Icon3D, tones.ts
-  lib/          чистая логика + тесты рядом (*.test.ts)
+  content/      схема контента (zod), audioId, clips (что озвучивается), validate, загрузка
+  lib/          чистая логика + тесты рядом (*.test.ts); audio.ts — проигрыватель, karaoke.ts
   config.ts     имя ученицы, стартовый EF SET, константы
+content/
+  course.json   месяцы и порядок недель
+  voices.json   роль → голос Kokoro (narrator — слова, примеры, пары, числа)
+  month1/week1…4.json
+scripts/
+  validate.ts, content-files.ts
+  audio/        run.ts (npm run audio) → generate.py (Kokoro → ffmpeg → Whisper), samples.ts, setup.ts
 public/
+  audio/        {id}.mp3, {id}.json (тайминги слов), manifest.json — коммитятся, CI не озвучивает
   logo.svg      маскот; из него при сборке генерируются иконки PWA (pwa-assets.config.ts)
   icons/3d/     Fluent Emoji 3D (MIT, LICENSE.txt рядом)
 docs/design-refs/  скриншоты-референсы (только локально, в .gitignore)
@@ -69,4 +84,24 @@ docs/design-refs/  скриншоты-референсы (только лока�
 - Пути к файлам из `public/` — через `import.meta.env.BASE_URL` (сайт живёт в подпапке, `base: './'`).
 - Без `confirm()`/`alert()`: подтверждения — на странице или в `BottomSheet`.
 - Логику выносить в `src/lib/` и покрывать тестами Vitest.
-- Перед коммитом: `npm run lint && npm test && npm run build`.
+- Перед коммитом: `npm run lint && npm run validate && npm test && npm run build`.
+- В Bash не передавать текст с обратными кавычками внутри `"…"` (например, `node -e "…"`): оболочка
+  выполнит их как команды. Файлы правь через Edit/Write.
+
+## Контент и звук
+
+- Схема — `src/content/schema.ts`. Неделя: 24–28 слов, 3 диалога + 1 объявление/монолог, 8 минимальных пар,
+  8 упражнений с числами, 7 планов уроков, промпт для ИИ. Ветвящийся диалог и босс — на этапе 3 (поля уже есть).
+- **id аудио в контенте не пишутся.** id = первые 12 символов sha1(`голос|текст`), считается автоматически
+  (`src/content/audioId.ts`, то же самое в Python не нужно — список фраз собирает Node). Поменял текст →
+  `npm run audio` озвучит новую версию, `npm run audio -- --prune` уберёт старую.
+  Если произносить нужно иначе, чем написано, — поле `say`.
+- Голоса выбраны владельцем по образцам: британский акцент основной, диктор `bf_emma`, Anna — `bf_isabella`.
+  Американский — вторым голосом со 2-го месяца.
+- Героиня диалогов — **Anna** (Anna Sokolova), вымышленная. Имя ученицы в контенте не использовать.
+- Британский английский: the bill, take away, ground floor, at the weekend, hand luggage. Месяц 1: реплика ≤ 12 слов,
+  диалог 6–9 реплик. Вопросы проверяют смысл, неверные варианты правдоподобны (fifteen/fifty, twelve/twenty).
+- Python-окружение озвучки лежит вне OneDrive: `%LOCALAPPDATA%\english-trip\venv` (переопределяется
+  `ENGLISH_TRIP_VENV`). faster-whisper получает звук, декодированный ffmpeg: его встроенный декодер
+  несовместим со свежим `av`.
+- Неделя озвучивается ~5 минут на процессоре и весит ~1,5 МБ.

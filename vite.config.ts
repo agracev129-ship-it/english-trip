@@ -31,6 +31,19 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webp,woff2}'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // Звук не входит в оболочку: он кешируется при первом проигрывании и дальше берётся из кеша
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/audio/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'audio',
+              rangeRequests: true,
+              cacheableResponse: { statuses: [0, 200] },
+              expiration: { maxEntries: 6000 },
+            },
+          },
+        ],
       },
     }),
   ],
