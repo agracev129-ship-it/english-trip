@@ -50,7 +50,7 @@ export function InteractiveTranscript({
               type="button"
               aria-pressed={mode === m.id}
               onClick={() => setMode(m.id)}
-              className={`min-h-11 rounded-full px-4 text-sm font-bold ${
+              className={`min-h-12 rounded-full px-4 text-sm font-bold ${
                 mode === m.id ? 'bg-ink text-white' : 'text-muted'
               }`}
             >

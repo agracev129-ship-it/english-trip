@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { X } from 'lucide-react';
-import { Icon3D } from '../components/Icon3D';
+import { LoadingScreen } from '../components/LoadingScreen';
+import { Mascot } from '../components/Mascot';
 import { PillButton } from '../components/PillButton';
 import { weeks } from '../content';
 import { db } from '../db/db';
@@ -34,7 +35,7 @@ export function ReviewScreen() {
     return () => stop();
   }, []);
 
-  if (!words) return null;
+  if (!words) return <LoadingScreen />;
 
   return (
     <div className="pt-safe mx-auto min-h-dvh max-w-[480px] bg-bg px-5">
@@ -51,12 +52,15 @@ export function ReviewScreen() {
       </header>
 
       {words.length === 0 ? (
-        <p className="py-16 text-center text-base font-semibold text-muted">
-          В словаре пока нет слов. Они появятся после первого урока.
-        </p>
+        <div className="flex flex-col items-center gap-3 py-16 text-center">
+          <Mascot size={120} />
+          <p className="text-base font-semibold text-muted">
+            В словаре пока нет слов. Они появятся после первого урока.
+          </p>
+        </div>
       ) : finished ? (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
-          <Icon3D name="trophy" size={96} />
+          <Mascot state="celebrate" size={130} />
           <h1 className="text-[28px] font-extrabold">Повторено: {words.length}</h1>
           <p className="text-base text-muted">
             Помнишь {right} из {words.length}. Забытые слова скоро вернутся на повторение.

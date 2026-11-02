@@ -91,7 +91,7 @@ async function createOrResumeRun(week: Week, plan: LessonPlan): Promise<LessonRu
   const seed = Math.floor(Math.random() * 2 ** 31);
   const items = buildLesson({ week, plan, dueWords: await dueWordKeys(), seed });
   const run: LessonRun = {
-    id: `${plan.id}-${Date.now()}`,
+    id: `${plan.id}-${Date.now()}-${seed}`,
     lessonId: plan.id,
     weekId: week.id,
     day: plan.day,

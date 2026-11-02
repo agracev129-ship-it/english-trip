@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, X } from 'lucide-react';
+import { Mascot } from './Mascot';
 import { PillButton } from './PillButton';
 
 export type AnswerStatus = 'idle' | 'correct' | 'wrong';
@@ -47,11 +47,7 @@ export function AnswerBar({
                 status === 'correct' ? 'text-success-ink' : 'text-error-ink'
               }`}
             >
-              {status === 'correct' ? (
-                <Check size={22} strokeWidth={3} aria-hidden />
-              ) : (
-                <X size={22} strokeWidth={3} aria-hidden />
-              )}
+              <Mascot state={status === 'correct' ? 'happy' : 'sad'} size={44} />
               {status === 'correct' ? 'Верно!' : 'Не совсем'}
             </p>
             {children && <div className="mt-1 text-base text-ink">{children}</div>}

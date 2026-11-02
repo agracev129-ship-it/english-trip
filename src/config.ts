@@ -3,9 +3,6 @@
 
 export const APP_NAME = 'English Trip';
 
-/** Имя ученицы для приветствия. Пустая строка — приветствие без имени. */
-export const LEARNER_NAME = '';
-
 /** Стартовый результат EF SET. На этапе 2 записывается в базу при первом запуске. */
 export const STARTING_EFSET = {
   date: '2026-10-19',

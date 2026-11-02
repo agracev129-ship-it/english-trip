@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { ChevronLeft, Search } from 'lucide-react';
+import { Mascot } from '../components/Mascot';
 import { PillButton } from '../components/PillButton';
 import { SoundButton } from '../components/SoundButton';
 import { voices, wordByKey } from '../content';
@@ -135,7 +136,7 @@ export function VocabScreen() {
             type="button"
             aria-pressed={filter === f.id}
             onClick={() => setFilter(f.id)}
-            className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-bold ${
+            className={`min-h-12 shrink-0 rounded-full px-4 text-sm font-bold ${
               filter === f.id ? 'bg-ink text-white' : 'bg-surface text-muted'
             }`}
           >
@@ -145,11 +146,17 @@ export function VocabScreen() {
       </div>
 
       {rows.length === 0 ? (
-        <p className="py-10 text-center text-base font-semibold text-muted">
-          Слова появятся здесь после первого урока.
-        </p>
+        <div className="flex flex-col items-center gap-3 py-10 text-center">
+          <Mascot size={120} />
+          <p className="text-base font-semibold text-muted">
+            Слова появятся здесь после первого урока.
+          </p>
+        </div>
       ) : shown.length === 0 ? (
-        <p className="py-10 text-center text-base font-semibold text-muted">Ничего не нашлось.</p>
+        <div className="flex flex-col items-center gap-3 py-10 text-center">
+          <Mascot state="thinking" size={96} />
+          <p className="text-base font-semibold text-muted">Ничего не нашлось.</p>
+        </div>
       ) : (
         <ul className="flex flex-col gap-2">
           {shown.map((r) => (

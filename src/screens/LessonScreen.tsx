@@ -6,6 +6,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { AnimatePresence, motion } from 'motion/react';
 import { Snail, X } from 'lucide-react';
 import { BottomSheet } from '../components/BottomSheet';
+import { LoadingScreen } from '../components/LoadingScreen';
 import { PillButton } from '../components/PillButton';
 import { findLesson } from '../content';
 import { db, type LessonRun, type StepResult } from '../db/db';
@@ -93,7 +94,7 @@ export function LessonScreen() {
   }
   if (summary && run)
     return <LessonDone summary={summary} week={found.week} day={found.plan.day} />;
-  if (!run) return null;
+  if (!run) return <LoadingScreen />;
 
   const { week } = found;
   const item = run.items[run.stepIndex];

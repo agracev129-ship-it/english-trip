@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { ChevronLeft, Pause, Play } from 'lucide-react';
 import { Card } from '../components/Card';
+import { KaraokeText } from '../components/KaraokeText';
 import { drillClip, exampleClip, lineClip, pairClips, wordClip, type Clip } from '../content/clips';
 import { voices, weeks } from '../content';
 import type { Listening, Week } from '../content/schema';
-import { loadTimings, play, stop, usePlayer } from '../lib/audio';
-import { activeWordIndex, type WordTiming } from '../lib/karaoke';
+import { play, stop, usePlayer } from '../lib/audio';
 
 const SPEEDS = [0.75, 0.9, 1, 1.15, 1.25];
 
@@ -29,37 +29,6 @@ function PlayButton({ c, rate, label }: { c: Clip; rate: number; label: string }
   );
 }
 
-/** Реплика с подсветкой слова, которое звучит прямо сейчас. */
-function KaraokeText({ c, text }: { c: Clip; text: string }) {
-  const { id, playing, time } = usePlayer();
-  const [timings, setTimings] = useState<WordTiming[] | null>(null);
-  useEffect(() => {
-    let alive = true;
-    loadTimings(c.id).then((t) => alive && setTimings(t));
-    return () => {
-      alive = false;
-    };
-  }, [c.id]);
-
-  const active = playing && id === c.id;
-  if (!timings) {
-    return <span className={active ? 'rounded bg-yellow-soft' : ''}>{text}</span>;
-  }
-  const current = active ? activeWordIndex(timings, time) : -1;
-  return (
-    <span>
-      {timings.map((t, i) => (
-        <span
-          key={i}
-          className={`-mx-0.5 rounded px-0.5 transition-colors ${i === current ? 'bg-yellow text-ink' : ''}`}
-        >
-          {t.w}{' '}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 function ListeningBlock({ week, l, rate }: { week: Week; l: Listening; rate: number }) {
   return (
     <Card className="flex flex-col gap-3 p-4">
@@ -75,7 +44,7 @@ function ListeningBlock({ week, l, rate }: { week: Week; l: Listening; rate: num
                 {name} · <code>{c.voice}</code>
               </p>
               <p className="text-base leading-snug">
-                <KaraokeText c={c} text={line.text} />
+                <KaraokeText clipId={c.id} text={line.text} />
               </p>
               <p className="text-sm text-muted">{line.ru}</p>
             </div>
@@ -167,7 +136,7 @@ export function AudioTestScreen() {
                   <PlayButton c={ec} rate={rate} label={w.example} />
                   <div className="pt-1 text-sm">
                     <p className="text-base">
-                      <KaraokeText c={ec} text={w.example} />
+                      <KaraokeText clipId={ec.id} text={w.example} />
                     </p>
                     <p className="text-muted">{w.exampleRu}</p>
                   </div>
@@ -209,7 +178,7 @@ export function AudioTestScreen() {
                 <PlayButton c={c} rate={rate} label={d.text} />
                 <div className="pt-1">
                   <p className="text-base">
-                    <KaraokeText c={c} text={d.text} />
+                    <KaraokeText clipId={c.id} text={d.text} />
                   </p>
                   <p className="text-sm text-muted">
                     {d.promptRu}: <b className="text-ink">{d.answers.join(', ')}</b>

@@ -32,6 +32,8 @@ export function lessonBlocks(
         .filter((i) => i >= 0);
       done = idx.length > 0 && idx.every((i) => i < run.stepIndex);
     }
-    return { id: b.id, label: b.label, done };
+    // В большом повторении слова только на слух, новых нет
+    const label = b.id === 'words' && !types.has('word_intro') ? 'Слова на слух' : b.label;
+    return { id: b.id, label, done };
   });
 }

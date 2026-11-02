@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { BottomSheet } from '../components/BottomSheet';
 import { Card } from '../components/Card';
+import { Mascot } from '../components/Mascot';
 import { PillButton } from '../components/PillButton';
 import { db, type Settings } from '../db/db';
 import {
@@ -163,13 +164,9 @@ export function ProfileScreen() {
   return (
     <div className="pt-safe flex flex-col gap-4 px-5 pb-4">
       <header className="flex flex-col items-center pt-10 pb-2 text-center">
-        <img
-          src={`${import.meta.env.BASE_URL}logo.svg`}
-          alt=""
-          width={112}
-          height={112}
-          className="rounded-full bg-lilac-soft p-3 ring-4 ring-surface"
-        />
+        <div className="rounded-full bg-lilac-soft p-3 ring-4 ring-surface">
+          <Mascot size={96} />
+        </div>
         <button
           type="button"
           onClick={() => {
@@ -271,9 +268,7 @@ export function ProfileScreen() {
               label="Вибрация"
             />
           </div>
-          <p className="mt-1 text-xs text-muted">
-            Звуки интерфейса и напоминания появятся на следующих этапах.
-          </p>
+          <p className="mt-1 text-xs text-muted">Звуки интерфейса и напоминания появятся позже.</p>
         </Card>
       )}
 
@@ -318,9 +313,7 @@ export function ProfileScreen() {
         <RotateCcw size={20} aria-hidden /> Сбросить прогресс
       </button>
 
-      <p className="pb-4 text-center text-xs font-semibold text-muted">
-        English Trip · версия 0.4 · этап 2, часть 2
-      </p>
+      <p className="pb-4 text-center text-xs font-semibold text-muted">English Trip · версия 0.5</p>
 
       {/* Имя */}
       <BottomSheet open={nameOpen} onClose={() => setNameOpen(false)} title="Как тебя зовут?">

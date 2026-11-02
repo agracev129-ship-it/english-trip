@@ -6,6 +6,7 @@ import { AccuracyLine } from '../components/AccuracyLine';
 import { Card } from '../components/Card';
 import { Icon3D } from '../components/Icon3D';
 import { MinutesBars } from '../components/MinutesBars';
+import { ShareReportButton } from '../components/ShareReportButton';
 import { Tile } from '../components/Tile';
 import { DAILY_GOAL_MINUTES } from '../config';
 import { db } from '../db/db';
@@ -219,6 +220,8 @@ export function StatsScreen() {
           </tbody>
         </table>
       </Card>
+
+      <ShareReportButton variant="primary" />
     </div>
   );
 }

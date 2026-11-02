@@ -58,15 +58,26 @@ async function sourceFor(id: string): Promise<string> {
   return url;
 }
 
-/** Скачать файлы заранее (они попадут в кеш Service Worker). Ошибки молча пропускаются. */
-export async function preload(ids: string[]): Promise<void> {
-  await Promise.all(
-    ids.map((id) =>
-      fetch(audioUrl(id))
+/**
+ * Скачать заранее звук и разметку слов (всё попадёт в кеш Service Worker), не больше 6 файлов
+ * разом. Разметка есть только у фраз; ошибки молча пропускаются — файл докачается при
+ * проигрывании.
+ */
+export async function preload(clips: { id: string; text: string }[]): Promise<void> {
+  const urls = clips.flatMap((c) => [
+    audioUrl(c.id),
+    ...(c.text.includes(' ') ? [`${BASE}${c.id}.json`] : []),
+  ]);
+  let next = 0;
+  const worker = async () => {
+    while (next < urls.length) {
+      const url = urls[next++]!;
+      await fetch(url)
         .then((r) => r.blob())
-        .catch(() => undefined),
-    ),
-  );
+        .catch(() => undefined);
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, worker));
 }
 
 /** Проиграть файл. Промис завершается, когда звук доиграл, был остановлен или не загрузился. */
@@ -136,7 +147,11 @@ export function loadTimings(id: string): Promise<WordTiming[] | null> {
   if (!p) {
     p = fetch(`${BASE}${id}.json`)
       .then((r) => (r.ok ? (r.json() as Promise<WordTiming[]>) : null))
-      .catch(() => null);
+      .catch(() => {
+        // Сеть пропала — не запоминаем отказ, в следующий раз попробуем снова
+        timingsCache.delete(id);
+        return null;
+      });
     timingsCache.set(id, p);
   }
   return p;

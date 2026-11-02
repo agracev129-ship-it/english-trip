@@ -5,22 +5,19 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { motion } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Icon3D } from '../components/Icon3D';
+import { Mascot } from '../components/Mascot';
+import { ShareReportButton } from '../components/ShareReportButton';
 import { PillButton } from '../components/PillButton';
 import { Tile } from '../components/Tile';
 import { lessonTitle } from '../content';
 import type { Week } from '../content/schema';
 import { db } from '../db/db';
 import type { LessonSummary } from '../db/progress';
+import { dayKey } from '../lib/day';
+import { daysWord } from '../lib/plural';
 import { toPercent } from '../lib/progress';
+import { listeningDelta } from '../lib/stats';
 import { levelInfo } from '../lib/xp';
-
-function daysWord(n: number) {
-  const m10 = n % 10;
-  const m100 = n % 100;
-  if (m10 === 1 && m100 !== 11) return 'день';
-  if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'дня';
-  return 'дней';
-}
 
 export function LessonDone({
   summary,
@@ -32,9 +29,9 @@ export function LessonDone({
   day: number;
 }) {
   const navigate = useNavigate();
-  const totalXp = useLiveQuery(async () =>
-    (await db.dailyStats.toArray()).reduce((s, d) => s + d.xp, 0),
-  );
+  const days = useLiveQuery(() => db.dailyStats.toArray());
+  const totalXp = days?.reduce((s, d) => s + d.xp, 0);
+  const delta = days ? listeningDelta(days, dayKey()) : null;
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -61,13 +58,7 @@ export function LessonDone({
         transition={{ type: 'spring', stiffness: 200, damping: 14 }}
         className="mt-10 flex flex-col items-center text-center"
       >
-        <img
-          src={`${import.meta.env.BASE_URL}logo.svg`}
-          alt=""
-          width={128}
-          height={128}
-          className="rounded-full bg-lilac-soft p-3"
-        />
+        <Mascot state="celebrate" size={150} />
         <h1 className="mt-4 text-[32px] leading-tight font-extrabold">Урок пройден!</h1>
         <p className="mt-1 text-base font-semibold text-muted">
           {week.title} · день {day}: {lessonTitle(week, day)}
@@ -86,7 +77,11 @@ export function LessonDone({
           tone="lilac"
           icon={<Icon3D name="headphone" size={36} />}
           value={accuracy === null ? '—' : `${accuracy}%`}
-          label="точность на слух"
+          label={
+            delta === null
+              ? 'точность на слух'
+              : `на слух · неделя ${delta >= 0 ? '+' : ''}${delta} к прошлой`
+          }
         />
         <Tile
           tone="mint"
@@ -131,9 +126,12 @@ export function LessonDone({
         </div>
       )}
 
-      <PillButton fullWidth className="mt-auto" onClick={() => navigate('/')}>
-        Готово
-      </PillButton>
+      <div className="mt-auto flex flex-col gap-3">
+        <ShareReportButton />
+        <PillButton fullWidth onClick={() => navigate('/')}>
+          Готово
+        </PillButton>
+      </div>
     </div>
   );
 }

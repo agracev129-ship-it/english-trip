@@ -6,6 +6,8 @@ import { BottomSheet } from '../components/BottomSheet';
 import { Card } from '../components/Card';
 import { ComingSoonSheet } from '../components/ComingSoonSheet';
 import { Icon3D, type Icon3DName } from '../components/Icon3D';
+import { Mascot } from '../components/Mascot';
+import { MascotBanner } from '../components/MascotBanner';
 import { PillButton } from '../components/PillButton';
 import { ProgressRing } from '../components/ProgressRing';
 import { SKILL_TONE, TONE_ACCENT_VAR } from '../components/tones';
@@ -18,6 +20,7 @@ import { backupDue } from '../db/backup';
 import { preload } from '../lib/audio';
 import { dayKey } from '../lib/day';
 import { lessonBlocks } from '../lib/lessonBlocks';
+import { mascotMessage } from '../lib/mascotMessage';
 import { toPercent } from '../lib/progress';
 import { isLearned } from '../lib/srs';
 import { streakStatus, EMPTY_STREAK } from '../lib/streak';
@@ -45,6 +48,9 @@ export function HomeScreen() {
         isLearned(w.card),
       ).length,
   );
+  const dueWords = useLiveQuery(() =>
+    db.wordStates.where('card.due').belowOrEqual(new Date()).count(),
+  );
   const progress = useCourseProgress();
 
   const next = progress?.next;
@@ -52,15 +58,32 @@ export function HomeScreen() {
 
   // Звук текущей недели заранее — чтобы урок шёл и без интернета
   useEffect(() => {
-    if (!next || preloaded.has(next.week.id) || !navigator.onLine) return;
-    preloaded.add(next.week.id);
-    const ids = uniqueClips(weekClips(voices, next.week)).map((c) => c.id);
-    const t = setTimeout(() => void preload(ids), 1500);
+    if (!next || !navigator.onLine) return;
+    const conn = (navigator as { connection?: { type?: string; saveData?: boolean } }).connection;
+    const cheapNetwork = conn?.type !== 'cellular' && !conn?.saveData;
+    const following = weeks[weeks.indexOf(next.week) + 1];
+    const toLoad = [next.week, ...(following && cheapNetwork ? [following] : [])].filter(
+      (w) => !preloaded.has(w.id),
+    );
+    if (!toLoad.length) return;
+    const t = setTimeout(() => {
+      for (const w of toLoad) preloaded.add(w.id);
+      void preload(uniqueClips(toLoad.flatMap((w) => weekClips(voices, w))));
+    }, 1500);
     return () => clearTimeout(t);
   }, [next]);
 
-  const st = streakStatus(streak ?? EMPTY_STREAK, dayKey());
+  const today = dayKey();
+  const st = streakStatus(streak ?? EMPTY_STREAK, today);
   const name = profile?.name;
+  const message = mascotMessage({
+    streak: streak ?? EMPTY_STREAK,
+    status: st,
+    today,
+    dueWords: dueWords ?? 0,
+    anyLessonDone: (progress?.finished.size ?? 0) > 0,
+    hour: new Date().getHours(),
+  });
   const listen = (days ?? []).reduce(
     (a, d) => ({ t: a.t + d.listenTotalNormal, c: a.c + d.listenCorrectNormal }),
     { t: 0, c: 0 },
@@ -74,8 +97,8 @@ export function HomeScreen() {
   const skillLabel = {
     listening: listen.t ? `точность ${toPercent(skillValue.listening)}%` : 'ещё нет ответов',
     vocab: `выучено ${learned ?? 0} из ${TOTAL_WORDS}`,
-    speaking: 'с этапа 3',
-    grammar: 'с этапа 3',
+    speaking: 'скоро',
+    grammar: 'скоро',
   };
 
   return (
@@ -85,7 +108,7 @@ export function HomeScreen() {
           <p className="text-base font-semibold">{name ? `Привет, ${name}!` : 'Привет!'}</p>
           <div
             className={`flex items-center gap-1 rounded-full py-1 pr-3 pl-1.5 ${
-              st.atRisk ? 'bg-yellow text-ink' : 'bg-white/20'
+              message.urgent ? 'bg-yellow text-ink' : 'bg-white/20'
             }`}
             aria-label={`Стрик: ${st.current}`}
           >
@@ -96,9 +119,6 @@ export function HomeScreen() {
         <h1 className="mt-4 text-[32px] leading-[1.1] font-extrabold">
           {st.doneToday ? 'Сегодня ты молодец!' : 'Слушаем английский каждый день'}
         </h1>
-        {st.atRisk && (
-          <p className="mt-2 text-base font-semibold">🔥 Стрик под угрозой — пройди урок сегодня</p>
-        )}
       </header>
 
       <div className="-mt-8 flex flex-col gap-4 px-5">
@@ -150,11 +170,13 @@ export function HomeScreen() {
         )}
         {progress && !next && (
           <Card className="text-center">
-            <Icon3D name="trophy" size={64} className="mx-auto" />
+            <Mascot state="celebrate" size={110} className="mx-auto" />
             <h2 className="mt-2 text-xl font-extrabold">Месяц пройден целиком!</h2>
             <p className="text-muted">Скоро здесь появится контрольная и следующий месяц.</p>
           </Card>
         )}
+
+        {progress && <MascotBanner message={message} />}
 
         {profile && progress && progress.finished.size > 0 && backupDue(profile) && (
           <button
