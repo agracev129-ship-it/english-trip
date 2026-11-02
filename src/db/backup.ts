@@ -36,7 +36,8 @@ export async function exportBackup(): Promise<BackupFile> {
 }
 
 export function backupFileName(date = new Date()): string {
-  const d = date.toISOString().slice(0, 10);
+  const p = (n: number) => String(n).padStart(2, '0');
+  const d = `${date.getFullYear()}-${p(date.getMonth() + 1)}-${p(date.getDate())}`;
   return `english-trip-${d}.json`;
 }
 

@@ -136,6 +136,7 @@ export function ProfileScreen() {
     try {
       setRestore(parseBackup(await f.text()));
     } catch (e) {
+      console.error('Не удалось прочитать файл копии', e);
       setMessage(e instanceof BackupError ? e.message : 'Не удалось прочитать файл.');
     }
     if (fileInput.current) fileInput.current.value = '';
@@ -389,8 +390,9 @@ export function ProfileScreen() {
         {restore && (
           <div className="flex flex-col gap-3">
             <p className="text-base text-muted">
-              Копия от <b className="text-ink">{fmtDate(restore.exportedAt.slice(0, 10))}</b>: слов
-              — {restore.tables.wordStates?.length ?? 0}, уроков —{' '}
+              Копия от{' '}
+              <b className="text-ink">{new Date(restore.exportedAt).toLocaleDateString('ru-RU')}</b>
+              : слов — {restore.tables.wordStates?.length ?? 0}, уроков —{' '}
               {restore.tables.lessonRuns?.length ?? 0}. Текущий прогресс в телефоне будет заменён
               этой копией.
             </p>
