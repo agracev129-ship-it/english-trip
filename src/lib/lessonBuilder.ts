@@ -7,9 +7,13 @@ import { pick, seededRng, shuffle, type Rng } from './random';
 /** Слово везде обозначается ключом «m1w1/boarding-pass»: id слов уникальны только внутри недели. */
 export const wordKey = (weekId: string, wordId: string) => `${weekId}/${wordId}`;
 
+/** Скорости «лестницы»: одна фраза всё быстрее. */
+export const LADDER_SPEEDS = [0.75, 1, 1.25] as const;
+
 export type LessonItem =
   | { kind: 'word_intro'; word: string }
   | { kind: 'word_listen_choice'; word: string; options: string[] }
+  | { kind: 'word_listen_spell'; word: string; letters: string[] }
   | { kind: 'flashcard_swipe'; words: string[] }
   | { kind: 'match_pairs'; words: string[] }
   | { kind: 'minimal_pairs'; pair: string; target: 'a' | 'b' }
@@ -17,23 +21,23 @@ export type LessonItem =
   | { kind: 'dialog_comprehension'; listening: string; speedDelta: number }
   | { kind: 'interactive_transcript'; listening: string }
   | { kind: 'dictation_tiles'; listening: string; line: number; tiles: string[] }
+  | { kind: 'dictation_typing'; listening: string; line: number }
+  | { kind: 'catch_the_word'; listening: string; line: number; target: string }
+  | {
+      kind: 'speed_ladder';
+      listening: string;
+      line: number;
+      /** Варианты перевода на каждой ступени; верный — перевод этой реплики */
+      rounds: { speed: number; options: string[] }[];
+    }
+  | { kind: 'shadowing'; listening: string; line: number }
+  | { kind: 'say_it'; listening: string; line: number }
+  | { kind: 'pattern_builder'; pattern: string; index: number; options: string[] }
+  | { kind: 'branching_dialog' }
+  | { kind: 'boss_week'; steps: { storyRu: string; item: LessonItem }[] }
   | { kind: 'ai_conversation' };
 
 export type ItemKind = LessonItem['kind'];
-
-/** Задания, которые есть в приложении сейчас (MVP, этап 2). Остальные типы шагов пропускаются. */
-export const SUPPORTED: ReadonlySet<string> = new Set<ItemKind>([
-  'word_intro',
-  'word_listen_choice',
-  'flashcard_swipe',
-  'match_pairs',
-  'minimal_pairs',
-  'numbers_listen',
-  'dialog_comprehension',
-  'interactive_transcript',
-  'dictation_tiles',
-  'ai_conversation',
-]);
 
 export type BuildInput = {
   week: Week;
@@ -41,6 +45,8 @@ export type BuildInput = {
   /** Слова (ключи), которым пора на повторение, самые «просроченные» первыми */
   dueWords: string[];
   seed: number;
+  /** «Скажи фразу» включено в настройках и работает на этом телефоне */
+  allowSayIt?: boolean;
 };
 
 /** Слова реплики для плиток диктанта: без пунктуации по краям. */
@@ -72,96 +78,191 @@ function dictationTiles(week: Week, listeningId: string, line: number, rng: Rng)
   return shuffle([...tokens, ...traps], rng);
 }
 
-export function buildLesson({ week, plan, dueWords, seed }: BuildInput): LessonItem[] {
-  const rng = seededRng(seed);
+const parseLine = (ref: string) => {
+  const [listening, idx] = ref.split('#');
+  return { listening: listening!, line: Number(idx) };
+};
+
+/** Цель для «Поймай слово»: одно из самых длинных слов реплики — его легче заметить. */
+function catchTarget(text: string, rng: Rng): string {
+  const tokens = lineTokens(text).filter((t) => t.length >= 3);
+  const pool = [...tokens].sort((a, b) => b.length - a.length).slice(0, 3);
+  return pool[Math.floor(rng() * pool.length)] ?? lineTokens(text)[0]!;
+}
+
+function ladderRounds(week: Week, listeningId: string, line: number, rng: Rng) {
+  const l = week.listenings.find((x) => x.id === listeningId)!;
+  const right = l.lines[line]!.ru;
+  const others = [...new Set(l.lines.map((x) => x.ru))].filter((ru) => ru !== right);
+  return LADDER_SPEEDS.map((speed) => ({
+    speed,
+    options: shuffle([right, ...pick(others, 2, rng)], rng),
+  }));
+}
+
+/** Один шаг плана → задания. */
+function expand(
+  week: Week,
+  step: { type: string; ref?: string[]; params?: Record<string, unknown> },
+  rng: Rng,
+  input: Pick<BuildInput, 'dueWords' | 'allowSayIt'>,
+): LessonItem[] {
   const items: LessonItem[] = [];
   const allWords = week.words.map((w) => w.id);
+  const ref = step.ref ?? [];
+  const count = typeof step.params?.count === 'number' ? step.params.count : undefined;
 
-  for (const step of plan.steps) {
-    if (!SUPPORTED.has(step.type)) continue;
-    const ref = step.ref ?? [];
-    const count = typeof step.params?.count === 'number' ? step.params.count : undefined;
-
-    switch (step.type) {
-      case 'word_intro':
-        for (const id of ref) items.push({ kind: 'word_intro', word: wordKey(week.id, id) });
-        break;
-      case 'word_listen_choice': {
-        const ids = ref.length ? shuffle(ref, rng) : pick(allWords, count ?? 10, rng);
-        for (const id of ids) {
-          items.push({
-            kind: 'word_listen_choice',
-            word: wordKey(week.id, id),
-            options: choiceOptions(week, id, rng),
-          });
-        }
-        break;
+  switch (step.type) {
+    case 'word_intro':
+      for (const id of ref) items.push({ kind: 'word_intro', word: wordKey(week.id, id) });
+      break;
+    case 'word_listen_choice': {
+      const ids = ref.length ? shuffle(ref, rng) : pick(allWords, count ?? 10, rng);
+      for (const id of ids) {
+        items.push({
+          kind: 'word_listen_choice',
+          word: wordKey(week.id, id),
+          options: choiceOptions(week, id, rng),
+        });
       }
-      case 'flashcard_swipe': {
-        const max = typeof step.params?.max === 'number' ? step.params.max : 15;
-        const words = dueWords.slice(0, max);
-        if (words.length) items.push({ kind: 'flashcard_swipe', words: shuffle(words, rng) });
-        break;
-      }
-      case 'match_pairs': {
-        const ids = pick(ref.length ? ref : allWords, Math.min(count ?? 5, 5), rng);
-        items.push({ kind: 'match_pairs', words: ids.map((id) => wordKey(week.id, id)) });
-        break;
-      }
-      case 'minimal_pairs': {
-        const pool = ref.length ? ref : week.minimalPairs.map((p) => p.id);
-        const n = count ?? pool.length;
-        for (let i = 0; i < n; i++) {
-          items.push({
-            kind: 'minimal_pairs',
-            pair: pool[Math.floor(rng() * pool.length)]!,
-            target: rng() < 0.5 ? 'a' : 'b',
-          });
-        }
-        break;
-      }
-      case 'numbers_listen': {
-        const ids = ref.length
-          ? ref
-          : pick(
-              week.numberDrills.map((d) => d.id),
-              count ?? 5,
-              rng,
-            );
-        for (const id of ids) items.push({ kind: 'numbers_listen', drill: id });
-        break;
-      }
-      case 'dialog_comprehension':
-        for (const id of ref) {
-          const speedDelta =
-            typeof step.params?.speedDelta === 'number' ? step.params.speedDelta : 0;
-          items.push({ kind: 'dialog_comprehension', listening: id, speedDelta });
-        }
-        break;
-      case 'interactive_transcript':
-        for (const id of ref) items.push({ kind: 'interactive_transcript', listening: id });
-        break;
-      case 'dictation_tiles':
-        for (const r of ref) {
-          const [lid, idx] = r.split('#');
-          const line = Number(idx);
-          items.push({
-            kind: 'dictation_tiles',
-            listening: lid!,
-            line,
-            tiles: dictationTiles(week, lid!, line, rng),
-          });
-        }
-        break;
-      case 'ai_conversation':
-        items.push({ kind: 'ai_conversation' });
-        break;
+      break;
     }
+    case 'word_listen_spell': {
+      const ids = ref.length ? ref : pick(allWords, count ?? 3, rng);
+      for (const id of ids) {
+        const en = week.words.find((w) => w.id === id)!.en.toLowerCase();
+        items.push({
+          kind: 'word_listen_spell',
+          word: wordKey(week.id, id),
+          letters: shuffle(en.replace(/[^a-z']/g, '').split(''), rng),
+        });
+      }
+      break;
+    }
+    case 'flashcard_swipe': {
+      const max = typeof step.params?.max === 'number' ? step.params.max : 15;
+      const words = input.dueWords.slice(0, max);
+      if (words.length) items.push({ kind: 'flashcard_swipe', words: shuffle(words, rng) });
+      break;
+    }
+    case 'match_pairs': {
+      const ids = pick(ref.length ? ref : allWords, Math.min(count ?? 5, 5), rng);
+      items.push({ kind: 'match_pairs', words: ids.map((id) => wordKey(week.id, id)) });
+      break;
+    }
+    case 'minimal_pairs': {
+      const pool = ref.length ? ref : week.minimalPairs.map((p) => p.id);
+      const n = count ?? pool.length;
+      for (let i = 0; i < n; i++) {
+        items.push({
+          kind: 'minimal_pairs',
+          pair: pool[Math.floor(rng() * pool.length)]!,
+          target: rng() < 0.5 ? 'a' : 'b',
+        });
+      }
+      break;
+    }
+    case 'numbers_listen': {
+      const ids = ref.length
+        ? ref
+        : pick(
+            week.numberDrills.map((d) => d.id),
+            count ?? 5,
+            rng,
+          );
+      for (const id of ids) items.push({ kind: 'numbers_listen', drill: id });
+      break;
+    }
+    case 'dialog_comprehension':
+      for (const id of ref) {
+        const speedDelta = typeof step.params?.speedDelta === 'number' ? step.params.speedDelta : 0;
+        items.push({ kind: 'dialog_comprehension', listening: id, speedDelta });
+      }
+      break;
+    case 'interactive_transcript':
+      for (const id of ref) items.push({ kind: 'interactive_transcript', listening: id });
+      break;
+    case 'dictation_tiles':
+      for (const r of ref) {
+        const { listening, line } = parseLine(r);
+        items.push({
+          kind: 'dictation_tiles',
+          listening,
+          line,
+          tiles: dictationTiles(week, listening, line, rng),
+        });
+      }
+      break;
+    case 'dictation_typing':
+      for (const r of ref) items.push({ kind: 'dictation_typing', ...parseLine(r) });
+      break;
+    case 'catch_the_word':
+      for (const r of ref) {
+        const { listening, line } = parseLine(r);
+        const text = week.listenings.find((l) => l.id === listening)!.lines[line]!.text;
+        items.push({ kind: 'catch_the_word', listening, line, target: catchTarget(text, rng) });
+      }
+      break;
+    case 'speed_ladder':
+      for (const r of ref) {
+        const { listening, line } = parseLine(r);
+        items.push({
+          kind: 'speed_ladder',
+          listening,
+          line,
+          rounds: ladderRounds(week, listening, line, rng),
+        });
+      }
+      break;
+    case 'shadowing':
+      for (const r of ref) items.push({ kind: 'shadowing', ...parseLine(r) });
+      break;
+    case 'say_it':
+      if (input.allowSayIt) {
+        for (const r of ref) items.push({ kind: 'say_it', ...parseLine(r) });
+      }
+      break;
+    case 'pattern_builder':
+      for (const id of ref) {
+        const p = week.patterns.find((x) => x.id === id)!;
+        p.items.forEach((it, index) => {
+          items.push({
+            kind: 'pattern_builder',
+            pattern: id,
+            index,
+            options: shuffle([it.answer, ...it.wrong], rng),
+          });
+        });
+      }
+      break;
+    case 'branching_dialog':
+      if (week.branching) items.push({ kind: 'branching_dialog' });
+      break;
+    case 'boss_week':
+      if (week.boss) {
+        items.push({
+          kind: 'boss_week',
+          steps: week.boss.steps.flatMap((s) => {
+            // В шаблоне босс берёт только один пункт, чтобы шаг оставался одним заданием
+            const item = expand(week, s, rng, input)[0];
+            return item ? [{ storyRu: s.storyRu, item }] : [];
+          }),
+        });
+      }
+      break;
+    case 'ai_conversation':
+      items.push({ kind: 'ai_conversation' });
+      break;
   }
   return items;
 }
 
+export function buildLesson({ week, plan, dueWords, seed, allowSayIt }: BuildInput): LessonItem[] {
+  const rng = seededRng(seed);
+  return plan.steps.flatMap((step) => expand(week, step, rng, { dueWords, allowSayIt }));
+}
+
 /** Задания со словами, которые после ошибки повторяются в конце урока. */
 export function isRetryable(item: LessonItem): boolean {
-  return item.kind === 'word_listen_choice';
+  return item.kind === 'word_listen_choice' || item.kind === 'word_listen_spell';
 }

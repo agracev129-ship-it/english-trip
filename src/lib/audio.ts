@@ -123,6 +123,9 @@ export function play(id: string, rate = 1): Promise<void> {
 
 export const isPlaying = () => state.playing;
 
+/** Сколько секунд записи уже прозвучало (для «Поймай слово»). */
+export const currentTime = () => audio.currentTime;
+
 export function stop() {
   token++;
   if (!audio.paused) audio.pause();

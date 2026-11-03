@@ -19,33 +19,10 @@ import {
   type LessonSummary,
 } from '../db/progress';
 import { stop } from '../lib/audio';
-import { isRetryable, type LessonItem } from '../lib/lessonBuilder';
-import { AiConversation } from '../exercises/AiConversation';
-import { DialogComprehension } from '../exercises/DialogComprehension';
-import { DictationTiles } from '../exercises/DictationTiles';
-import { FlashcardSwipe } from '../exercises/FlashcardSwipe';
-import { InteractiveTranscript } from '../exercises/InteractiveTranscript';
-import { MatchPairs } from '../exercises/MatchPairs';
-import { MinimalPairs } from '../exercises/MinimalPairs';
-import { NumbersListen } from '../exercises/NumbersListen';
-import { WordIntro } from '../exercises/WordIntro';
-import { WordListenChoice } from '../exercises/WordListenChoice';
+import { isRetryable } from '../lib/lessonBuilder';
+import { EXERCISES } from '../exercises/registry';
 import type { ExerciseProps, Report } from '../exercises/types';
 import { LessonDone } from './LessonDone';
-
-// Каждый тип задания — свой компонент с общим интерфейсом
-const EXERCISES: { [K in LessonItem['kind']]: ComponentType<ExerciseProps<K>> } = {
-  word_intro: WordIntro,
-  word_listen_choice: WordListenChoice,
-  flashcard_swipe: FlashcardSwipe,
-  match_pairs: MatchPairs,
-  minimal_pairs: MinimalPairs,
-  numbers_listen: NumbersListen,
-  dialog_comprehension: DialogComprehension,
-  interactive_transcript: InteractiveTranscript,
-  dictation_tiles: DictationTiles,
-  ai_conversation: AiConversation,
-};
 
 /** Урок можно засчитать досрочно, если пройдено ≥ 80% заданий (раздел 9). */
 const EARLY_FINISH = 0.8;
@@ -115,11 +92,11 @@ export function LessonScreen() {
     const isRetry = cur.stepIndex >= cur.baseCount;
     const result: StepResult = {
       item: cur.stepIndex,
-      kind: curItem.kind,
+      kind: r.kind ?? curItem.kind,
       skill: r.skill,
       correct: r.correct,
       firstTry: (r.firstTry ?? true) && !isRetry,
-      normalSpeed: !slow,
+      normalSpeed: !slow && (r.normalSpeed ?? true),
       itemIds: r.itemIds,
       at: Date.now(),
     };

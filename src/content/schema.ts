@@ -102,6 +102,83 @@ export const NumberDrillSchema = z.object({
   say,
 });
 
+/** Грамматика шаблоном: «Could I have ___, please?» + подсказка-правило на 1–2 строки. */
+export const PatternSchema = z.object({
+  id,
+  /** Шаблон с пропуском «___» */
+  template: en.regex(/___/, 'в шаблоне нужен пропуск ___'),
+  ruleRu: ru,
+  items: z
+    .array(
+      z.object({
+        /** Что сказать: «Попроси плед» */
+        promptRu: ru,
+        answer: en,
+        wrong: z.array(en).min(2).max(3),
+      }),
+    )
+    .min(2),
+});
+
+export const BranchOptionSchema = z.object({
+  text: en,
+  ru,
+  /** Следующий узел разговора */
+  next: id,
+  /** Уместный ли это ответ */
+  ok: z.boolean(),
+  /** Подсказка на русском, если ответ неуместный */
+  hintRu: ru.optional(),
+});
+
+export const BranchNodeSchema = z.object({
+  id,
+  speaker: id,
+  text: en,
+  ru,
+  /** Пусто — разговор закончен */
+  options: z.array(BranchOptionSchema),
+});
+
+/** Интерактивный разговор: персонаж говорит голосом, ответы выбирает ученица. */
+export const BranchingSchema = z.object({
+  id,
+  title: ru,
+  introRu: ru,
+  /** Кто говорит; ответы звучат голосом героини (роль «anna») */
+  speakers: z.array(SpeakerSchema).min(1),
+  start: id,
+  nodes: z.array(BranchNodeSchema).min(3),
+});
+
+export const BossStepSchema = z.object({
+  /** Строчка сюжета над заданием */
+  storyRu: ru,
+  type: z.enum([
+    'word_listen_choice',
+    'word_listen_spell',
+    'minimal_pairs',
+    'numbers_listen',
+    'dictation_tiles',
+    'dictation_typing',
+    'catch_the_word',
+    'pattern_builder',
+  ]),
+  ref: z.array(z.string().min(1)).length(1),
+});
+
+/** «Босс недели»: цепочка заданий подряд с сюжетом и таймером. */
+export const BossSchema = z.object({
+  id,
+  title: ru,
+  storyRu: ru,
+  /** Финал истории при победе и при поражении */
+  winRu: ru,
+  loseRu: ru,
+  timeLimitSec: z.number().int().min(60).max(900),
+  steps: z.array(BossStepSchema).min(6).max(8),
+});
+
 export const StepSchema = z.object({
   type: z.enum(EXERCISE_TYPES),
   /** Ссылки на элементы недели: id слов, диалогов, пар, чисел или реплик «d1#3» */
@@ -127,9 +204,9 @@ export const WeekSchema = z.object({
   listenings: z.array(ListeningSchema).min(4),
   minimalPairs: z.array(MinimalPairSchema).min(4),
   numberDrills: z.array(NumberDrillSchema).min(4),
-  // Ветвящийся диалог и босс недели появятся на этапе 3 вместе с заданиями для них
-  branching: z.unknown().optional(),
-  boss: z.unknown().optional(),
+  patterns: z.array(PatternSchema),
+  branching: BranchingSchema.optional(),
+  boss: BossSchema.optional(),
   aiPrompt: en,
   lessons: z.array(LessonPlanSchema).length(7),
 });
@@ -162,6 +239,11 @@ export type Question = z.infer<typeof QuestionSchema>;
 export type Listening = z.infer<typeof ListeningSchema>;
 export type MinimalPair = z.infer<typeof MinimalPairSchema>;
 export type NumberDrill = z.infer<typeof NumberDrillSchema>;
+export type Pattern = z.infer<typeof PatternSchema>;
+export type Branching = z.infer<typeof BranchingSchema>;
+export type BranchNode = z.infer<typeof BranchNodeSchema>;
+export type BranchOption = z.infer<typeof BranchOptionSchema>;
+export type Boss = z.infer<typeof BossSchema>;
 export type Step = z.infer<typeof StepSchema>;
 export type LessonPlan = z.infer<typeof LessonPlanSchema>;
 export type Week = z.infer<typeof WeekSchema>;

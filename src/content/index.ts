@@ -58,5 +58,6 @@ export function lessonTitle(week: Week, day: number): string {
   if (day <= 4 && main?.ref?.[0]) {
     return week.listenings.find((l) => l.id === main.ref![0])?.title ?? `День ${day}`;
   }
-  return day === 7 ? 'Большое повторение и разговор с ИИ' : 'Те же тексты, но быстрее';
+  if (day === 7) return week.boss ? `Босс недели: ${week.boss.title}` : 'Большое повторение';
+  return 'Те же тексты, но быстрее';
 }

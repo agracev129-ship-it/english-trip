@@ -8,10 +8,18 @@ export const BLOCKS = [
   {
     id: 'listening',
     label: 'Главное аудирование',
-    kinds: ['dialog_comprehension', 'interactive_transcript'],
+    kinds: ['dialog_comprehension', 'interactive_transcript', 'speed_ladder'],
   },
-  { id: 'ear', label: 'Тренажёр слуха', kinds: ['minimal_pairs', 'numbers_listen'] },
-  { id: 'dictation', label: 'Диктант', kinds: ['dictation_tiles'] },
+  {
+    id: 'ear',
+    label: 'Тренажёр слуха',
+    kinds: ['minimal_pairs', 'numbers_listen', 'catch_the_word', 'word_listen_spell'],
+  },
+  { id: 'speak', label: 'Говорим вслух', kinds: ['shadowing', 'say_it'] },
+  { id: 'grammar', label: 'Грамматика шаблоном', kinds: ['pattern_builder'] },
+  { id: 'dictation', label: 'Диктант', kinds: ['dictation_tiles', 'dictation_typing'] },
+  { id: 'talk', label: 'Живой разговор', kinds: ['branching_dialog'] },
+  { id: 'boss', label: 'Босс недели', kinds: ['boss_week'] },
   { id: 'ai', label: 'Бонус: поговори с ИИ', kinds: ['ai_conversation'] },
 ] as const;
 

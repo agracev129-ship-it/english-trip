@@ -104,6 +104,106 @@ export function editDistance(a: string, b: string): number {
   return dp[b.length]!;
 }
 
+/** Опечатка: одно изменение, и слово не слишком короткое (is/it — разные слова, а не опечатка). */
+function isTypo(a: string, b: string): boolean {
+  if (Math.max(a.length, b.length) < 3) return false;
+  return editDistance(a, b) === 1 || isSwap(a, b);
+}
+
+/** Переставлены две соседние буквы: sned ↔ send. Самая частая опечатка на телефоне. */
+function isSwap(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  const diff = [...a].flatMap((c, i) => (c === b[i] ? [] : [i]));
+  return (
+    diff.length === 2 &&
+    diff[1] === diff[0]! + 1 &&
+    a[diff[0]!] === b[diff[1]!] &&
+    a[diff[1]!] === b[diff[0]!]
+  );
+}
+
+/** Набрано по буквам: { верно, но с опечаткой } или неверно. */
+export function checkSpelling(input: string, target: string): { correct: boolean; typo: boolean } {
+  const a = normalizeText(input).replace(/\s/g, '');
+  const b = normalizeText(target).replace(/\s/g, '');
+  if (a === b) return { correct: true, typo: false };
+  return isTypo(a, b) ? { correct: true, typo: true } : { correct: false, typo: false };
+}
+
+export type WordStatus = 'ok' | 'typo' | 'wrong';
+export type WordMark = { word: string; status: WordStatus };
+export type DictationResult = {
+  correct: boolean;
+  /** Слова правильной фразы (как написаны в тексте) с отметкой */
+  marks: WordMark[];
+  /** Лишние слова, которых во фразе нет */
+  extra: string[];
+};
+
+/**
+ * Диктант с вводом: терпит регистр, пунктуацию и сокращения (I'll = I will), опечатку в одну букву
+ * на слово. Слова сопоставляются выравниванием, поэтому пропущенное слово не портит всё остальное.
+ */
+export function checkDictation(input: string, target: string): DictationResult {
+  const display = target.split(/\s+/).filter(Boolean);
+  // Каждое написанное слово может раскрыться в несколько: I'll → i will
+  const parts = display.flatMap((w, owner) =>
+    normalizeText(w)
+      .split(' ')
+      .filter(Boolean)
+      .map((p) => ({ p, owner })),
+  );
+  const typed = normalizeText(input).split(' ').filter(Boolean);
+  const n = parts.length;
+  const m = typed.length;
+  const cost = (i: number, j: number) => {
+    const a = parts[i]!.p;
+    const b = typed[j]!;
+    if (a === b) return 0;
+    return isTypo(a, b) ? 0.5 : 1.5;
+  };
+  const dp = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
+  for (let i = 0; i <= n; i++) dp[i]![0] = i;
+  for (let j = 0; j <= m; j++) dp[0]![j] = j;
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      dp[i]![j] = Math.min(
+        dp[i - 1]![j - 1]! + cost(i - 1, j - 1),
+        dp[i - 1]![j]! + 1,
+        dp[i]![j - 1]! + 1,
+      );
+    }
+  }
+  const partStatus = new Array<WordStatus>(n).fill('wrong');
+  const extra: string[] = [];
+  let i = n;
+  let j = m;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && dp[i]![j] === dp[i - 1]![j - 1]! + cost(i - 1, j - 1)) {
+      const c = cost(i - 1, j - 1);
+      partStatus[i - 1] = c === 0 ? 'ok' : c === 0.5 ? 'typo' : 'wrong';
+      i--;
+      j--;
+    } else if (i > 0 && dp[i]![j] === dp[i - 1]![j]! + 1) {
+      partStatus[i - 1] = 'wrong';
+      i--;
+    } else {
+      extra.unshift(typed[j - 1]!);
+      j--;
+    }
+  }
+  const marks: WordMark[] = display.map((word, owner) => {
+    const own = parts.flatMap((p, k) => (p.owner === owner ? [partStatus[k]!] : []));
+    const status: WordStatus = own.includes('wrong')
+      ? 'wrong'
+      : own.includes('typo')
+        ? 'typo'
+        : 'ok';
+    return { word, status };
+  });
+  return { correct: marks.every((w) => w.status !== 'wrong') && extra.length === 0, marks, extra };
+}
+
 const clean = (s: string) => s.trim().replace(/\s+/g, '').replace(/^£/, '');
 
 /** «11:40», «11.40», «1140», «11» → {h, m}. */

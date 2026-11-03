@@ -13,6 +13,7 @@ import { newCard, review, type Grade } from '../lib/srs';
 import { completeDay, EMPTY_STREAK, type StreakUpdate } from '../lib/streak';
 import { XP } from '../lib/xp';
 import { buildLesson, type ItemKind } from '../lib/lessonBuilder';
+import { speechRecognitionAvailable } from '../lib/speech';
 import type { LessonPlan, Week } from '../content/schema';
 
 /** Первый запуск: профиль, стрик, стартовый EF SET, просьба браузеру не удалять данные. */
@@ -89,7 +90,14 @@ async function createOrResumeRun(week: Week, plan: LessonPlan): Promise<LessonRu
   const existing = await activeRun(plan.id);
   if (existing) return existing;
   const seed = Math.floor(Math.random() * 2 ** 31);
-  const items = buildLesson({ week, plan, dueWords: await dueWordKeys(), seed });
+  const profile = await db.profile.get('me');
+  const items = buildLesson({
+    week,
+    plan,
+    dueWords: await dueWordKeys(),
+    seed,
+    allowSayIt: !!profile?.settings.speechRecognition && speechRecognitionAvailable(),
+  });
   const run: LessonRun = {
     id: `${plan.id}-${Date.now()}-${seed}`,
     lessonId: plan.id,
@@ -112,8 +120,9 @@ export const saveRun = (run: LessonRun) => db.lessonRuns.put(run);
 
 export function xpFor(kind: ItemKind, correct: boolean): number {
   if (!correct) return 0;
-  if (kind === 'dialog_comprehension') return XP.listeningQuestion;
-  if (kind === 'dictation_tiles') return XP.dictation;
+  if (kind === 'dialog_comprehension' || kind === 'branching_dialog') return XP.listeningQuestion;
+  if (kind === 'dictation_tiles' || kind === 'dictation_typing') return XP.dictation;
+  if (kind === 'boss_week') return XP.boss;
   return XP.wordCorrect;
 }
 

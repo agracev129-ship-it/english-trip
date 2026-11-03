@@ -154,6 +154,297 @@
     { "id": "n-gate-13", "text": "Gate thirty is closed. Please go to gate thirteen.", "answers": ["13"], "promptRu": "К какому выходу нужно идти?" },
     { "id": "n-water-price", "text": "A bottle of water is two pounds fifty.", "answers": ["2.50"], "promptRu": "Сколько стоит вода (в фунтах)?" }
   ],
+  "patterns": [
+    {
+      "id": "p-could-i-have",
+      "template": "Could I have ___, please?",
+      "ruleRu": "«Could I have…, please?» — вежливая просьба. Перед словом нужны a, an или some.",
+      "items": [
+        {
+          "promptRu": "Попроси плед",
+          "answer": "a blanket",
+          "wrong": [
+            "a window seat",
+            "a suitcase"
+          ]
+        },
+        {
+          "promptRu": "Попроси воды",
+          "answer": "some water",
+          "wrong": [
+            "some sugar",
+            "some milk"
+          ]
+        },
+        {
+          "promptRu": "Попроси место у прохода",
+          "answer": "an aisle seat",
+          "wrong": [
+            "a window seat",
+            "a boarding pass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-do-i-need-to",
+      "template": "Do I need to ___?",
+      "ruleRu": "«Do I need to…?» — «Мне нужно…?». После to глагол стоит в обычной форме, без окончаний.",
+      "items": [
+        {
+          "promptRu": "Спроси, нужно ли доставать ноутбук",
+          "answer": "take out my laptop",
+          "wrong": [
+            "took out my laptop",
+            "taking out my laptop"
+          ]
+        },
+        {
+          "promptRu": "Спроси, нужно ли регистрироваться на рейс",
+          "answer": "check in for my flight",
+          "wrong": [
+            "checks in for my flight",
+            "checking in for my flight"
+          ]
+        },
+        {
+          "promptRu": "Спроси, нужно ли идти к выходу восемнадцать",
+          "answer": "go to gate eighteen",
+          "wrong": [
+            "going to gate eighteen",
+            "went to gate eighteen"
+          ]
+        }
+      ]
+    }
+  ],
+  "branching": {
+    "id": "b-delayed",
+    "title": "Рейс задерживается",
+    "introRu": "Рейс задержан, и ты подходишь к сотруднице у выхода. Узнай новое время и куда идти.",
+    "speakers": [
+      {
+        "id": "staff",
+        "name": "Staff",
+        "voice": "woman2"
+      }
+    ],
+    "start": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "speaker": "staff",
+        "text": "Hello. Can I help you?",
+        "ru": "Здравствуйте. Чем могу помочь?",
+        "options": [
+          {
+            "text": "Yes. Is the flight to London delayed?",
+            "ru": "Да. Рейс в Лондон задерживается?",
+            "next": "delay",
+            "ok": true
+          },
+          {
+            "text": "Two coffees, please.",
+            "ru": "Два кофе, пожалуйста.",
+            "next": "r-coffee",
+            "ok": false,
+            "hintRu": "Это выход на посадку, а не кафе. Спроси про рейс: Is the flight… delayed?"
+          }
+        ]
+      },
+      {
+        "id": "r-coffee",
+        "speaker": "staff",
+        "text": "Sorry, this is the gate, not a café. Do you have a question about your flight?",
+        "ru": "Простите, это выход на посадку, а не кафе. У вас есть вопрос о рейсе?",
+        "options": [
+          {
+            "text": "Sorry. Is the flight to London delayed?",
+            "ru": "Извините. Рейс в Лондон задерживается?",
+            "next": "delay",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "delay",
+        "speaker": "staff",
+        "text": "Yes, it is. The new departure time is eleven forty.",
+        "ru": "Да. Новое время вылета — одиннадцать сорок.",
+        "options": [
+          {
+            "text": "Thank you. Which gate is it now?",
+            "ru": "Спасибо. Какой теперь выход?",
+            "next": "gate",
+            "ok": true
+          },
+          {
+            "text": "Good night!",
+            "ru": "Спокойной ночи!",
+            "next": "r-night",
+            "ok": false,
+            "hintRu": "«Good night» говорят перед сном. Спроси про выход: Which gate is it now?"
+          }
+        ]
+      },
+      {
+        "id": "r-night",
+        "speaker": "staff",
+        "text": "Good night? It's only ten o'clock in the morning! Do you want to know the gate?",
+        "ru": "Спокойной ночи? Сейчас только десять утра! Хотите узнать номер выхода?",
+        "options": [
+          {
+            "text": "Yes, please. Which gate is it now?",
+            "ru": "Да, пожалуйста. Какой теперь выход?",
+            "next": "gate",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "gate",
+        "speaker": "staff",
+        "text": "It's gate eighteen. Go straight and turn left after the café.",
+        "ru": "Выход восемнадцать. Идите прямо и после кафе поверните налево.",
+        "options": [
+          {
+            "text": "How long does it take on foot?",
+            "ru": "Сколько идти пешком?",
+            "next": "time",
+            "ok": true
+          },
+          {
+            "text": "Could you say the gate number again, please?",
+            "ru": "Можете повторить номер выхода, пожалуйста?",
+            "next": "repeat",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "repeat",
+        "speaker": "staff",
+        "text": "Of course. Gate eighteen. One, eight.",
+        "ru": "Конечно. Выход восемнадцать. Один, восемь.",
+        "options": [
+          {
+            "text": "Thanks. How long does it take on foot?",
+            "ru": "Спасибо. Сколько идти пешком?",
+            "next": "time",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "time",
+        "speaker": "staff",
+        "text": "About five minutes. You have a lot of time.",
+        "ru": "Около пяти минут. У вас много времени.",
+        "options": [
+          {
+            "text": "Great. Thank you very much!",
+            "ru": "Отлично. Большое спасибо!",
+            "next": "end",
+            "ok": true
+          },
+          {
+            "text": "Give me a blanket.",
+            "ru": "Дайте мне плед.",
+            "next": "r-blanket",
+            "ok": false,
+            "hintRu": "Это звучит резко, и плед здесь не нужен. Лучше просто поблагодарить: Thank you very much!"
+          }
+        ]
+      },
+      {
+        "id": "r-blanket",
+        "speaker": "staff",
+        "text": "Sorry, the blankets are on the plane. Is there anything else?",
+        "ru": "Извините, пледы в самолёте. Что-нибудь ещё?",
+        "options": [
+          {
+            "text": "No, thank you. Goodbye!",
+            "ru": "Нет, спасибо. До свидания!",
+            "next": "end",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "speaker": "staff",
+        "text": "You're welcome. Have a good flight!",
+        "ru": "Пожалуйста. Хорошего полёта!",
+        "options": []
+      }
+    ]
+  },
+  "boss": {
+    "id": "boss-flight",
+    "title": "Успей на рейс",
+    "storyRu": "Ты опаздываешь на рейс в Лондон. Пройди регистрацию и досмотр и найди новый выход, пока не закончилась посадка.",
+    "winRu": "Ты успела! Дверь закрылась прямо за тобой, и самолёт уже выруливает на взлёт.",
+    "loseRu": "Посадка закончилась чуть раньше. Но следующий рейс через два часа, а дорогу ты теперь знаешь.",
+    "timeLimitSec": 300,
+    "steps": [
+      {
+        "storyRu": "На стойке просят документ. Что это за слово?",
+        "type": "word_listen_choice",
+        "ref": [
+          "boarding-pass"
+        ]
+      },
+      {
+        "storyRu": "Объявление! Запомни номер выхода.",
+        "type": "numbers_listen",
+        "ref": [
+          "n-gate-18"
+        ]
+      },
+      {
+        "storyRu": "Досмотр. Собери фразу, которую сказал офицер.",
+        "type": "dictation_tiles",
+        "ref": [
+          "d2#0"
+        ]
+      },
+      {
+        "storyRu": "Сотрудник спрашивает про твоё место. Что прозвучало?",
+        "type": "minimal_pairs",
+        "ref": [
+          "sit-seat"
+        ]
+      },
+      {
+        "storyRu": "Ты спрашиваешь дорогу. Поймай слово в ответе.",
+        "type": "catch_the_word",
+        "ref": [
+          "d3#6"
+        ]
+      },
+      {
+        "storyRu": "Табло мигает: новое время вылета!",
+        "type": "numbers_listen",
+        "ref": [
+          "n-departure"
+        ]
+      },
+      {
+        "storyRu": "Ты в самолёте. Вежливо попроси то, что нужно.",
+        "type": "pattern_builder",
+        "ref": [
+          "p-could-i-have"
+        ]
+      },
+      {
+        "storyRu": "Последнее объявление командира. Запиши его.",
+        "type": "dictation_typing",
+        "ref": [
+          "d4#5"
+        ]
+      }
+    ]
+  },
   "aiPrompt": "You are a check-in agent at an airport. I am a passenger flying to London. My English level is A2. Speak slowly and use simple words. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
   "lessons": [
     {
@@ -164,85 +455,94 @@
         { "type": "word_listen_choice", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"] },
         { "type": "dialog_comprehension", "ref": ["d1"] },
         { "type": "interactive_transcript", "ref": ["d1"] },
-        { "type": "minimal_pairs", "ref": ["sit-seat", "fifteen-fifty", "ship-sheep"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#1", "d1#3", "d1#6"] }
+        { "type": "shadowing", "ref": ["d1#1", "d1#6"] },
+        { "type": "minimal_pairs", "ref": ["sit-seat", "fifteen-fifty", "ship-sheep"], "params": {"count": 4} },
+        { "type": "pattern_builder", "ref": ["p-could-i-have"] },
+        { "type": "dictation_tiles", "ref": ["d1#1", "d1#5"] }
       ]
     },
     {
       "id": "m1w1-l2",
       "day": 2,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["passport", "suitcase", "boarding-pass", "window-seat", "aisle-seat", "check-in", "gate"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"] },
         { "type": "word_listen_choice", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"] },
         { "type": "dialog_comprehension", "ref": ["d2"] },
         { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "shadowing", "ref": ["d2#1", "d2#3"] },
         { "type": "numbers_listen", "ref": ["n-boarding-time", "n-gate-18", "n-flight-number"] },
-        { "type": "dictation_tiles", "ref": ["d2#0", "d2#3", "d2#5"] }
+        { "type": "word_listen_spell", "ref": ["tray", "laptop", "security"] },
+        { "type": "dictation_tiles", "ref": ["d2#0", "d2#5"] }
       ]
     },
     {
       "id": "m1w1-l3",
       "day": 3,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["boarding", "security", "liquids", "laptop", "tray", "take-out", "after"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"] },
         { "type": "word_listen_choice", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"] },
         { "type": "dialog_comprehension", "ref": ["d3"] },
         { "type": "interactive_transcript", "ref": ["d3"] },
-        { "type": "minimal_pairs", "ref": ["thirteen-thirty", "live-leave", "walk-work", "fifteen-fifty"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d3#1", "d3#5", "d3#7"] }
+        { "type": "shadowing", "ref": ["d3#3", "d3#5"] },
+        { "type": "catch_the_word", "ref": ["d3#1", "d3#6", "d3#7"] },
+        { "type": "pattern_builder", "ref": ["p-do-i-need-to"] },
+        { "type": "dictation_tiles", "ref": ["d3#2", "d3#5"] }
       ]
     },
     {
       "id": "m1w1-l4",
       "day": 4,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["delayed", "departure", "announcement", "turn-left", "go-straight", "on-foot", "cancelled"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["flight-attendant", "blanket", "land", "local-time", "take-off", "hand-luggage", "arrivals"] },
         { "type": "word_listen_choice", "ref": ["flight-attendant", "blanket", "land", "local-time", "take-off", "hand-luggage", "arrivals"] },
         { "type": "dialog_comprehension", "ref": ["d4"] },
         { "type": "interactive_transcript", "ref": ["d4"] },
-        { "type": "numbers_listen", "ref": ["n-departure", "n-row", "n-duration", "n-gate-13"] },
-        { "type": "dictation_tiles", "ref": ["d4#1", "d4#5", "d4#6"] }
+        { "type": "shadowing", "ref": ["d4#1", "d4#6"] },
+        { "type": "numbers_listen", "ref": ["n-departure", "n-row", "n-gate-13"] },
+        { "type": "word_listen_spell", "ref": ["blanket", "land", "arrivals"] },
+        { "type": "dictation_tiles", "ref": ["d4#1", "d4#5"] }
       ]
     },
     {
       "id": "m1w1-l5",
       "day": 5,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
-        { "type": "minimal_pairs", "ref": ["ship-sheep", "sit-seat", "full-fool", "bed-bad"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#5", "d1#7", "d2#2", "d2#4"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": {"speedDelta": 0.1} },
+        { "type": "speed_ladder", "ref": ["d1#5"] },
+        { "type": "catch_the_word", "ref": ["d1#2", "d2#3"] },
+        { "type": "dictation_typing", "ref": ["d1#6", "d2#6"] },
+        { "type": "say_it", "ref": ["d1#1", "d2#1"] }
       ]
     },
     {
       "id": "m1w1-l6",
       "day": 6,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
-        { "type": "numbers_listen", "ref": ["n-gate-18", "n-row", "n-duration", "n-gate-13", "n-water-price"] },
-        { "type": "dictation_tiles", "ref": ["d3#2", "d3#6", "d4#3", "d4#7"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": {"speedDelta": 0.1} },
+        { "type": "branching_dialog" },
+        { "type": "numbers_listen", "ref": ["n-duration", "n-water-price", "n-gate-18"] },
+        { "type": "dictation_typing", "ref": ["d3#5", "d4#1"] }
       ]
     },
     {
       "id": "m1w1-l7",
       "day": 7,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 25 } },
-        { "type": "word_listen_choice", "params": { "count": 12 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "minimal_pairs", "params": { "count": 8 } },
-        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "word_listen_choice", "params": {"count": 8} },
+        { "type": "boss_week" },
         { "type": "ai_conversation" }
       ]
     }

@@ -2,9 +2,21 @@
 // Отсюда берут список и генератор аудио (npm run audio), и проверка (npm run validate),
 // и приложение — чтобы найти файл для конкретного текста.
 import { audioId } from './audioId.ts';
-import type { Line, Listening, MinimalPair, NumberDrill, Voices, Week, Word } from './schema.ts';
+import type {
+  Branching,
+  BranchNode,
+  BranchOption,
+  Line,
+  Listening,
+  MinimalPair,
+  NumberDrill,
+  Pattern,
+  Voices,
+  Week,
+  Word,
+} from './schema.ts';
 
-export type ClipKind = 'word' | 'example' | 'line' | 'pair' | 'number';
+export type ClipKind = 'word' | 'example' | 'line' | 'pair' | 'number' | 'pattern' | 'branch';
 
 export type Clip = {
   id: string;
@@ -58,6 +70,28 @@ export function drillClip(voices: Voices, d: NumberDrill): Clip {
   return clip(voices.narrator, d.say ?? d.text, 'number', d.id);
 }
 
+/** Шаблон с подставленным ответом: «Could I have a blanket, please?» */
+export function patternSentence(p: Pattern, answer: string): string {
+  return p.template.replace('___', answer);
+}
+
+export function patternClip(voices: Voices, p: Pattern, index: number): Clip {
+  const item = p.items[index];
+  if (!item) throw new Error(`${p.id}: нет пункта #${index}`);
+  return clip(voices.narrator, patternSentence(p, item.answer), 'pattern', `${p.id}#${index}`);
+}
+
+export function branchNodeClip(voices: Voices, b: Branching, node: BranchNode): Clip {
+  const speaker = b.speakers.find((s) => s.id === node.speaker);
+  if (!speaker) throw new Error(`${b.id}/${node.id}: нет говорящего «${node.speaker}»`);
+  return clip(voiceForRole(voices, speaker.voice), node.text, 'branch', `${b.id}/${node.id}`);
+}
+
+/** Ответ героини звучит её голосом. */
+export function branchOptionClip(voices: Voices, b: Branching, opt: BranchOption): Clip {
+  return clip(voiceForRole(voices, 'anna'), opt.text, 'branch', `${b.id}/${opt.next}:answer`);
+}
+
 export function weekClips(voices: Voices, week: Week): Clip[] {
   const at = (c: Clip): Clip => ({ ...c, source: `${week.id}/${c.source}` });
   const out: Clip[] = [];
@@ -70,6 +104,13 @@ export function weekClips(voices: Voices, week: Week): Clip[] {
     out.push(at(a), at(b));
   }
   for (const d of week.numberDrills) out.push(at(drillClip(voices, d)));
+  for (const p of week.patterns) p.items.forEach((_, i) => out.push(at(patternClip(voices, p, i))));
+  if (week.branching) {
+    for (const node of week.branching.nodes) {
+      out.push(at(branchNodeClip(voices, week.branching, node)));
+      for (const o of node.options) out.push(at(branchOptionClip(voices, week.branching, o)));
+    }
+  }
   return out;
 }
 

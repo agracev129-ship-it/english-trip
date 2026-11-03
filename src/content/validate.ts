@@ -42,11 +42,15 @@ const WORD_TYPES: ExerciseType[] = [
 const LISTENING_TYPES: ExerciseType[] = [
   'dialog_comprehension',
   'interactive_transcript',
-  'catch_the_word',
-  'shadowing',
-  'speed_ladder',
 ];
-const LINE_TYPES: ExerciseType[] = ['dictation_tiles', 'dictation_typing'];
+const LINE_TYPES: ExerciseType[] = [
+  'dictation_tiles',
+  'dictation_typing',
+  'catch_the_word',
+  'speed_ladder',
+  'shadowing',
+  'say_it',
+];
 
 function zodErrors(where: string, error: { issues: { path: PropertyKey[]; message: string }[] }) {
   return error.issues.map((i) => `${where}: ${i.path.map(String).join('.') || '(корень)'} — ${i.message}`);
@@ -91,6 +95,7 @@ export function validateContent(files: ContentFiles, opts: ValidateOptions = {})
       ...week.listenings.map((l) => l.id),
       ...week.minimalPairs.map((p) => p.id),
       ...week.numberDrills.map((d) => d.id),
+      ...week.patterns.map((p) => p.id),
       ...week.lessons.map((l) => l.id),
     ];
     for (const d of duplicates(allIds)) err(`id «${d}» встречается несколько раз`);
@@ -112,18 +117,66 @@ export function validateContent(files: ContentFiles, opts: ValidateOptions = {})
       });
     }
 
+    for (const p of week.patterns) {
+      p.items.forEach((item, i) => {
+        if (duplicates([item.answer, ...item.wrong]).length) {
+          err(`шаблон ${p.id}, пункт ${i + 1}: одинаковые варианты`);
+        }
+      });
+    }
+
+    if (week.branching) {
+      const b = week.branching;
+      const at = `разговор ${b.id}`;
+      const byId = new Map(b.nodes.map((n) => [n.id, n]));
+      for (const d of duplicates(b.nodes.map((n) => n.id))) err(`${at}: узел «${d}» повторяется`);
+      if (!byId.has(b.start)) err(`${at}: нет начального узла «${b.start}»`);
+      const speakerIds = new Set(b.speakers.map((s) => s.id));
+      for (const s of b.speakers) {
+        if (voices.success && !voices.data.roles[s.voice]) err(`${at}: нет голоса «${s.voice}»`);
+      }
+      for (const n of b.nodes) {
+        if (!speakerIds.has(n.speaker)) err(`${at}, ${n.id}: нет говорящего «${n.speaker}»`);
+        if (n.options.length && !n.options.some((o) => o.ok)) {
+          err(`${at}, ${n.id}: нет ни одного уместного ответа`);
+        }
+        for (const o of n.options) {
+          if (!byId.has(o.next)) err(`${at}, ${n.id}: ответ ведёт в несуществующий «${o.next}»`);
+          if (!o.ok && !o.hintRu) err(`${at}, ${n.id}: у неуместного ответа нет подсказки`);
+        }
+      }
+      // Из начала по уместным ответам должен быть путь до конца разговора
+      const seen = new Set<string>();
+      const walk = (nodeId: string): boolean => {
+        if (seen.has(nodeId)) return false;
+        seen.add(nodeId);
+        const n = byId.get(nodeId);
+        if (!n) return false;
+        return n.options.length === 0 || n.options.filter((o) => o.ok).some((o) => walk(o.next));
+      };
+      if (!walk(b.start)) err(`${at}: по уместным ответам нельзя дойти до конца`);
+      // Все узлы достижимы
+      const reach = new Set<string>();
+      const visit = (nodeId: string) => {
+        if (reach.has(nodeId)) return;
+        reach.add(nodeId);
+        for (const o of byId.get(nodeId)?.options ?? []) visit(o.next);
+      };
+      visit(b.start);
+      for (const n of b.nodes) if (!reach.has(n.id)) err(`${at}: узел «${n.id}» недостижим`);
+    }
+
     const wordIds = new Set(week.words.map((w) => w.id));
     const listeningById = new Map(week.listenings.map((l) => [l.id, l]));
     const pairIds = new Set(week.minimalPairs.map((p) => p.id));
     const drillIds = new Set(week.numberDrills.map((d) => d.id));
+    const patternIds = new Set(week.patterns.map((p) => p.id));
     const days = week.lessons.map((l) => l.day);
     if (duplicates(days.map(String)).length || days.some((d, i) => d !== i + 1)) {
       err('уроки должны идти по дням 1…7');
     }
 
-    for (const lesson of week.lessons) {
-      lesson.steps.forEach((step, i) => {
-        const at = `${lesson.id}, шаг ${i + 1} (${step.type})`;
+    const checkRefs = (step: { type: ExerciseType; ref?: string[] }, at: string) => {
         for (const ref of step.ref ?? []) {
           const ok = WORD_TYPES.includes(step.type)
             ? wordIds.has(ref)
@@ -139,11 +192,26 @@ export function validateContent(files: ContentFiles, opts: ValidateOptions = {})
                   ? pairIds.has(ref)
                   : step.type === 'numbers_listen'
                     ? drillIds.has(ref)
-                    : true;
+                    : step.type === 'pattern_builder'
+                      ? patternIds.has(ref)
+                      : true;
           if (!ok) err(`${at}: ссылка «${ref}» никуда не ведёт`);
+        }
+    };
+    for (const lesson of week.lessons) {
+      lesson.steps.forEach((step, i) => {
+        checkRefs(step, `${lesson.id}, шаг ${i + 1} (${step.type})`);
+        if (step.type === 'branching_dialog' && !week.branching) {
+          err(`${lesson.id}: в плане разговор, а в неделе его нет`);
+        }
+        if (step.type === 'boss_week' && !week.boss) {
+          err(`${lesson.id}: в плане босс, а в неделе его нет`);
         }
       });
     }
+    week.boss?.steps.forEach((step, i) => {
+      checkRefs(step, `босс, шаг ${i + 1} (${step.type})`);
+    });
 
     if (voices.success) {
       try {

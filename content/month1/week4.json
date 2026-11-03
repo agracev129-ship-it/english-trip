@@ -150,96 +150,450 @@
     { "id": "n-call-time", "text": "The call starts at a quarter past ten.", "answers": ["10:15"], "promptRu": "Во сколько начинается созвон?" },
     { "id": "n-sales", "text": "Our sales grew by fifteen percent this year.", "answers": ["15"], "promptRu": "На сколько процентов выросли продажи?" }
   ],
+  "patterns": [
+    {
+      "id": "p-are-you-free",
+      "template": "Are you free ___?",
+      "ruleRu": "«Are you free…?» — «Ты свободна…?». Дни недели идут с on: on Thursday, а время с at: at three.",
+      "items": [
+        {
+          "promptRu": "Спроси про четверг",
+          "answer": "on Thursday",
+          "wrong": [
+            "in Thursday",
+            "at Thursday"
+          ]
+        },
+        {
+          "promptRu": "Спроси про три часа",
+          "answer": "at three o'clock",
+          "wrong": [
+            "on three o'clock",
+            "in three o'clock"
+          ]
+        },
+        {
+          "promptRu": "Спроси про утро пятницы",
+          "answer": "on Friday morning",
+          "wrong": [
+            "in Friday morning",
+            "at Friday morning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-can-you",
+      "template": "Can you ___, please?",
+      "ruleRu": "«Can you…, please?» — просьба к коллеге. После can глагол стоит без to и без окончаний.",
+      "items": [
+        {
+          "promptRu": "Попроси показать экран",
+          "answer": "share your screen",
+          "wrong": [
+            "to share your screen",
+            "sharing your screen"
+          ]
+        },
+        {
+          "promptRu": "Попроси повторить",
+          "answer": "say that again",
+          "wrong": [
+            "to say that again",
+            "saying that again"
+          ]
+        },
+        {
+          "promptRu": "Попроси прислать ссылку",
+          "answer": "send me a link",
+          "wrong": [
+            "to send me a link",
+            "sends me a link"
+          ]
+        }
+      ]
+    }
+  ],
+  "branching": {
+    "id": "b-call",
+    "title": "Созвон с руководителем",
+    "introRu": "Том зовёт тебя на короткий созвон: нужно обсудить отчёт и договориться о встрече.",
+    "speakers": [
+      {
+        "id": "tom",
+        "name": "Tom",
+        "voice": "man1"
+      }
+    ],
+    "start": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "speaker": "tom",
+        "text": "Hi, Anna. Can you hear me?",
+        "ru": "Привет, Анна. Ты меня слышишь?",
+        "options": [
+          {
+            "text": "Yes, I can hear you.",
+            "ru": "Да, я тебя слышу.",
+            "next": "email",
+            "ok": true
+          },
+          {
+            "text": "Sorry, you're breaking up. Can you say that again?",
+            "ru": "Извини, тебя плохо слышно. Можешь повторить?",
+            "next": "again",
+            "ok": true
+          },
+          {
+            "text": "Nice to meet you.",
+            "ru": "Приятно познакомиться.",
+            "next": "r-meet",
+            "ok": false,
+            "hintRu": "Вы уже знакомы: так говорят только при первой встрече. Ответь: Yes, I can hear you."
+          }
+        ]
+      },
+      {
+        "id": "r-meet",
+        "speaker": "tom",
+        "text": "We met last week, Anna! Can you hear me well?",
+        "ru": "Мы познакомились на прошлой неделе, Анна! Ты меня хорошо слышишь?",
+        "options": [
+          {
+            "text": "Sorry! Yes, I can hear you.",
+            "ru": "Извини! Да, я тебя слышу.",
+            "next": "email",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "again",
+        "speaker": "tom",
+        "text": "I said, can you hear me now?",
+        "ru": "Я говорю: теперь ты меня слышишь?",
+        "options": [
+          {
+            "text": "Yes, that's much better.",
+            "ru": "Да, так гораздо лучше.",
+            "next": "email",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "email",
+        "speaker": "tom",
+        "text": "Great. Did you get my email about the report?",
+        "ru": "Отлично. Ты получила моё письмо про отчёт?",
+        "options": [
+          {
+            "text": "Yes, I did. When is the deadline?",
+            "ru": "Да. Когда срок сдачи?",
+            "next": "deadline",
+            "ok": true
+          },
+          {
+            "text": "Sorry, not yet. Can you send it again?",
+            "ru": "Извини, ещё нет. Можешь прислать ещё раз?",
+            "next": "resend",
+            "ok": true
+          },
+          {
+            "text": "Yes, a table for two.",
+            "ru": "Да, столик на двоих.",
+            "next": "r-table",
+            "ok": false,
+            "hintRu": "Речь о письме и отчёте, а не о ресторане. Ответь: Yes, I did. When is the deadline?"
+          }
+        ]
+      },
+      {
+        "id": "r-table",
+        "speaker": "tom",
+        "text": "A table? I'm talking about the report, Anna.",
+        "ru": "Столик? Я говорю про отчёт, Анна.",
+        "options": [
+          {
+            "text": "Sorry! Yes, I did. When is the deadline?",
+            "ru": "Извини! Да. Когда срок сдачи?",
+            "next": "deadline",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "resend",
+        "speaker": "tom",
+        "text": "No problem. I'll send it now. The deadline is Friday morning.",
+        "ru": "Не проблема. Сейчас пришлю. Срок — утро пятницы.",
+        "options": [
+          {
+            "text": "OK, thanks. I need the numbers from the sales team first.",
+            "ru": "Хорошо, спасибо. Сначала мне нужны цифры от отдела продаж.",
+            "next": "meeting",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "deadline",
+        "speaker": "tom",
+        "text": "It's Friday morning. Is that possible?",
+        "ru": "Утро пятницы. Это реально?",
+        "options": [
+          {
+            "text": "Yes, but I need the numbers from the sales team first.",
+            "ru": "Да, но сначала мне нужны цифры от отдела продаж.",
+            "next": "meeting",
+            "ok": true
+          },
+          {
+            "text": "Is it on sale?",
+            "ru": "Это со скидкой?",
+            "next": "r-sale",
+            "ok": false,
+            "hintRu": "«On sale» — это про скидки в магазине. Ответь про срок: Yes, but I need the numbers first."
+          }
+        ]
+      },
+      {
+        "id": "r-sale",
+        "speaker": "tom",
+        "text": "On sale? No, it's a report! Is Friday possible?",
+        "ru": "Со скидкой? Нет, это же отчёт! Пятница подходит?",
+        "options": [
+          {
+            "text": "Sorry! Yes, but I need the numbers from the sales team first.",
+            "ru": "Извини! Да, но сначала мне нужны цифры от отдела продаж.",
+            "next": "meeting",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "meeting",
+        "speaker": "tom",
+        "text": "OK, I'll ask them today. Are you free on Thursday at three?",
+        "ru": "Хорошо, я сегодня их попрошу. Ты свободна в четверг в три?",
+        "options": [
+          {
+            "text": "Three works for me. Should we meet online?",
+            "ru": "Три мне подходит. Встретимся онлайн?",
+            "next": "link",
+            "ok": true
+          },
+          {
+            "text": "Sorry, I have a call at three. Is four OK?",
+            "ru": "Извини, у меня созвон в три. В четыре нормально?",
+            "next": "four",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "four",
+        "speaker": "tom",
+        "text": "Four works for me. Let's meet online.",
+        "ru": "Четыре мне подходит. Давай встретимся онлайн.",
+        "options": [
+          {
+            "text": "Perfect. Can you send me a link?",
+            "ru": "Отлично. Можешь прислать мне ссылку?",
+            "next": "link",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "link",
+        "speaker": "tom",
+        "text": "Yes, I'll send you a link. See you on Thursday.",
+        "ru": "Да, я пришлю тебе ссылку. До четверга.",
+        "options": [
+          {
+            "text": "See you on Thursday. Thanks, Tom!",
+            "ru": "До четверга. Спасибо, Том!",
+            "next": "end",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "speaker": "tom",
+        "text": "Bye, Anna!",
+        "ru": "Пока, Анна!",
+        "options": []
+      }
+    ]
+  },
+  "boss": {
+    "id": "boss-client",
+    "title": "Важный созвон",
+    "storyRu": "До созвона с клиентом всего несколько минут, а нужно собрать команду, наладить связь и не пропустить срок отчёта.",
+    "winRu": "Созвон прошёл отлично. Клиент доволен, а Том написал: «Great job, Anna!»",
+    "loseRu": "Созвон начался без тебя, но Том потом всё пересказал. В следующий раз получится.",
+    "timeLimitSec": 300,
+    "steps": [
+      {
+        "storyRu": "Том пишет про срок. Что значит это слово?",
+        "type": "word_listen_choice",
+        "ref": [
+          "deadline"
+        ]
+      },
+      {
+        "storyRu": "Во сколько начинается созвон?",
+        "type": "numbers_listen",
+        "ref": [
+          "n-call-time"
+        ]
+      },
+      {
+        "storyRu": "В какую переговорную идти?",
+        "type": "numbers_listen",
+        "ref": [
+          "n-room"
+        ]
+      },
+      {
+        "storyRu": "Коллега кричит с другого конца офиса. Что прозвучало?",
+        "type": "minimal_pairs",
+        "ref": [
+          "desk-disk"
+        ]
+      },
+      {
+        "storyRu": "Связь плохая. Попроси коллегу.",
+        "type": "pattern_builder",
+        "ref": [
+          "p-can-you"
+        ]
+      },
+      {
+        "storyRu": "Том просит что-то изменить на экране. Поймай слово.",
+        "type": "catch_the_word",
+        "ref": [
+          "d3#4"
+        ]
+      },
+      {
+        "storyRu": "Том договаривается о встрече. Собери его фразу.",
+        "type": "dictation_tiles",
+        "ref": [
+          "d2#5"
+        ]
+      },
+      {
+        "storyRu": "Том оставил голосовое сообщение. Запиши его просьбу.",
+        "type": "dictation_typing",
+        "ref": [
+          "d4#5"
+        ]
+      }
+    ]
+  },
   "aiPrompt": "You are my manager at an international company. We have a short video call about my work this week. My English level is A2. Speak slowly and use simple words. Ask me one question at a time and plan a meeting with me. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
   "lessons": [
     {
       "id": "m1w4-l1",
       "day": 1,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
         { "type": "word_intro", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"] },
         { "type": "word_listen_choice", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"] },
         { "type": "dialog_comprehension", "ref": ["d1"] },
         { "type": "interactive_transcript", "ref": ["d1"] },
-        { "type": "minimal_pairs", "ref": ["desk-disk", "send-sand", "file-fail"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#2", "d1#4", "d1#5"] }
+        { "type": "shadowing", "ref": ["d1#1", "d1#7"] },
+        { "type": "minimal_pairs", "ref": ["desk-disk", "send-sand", "file-fail"], "params": {"count": 4} },
+        { "type": "pattern_builder", "ref": ["p-are-you-free"] },
+        { "type": "dictation_tiles", "ref": ["d1#2", "d1#5"] }
       ]
     },
     {
       "id": "m1w4-l2",
       "day": 2,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["nice-to-meet-you", "project-manager", "team", "colleague", "introduce", "work-in-marketing", "developer"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"] },
         { "type": "word_listen_choice", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"] },
         { "type": "dialog_comprehension", "ref": ["d2"] },
         { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "shadowing", "ref": ["d2#2", "d2#4"] },
         { "type": "numbers_listen", "ref": ["n-meeting-time", "n-minutes", "n-call-time"] },
-        { "type": "dictation_tiles", "ref": ["d2#1", "d2#4", "d2#5"] }
+        { "type": "word_listen_spell", "ref": ["calendar", "meeting", "online"] },
+        { "type": "dictation_tiles", "ref": ["d2#1", "d2#6"] }
       ]
     },
     {
       "id": "m1w4-l3",
       "day": 3,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["free", "calendar", "call", "works-for-me", "online", "send-a-link", "meeting"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"] },
         { "type": "word_listen_choice", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"] },
         { "type": "dialog_comprehension", "ref": ["d3"] },
         { "type": "interactive_transcript", "ref": ["d3"] },
-        { "type": "minimal_pairs", "ref": ["late-let", "fit-feet", "call-cold", "first-fast"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d3#0", "d3#2", "d3#5"] }
+        { "type": "shadowing", "ref": ["d3#1", "d3#3"] },
+        { "type": "catch_the_word", "ref": ["d3#2", "d3#3", "d3#4"] },
+        { "type": "pattern_builder", "ref": ["p-can-you"] },
+        { "type": "dictation_tiles", "ref": ["d3#0", "d3#5"] }
       ]
     },
     {
       "id": "m1w4-l4",
       "day": 4,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["can-you-hear-me", "youre-breaking-up", "say-that-again", "share-your-screen", "bigger", "on-mute", "email"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["report", "deadline", "possible", "sales-team", "draft", "in-the-office", "first"] },
         { "type": "word_listen_choice", "ref": ["report", "deadline", "possible", "sales-team", "draft", "in-the-office", "first"] },
         { "type": "dialog_comprehension", "ref": ["d4"] },
         { "type": "interactive_transcript", "ref": ["d4"] },
-        { "type": "numbers_listen", "ref": ["n-extension", "n-room", "n-deadline-date", "n-team-size"] },
-        { "type": "dictation_tiles", "ref": ["d4#1", "d4#3", "d4#5"] }
+        { "type": "shadowing", "ref": ["d4#2", "d4#5"] },
+        { "type": "numbers_listen", "ref": ["n-extension", "n-room", "n-deadline-date"] },
+        { "type": "word_listen_spell", "ref": ["report", "deadline", "draft"] },
+        { "type": "dictation_tiles", "ref": ["d4#1", "d4#3"] }
       ]
     },
     {
       "id": "m1w4-l5",
       "day": 5,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
-        { "type": "minimal_pairs", "ref": ["nineteen-ninety", "file-fail", "desk-disk", "late-let"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#3", "d1#6", "d2#2", "d2#6"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": {"speedDelta": 0.1} },
+        { "type": "speed_ladder", "ref": ["d1#3"] },
+        { "type": "catch_the_word", "ref": ["d1#4", "d2#3"] },
+        { "type": "dictation_typing", "ref": ["d1#7", "d2#1"] },
+        { "type": "say_it", "ref": ["d1#3", "d2#4"] }
       ]
     },
     {
       "id": "m1w4-l6",
       "day": 6,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
-        { "type": "numbers_listen", "ref": ["n-meeting-time", "n-room", "n-deadline-date", "n-call-time", "n-sales"] },
-        { "type": "dictation_tiles", "ref": ["d3#1", "d3#4", "d4#2", "d4#6"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": {"speedDelta": 0.1} },
+        { "type": "branching_dialog" },
+        { "type": "numbers_listen", "ref": ["n-team-size", "n-sales", "n-call-time"] },
+        { "type": "dictation_typing", "ref": ["d3#5", "d4#0"] }
       ]
     },
     {
       "id": "m1w4-l7",
       "day": 7,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 25 } },
-        { "type": "word_listen_choice", "params": { "count": 12 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "minimal_pairs", "params": { "count": 8 } },
-        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "word_listen_choice", "params": {"count": 8} },
+        { "type": "boss_week" },
         { "type": "ai_conversation" }
       ]
     }

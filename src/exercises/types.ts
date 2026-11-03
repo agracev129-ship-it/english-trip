@@ -1,5 +1,5 @@
 import type { Skill, Week } from '../content/schema';
-import type { LessonItem } from '../lib/lessonBuilder';
+import type { ItemKind, LessonItem } from '../lib/lessonBuilder';
 
 export type Report = {
   correct: boolean;
@@ -7,6 +7,10 @@ export type Report = {
   firstTry?: boolean;
   skill: Skill;
   itemIds: string[];
+  /** Тип задания, если он отличается от текущего (задания внутри босса) */
+  kind?: ItemKind;
+  /** Звучало ли в обычной скорости; по умолчанию — да, если не включена «улитка» */
+  normalSpeed?: boolean;
 };
 
 /** Общий интерфейс заданий (PROJECT.md, раздел 6). */

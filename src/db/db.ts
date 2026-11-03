@@ -12,6 +12,8 @@ export type Settings = {
   slowSpeed: number;
   sounds: boolean;
   haptics: boolean;
+  /** «Скажи фразу»: голос уходит на серверы Google, поэтому только по её решению */
+  speechRecognition?: boolean;
 };
 
 export type Profile = {

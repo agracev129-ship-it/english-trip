@@ -157,96 +157,436 @@
     { "id": "n-pharmacy-closes", "text": "The pharmacy closes at half past eight.", "answers": ["8:30"], "promptRu": "Во сколько закрывается аптека?" },
     { "id": "n-change", "text": "Here's your change. Three pounds forty.", "answers": ["3.40"], "promptRu": "Сколько сдачи (в фунтах)?" }
   ],
+  "patterns": [
+    {
+      "id": "p-can-i-have",
+      "template": "Can I have ___, please?",
+      "ruleRu": "«Can I have…, please?» — обычная просьба в кафе и магазине. Чуть проще, чем «Could I have…».",
+      "items": [
+        {
+          "promptRu": "Закажи большой латте",
+          "answer": "a large latte",
+          "wrong": [
+            "a large menu",
+            "a large size"
+          ]
+        },
+        {
+          "promptRu": "Попроси счёт",
+          "answer": "the bill",
+          "wrong": [
+            "the cash",
+            "the fitting room"
+          ]
+        },
+        {
+          "promptRu": "Попроси чек",
+          "answer": "a receipt",
+          "wrong": [
+            "a table",
+            "a medium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-do-you-have-this",
+      "template": "Do you have this in ___?",
+      "ruleRu": "«Do you have this in…?» — «Есть такое в…?». Так спрашивают про другой размер или цвет.",
+      "items": [
+        {
+          "promptRu": "Спроси размер поменьше",
+          "answer": "a smaller size",
+          "wrong": [
+            "a smaller table",
+            "a smaller bill"
+          ]
+        },
+        {
+          "promptRu": "Спроси средний размер",
+          "answer": "a medium",
+          "wrong": [
+            "a menu",
+            "a receipt"
+          ]
+        },
+        {
+          "promptRu": "Спроси такое же, только синее",
+          "answer": "blue",
+          "wrong": [
+            "twice",
+            "altogether"
+          ]
+        }
+      ]
+    }
+  ],
+  "branching": {
+    "id": "b-dinner",
+    "title": "Ужин в ресторане",
+    "introRu": "Ты зашла поужинать с подругой. Найди столик, закажи еду и попроси счёт.",
+    "speakers": [
+      {
+        "id": "waiter",
+        "name": "Waiter",
+        "voice": "man1"
+      }
+    ],
+    "start": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "speaker": "waiter",
+        "text": "Good evening. Do you have a reservation?",
+        "ru": "Добрый вечер. У вас забронировано?",
+        "options": [
+          {
+            "text": "No, we don't. Do you have a table for two?",
+            "ru": "Нет. У вас есть столик на двоих?",
+            "next": "table",
+            "ok": true
+          },
+          {
+            "text": "Yes, a large latte.",
+            "ru": "Да, большой латте.",
+            "next": "r-latte",
+            "ok": false,
+            "hintRu": "Тебя спрашивают про бронь. Ответь: No, we don't — и спроси про столик."
+          }
+        ]
+      },
+      {
+        "id": "r-latte",
+        "speaker": "waiter",
+        "text": "Sorry? I asked about a reservation. Do you have one?",
+        "ru": "Простите? Я спросил про бронь. У вас она есть?",
+        "options": [
+          {
+            "text": "Sorry. No, we don't. Do you have a table for two?",
+            "ru": "Извините. Нет. У вас есть столик на двоих?",
+            "next": "table",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "table",
+        "speaker": "waiter",
+        "text": "Yes, follow me, please. Here's the menu. What can I get you?",
+        "ru": "Да, пройдёмте, пожалуйста. Вот меню. Что будете заказывать?",
+        "options": [
+          {
+            "text": "What do you recommend?",
+            "ru": "Что вы посоветуете?",
+            "next": "rec",
+            "ok": true
+          },
+          {
+            "text": "I'll have the fish of the day, please.",
+            "ru": "Я возьму рыбу дня, пожалуйста.",
+            "next": "drink",
+            "ok": true
+          },
+          {
+            "text": "I have a headache.",
+            "ru": "У меня болит голова.",
+            "next": "r-head",
+            "ok": false,
+            "hintRu": "Это для аптеки. Здесь лучше спросить: What do you recommend?"
+          }
+        ]
+      },
+      {
+        "id": "r-head",
+        "speaker": "waiter",
+        "text": "Oh, I'm sorry. Would you like some water? And what would you like to eat?",
+        "ru": "Ой, сочувствую. Хотите воды? А что будете есть?",
+        "options": [
+          {
+            "text": "Yes, please. What do you recommend?",
+            "ru": "Да, пожалуйста. Что вы посоветуете?",
+            "next": "rec",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "rec",
+        "speaker": "waiter",
+        "text": "The fish of the day is very good. It comes with salad.",
+        "ru": "Рыба дня очень хорошая. Её подают с салатом.",
+        "options": [
+          {
+            "text": "I'll have that, please.",
+            "ru": "Я возьму её, пожалуйста.",
+            "next": "drink",
+            "ok": true
+          },
+          {
+            "text": "How much is it?",
+            "ru": "Сколько она стоит?",
+            "next": "price",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "price",
+        "speaker": "waiter",
+        "text": "It's fourteen pounds.",
+        "ru": "Четырнадцать фунтов.",
+        "options": [
+          {
+            "text": "OK, I'll have that, please.",
+            "ru": "Хорошо, я возьму её, пожалуйста.",
+            "next": "drink",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "drink",
+        "speaker": "waiter",
+        "text": "Of course. Anything to drink?",
+        "ru": "Конечно. Что-нибудь выпить?",
+        "options": [
+          {
+            "text": "Just some tap water, please.",
+            "ru": "Просто воды из-под крана, пожалуйста.",
+            "next": "bill",
+            "ok": true
+          },
+          {
+            "text": "It's thirty percent off.",
+            "ru": "Скидка тридцать процентов.",
+            "next": "r-off",
+            "ok": false,
+            "hintRu": "Тебя спрашивают про напитки, а не про скидки. Ответь: Just some tap water, please."
+          }
+        ]
+      },
+      {
+        "id": "r-off",
+        "speaker": "waiter",
+        "text": "Not today, I'm afraid! So, anything to drink?",
+        "ru": "Боюсь, сегодня нет! Так что будете пить?",
+        "options": [
+          {
+            "text": "Sorry. Just some tap water, please.",
+            "ru": "Извините. Просто воды из-под крана, пожалуйста.",
+            "next": "bill",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "bill",
+        "speaker": "waiter",
+        "text": "Here you are. Was everything OK?",
+        "ru": "Пожалуйста. Всё было хорошо?",
+        "options": [
+          {
+            "text": "Yes, it was very good. Could we have the bill, please?",
+            "ru": "Да, очень вкусно. Можно нам счёт, пожалуйста?",
+            "next": "pay",
+            "ok": true
+          },
+          {
+            "text": "Yes, thanks. Can I pay by card?",
+            "ru": "Да, спасибо. Можно заплатить картой?",
+            "next": "pay",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "pay",
+        "speaker": "waiter",
+        "text": "Yes, of course. That's twenty-two pounds fifty.",
+        "ru": "Да, конечно. С вас двадцать два фунта пятьдесят.",
+        "options": [
+          {
+            "text": "Here you are. Thank you very much.",
+            "ru": "Вот, пожалуйста. Большое спасибо.",
+            "next": "end",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "speaker": "waiter",
+        "text": "Thank you. Have a nice evening!",
+        "ru": "Спасибо. Хорошего вечера!",
+        "options": []
+      }
+    ]
+  },
+  "boss": {
+    "id": "boss-evening",
+    "title": "Ужин без паники",
+    "storyRu": "Друзья ждут тебя в ресторане, но сначала нужно купить лекарство, забрать куртку и не перепутать цены.",
+    "winRu": "Всё успела: лекарство в сумке, куртка на плечах, рыба дня на столе.",
+    "loseRu": "Друзья начали без тебя, но столик за тобой оставили. В следующий раз получится быстрее.",
+    "timeLimitSec": 300,
+    "steps": [
+      {
+        "storyRu": "Ты в аптеке. На что ты жалуешься?",
+        "type": "word_listen_choice",
+        "ref": [
+          "headache"
+        ]
+      },
+      {
+        "storyRu": "Фармацевт объясняет, как принимать таблетки.",
+        "type": "numbers_listen",
+        "ref": [
+          "n-tablets"
+        ]
+      },
+      {
+        "storyRu": "Сколько с тебя в аптеке?",
+        "type": "numbers_listen",
+        "ref": [
+          "n-altogether"
+        ]
+      },
+      {
+        "storyRu": "В магазине объявление. Что прозвучало?",
+        "type": "minimal_pairs",
+        "ref": [
+          "price-prize"
+        ]
+      },
+      {
+        "storyRu": "Куртка великовата. Спроси у продавца.",
+        "type": "pattern_builder",
+        "ref": [
+          "p-do-you-have-this"
+        ]
+      },
+      {
+        "storyRu": "Продавец говорит про скидку. Поймай слово.",
+        "type": "catch_the_word",
+        "ref": [
+          "d3#7"
+        ]
+      },
+      {
+        "storyRu": "Ты в ресторане! Собери фразу, которую сказал официант.",
+        "type": "dictation_tiles",
+        "ref": [
+          "d2#4"
+        ]
+      },
+      {
+        "storyRu": "Подруга не расслышала твой вопрос. Запиши его.",
+        "type": "dictation_typing",
+        "ref": [
+          "d2#3"
+        ]
+      }
+    ]
+  },
   "aiPrompt": "You are a waiter in a café in London. I am a customer. My English level is A2. Speak slowly and use simple words. Take my order, recommend something, and then bring the bill. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
   "lessons": [
     {
       "id": "m1w3-l1",
       "day": 1,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
         { "type": "word_intro", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"] },
         { "type": "word_listen_choice", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"] },
         { "type": "dialog_comprehension", "ref": ["d1"] },
         { "type": "interactive_transcript", "ref": ["d1"] },
-        { "type": "minimal_pairs", "ref": ["hat-hot", "soup-soap", "fill-feel"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#1", "d1#4", "d1#6"] }
+        { "type": "shadowing", "ref": ["d1#1", "d1#5"] },
+        { "type": "minimal_pairs", "ref": ["hat-hot", "soup-soap", "fill-feel"], "params": {"count": 4} },
+        { "type": "pattern_builder", "ref": ["p-can-i-have"] },
+        { "type": "dictation_tiles", "ref": ["d1#1", "d1#4"] }
       ]
     },
     {
       "id": "m1w3-l2",
       "day": 2,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["what-can-i-get-you", "large", "oat-milk", "take-away", "eat-in", "how-much-is-it", "table-for-two"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"] },
         { "type": "word_listen_choice", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"] },
         { "type": "dialog_comprehension", "ref": ["d2"] },
         { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "shadowing", "ref": ["d2#3", "d2#7"] },
         { "type": "numbers_listen", "ref": ["n-coffee-price", "n-table", "n-change"] },
-        { "type": "dictation_tiles", "ref": ["d2#3", "d2#5", "d2#8"] }
+        { "type": "word_listen_spell", "ref": ["menu", "cash", "recommend"] },
+        { "type": "dictation_tiles", "ref": ["d2#3", "d2#4"] }
       ]
     },
     {
       "id": "m1w3-l3",
       "day": 3,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["menu", "recommend", "fish-of-the-day", "tap-water", "the-bill", "pay-by-card", "cash"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"] },
         { "type": "word_listen_choice", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"] },
         { "type": "dialog_comprehension", "ref": ["d3"] },
         { "type": "interactive_transcript", "ref": ["d3"] },
-        { "type": "minimal_pairs", "ref": ["price-prize", "cost-coast", "bill-bell", "pepper-paper"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d3#3", "d3#5", "d3#7"] }
+        { "type": "shadowing", "ref": ["d3#2", "d3#8"] },
+        { "type": "catch_the_word", "ref": ["d3#1", "d3#5", "d3#7"] },
+        { "type": "pattern_builder", "ref": ["p-do-you-have-this"] },
+        { "type": "dictation_tiles", "ref": ["d3#3", "d3#6"] }
       ]
     },
     {
       "id": "m1w3-l4",
       "day": 4,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["size", "medium", "fitting-room", "fit", "on-sale", "percent-off", "ill-take-it"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["receipt", "headache", "sore-throat", "temperature", "tablets", "twice-a-day", "altogether"] },
         { "type": "word_listen_choice", "ref": ["receipt", "headache", "sore-throat", "temperature", "tablets", "twice-a-day", "altogether"] },
         { "type": "dialog_comprehension", "ref": ["d4"] },
         { "type": "interactive_transcript", "ref": ["d4"] },
-        { "type": "numbers_listen", "ref": ["n-discount", "n-new-price", "n-tablets", "n-altogether"] },
-        { "type": "dictation_tiles", "ref": ["d4#0", "d4#3", "d4#5"] }
+        { "type": "shadowing", "ref": ["d4#0", "d4#5"] },
+        { "type": "numbers_listen", "ref": ["n-discount", "n-new-price", "n-tablets"] },
+        { "type": "word_listen_spell", "ref": ["receipt", "headache", "tablets"] },
+        { "type": "dictation_tiles", "ref": ["d4#1", "d4#3"] }
       ]
     },
     {
       "id": "m1w3-l5",
       "day": 5,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
-        { "type": "minimal_pairs", "ref": ["hungry-angry", "hat-hot", "soup-soap", "bill-bell"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#2", "d1#5", "d2#1", "d2#6"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": {"speedDelta": 0.1} },
+        { "type": "speed_ladder", "ref": ["d1#4"] },
+        { "type": "catch_the_word", "ref": ["d1#2", "d2#5"] },
+        { "type": "dictation_typing", "ref": ["d1#6", "d2#3"] },
+        { "type": "say_it", "ref": ["d1#1", "d2#6"] }
       ]
     },
     {
       "id": "m1w3-l6",
       "day": 6,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
-        { "type": "numbers_listen", "ref": ["n-coffee-price", "n-new-price", "n-tablets", "n-pharmacy-closes", "n-change"] },
-        { "type": "dictation_tiles", "ref": ["d3#1", "d3#6", "d4#4", "d4#6"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": {"speedDelta": 0.1} },
+        { "type": "branching_dialog" },
+        { "type": "numbers_listen", "ref": ["n-altogether", "n-pharmacy-closes", "n-change"] },
+        { "type": "dictation_typing", "ref": ["d3#3", "d4#1"] }
       ]
     },
     {
       "id": "m1w3-l7",
       "day": 7,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 25 } },
-        { "type": "word_listen_choice", "params": { "count": 12 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "minimal_pairs", "params": { "count": 8 } },
-        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "word_listen_choice", "params": {"count": 8} },
+        { "type": "boss_week" },
         { "type": "ai_conversation" }
       ]
     }

@@ -152,96 +152,416 @@
     { "id": "n-wifi", "text": "The Wi-Fi password is park two oh two six.", "answers": ["2026"], "promptRu": "Цифры в пароле от Wi-Fi" },
     { "id": "n-every-15", "text": "The bus comes every fifteen minutes.", "answers": ["15"], "promptRu": "Как часто ходит автобус (минуты)?" }
   ],
+  "patterns": [
+    {
+      "id": "p-is-included",
+      "template": "Is ___ included?",
+      "ruleRu": "«Is … included?» — «… включён в цену?». Так спрашивают про завтрак, Wi-Fi и экскурсии.",
+      "items": [
+        {
+          "promptRu": "Спроси про завтрак",
+          "answer": "breakfast",
+          "wrong": [
+            "the bridge",
+            "the floor"
+          ]
+        },
+        {
+          "promptRu": "Спроси про вайфай",
+          "answer": "the Wi-Fi",
+          "wrong": [
+            "the museum",
+            "the bus stop"
+          ]
+        },
+        {
+          "promptRu": "Спроси про экскурсию на лодке",
+          "answer": "the boat tour",
+          "wrong": [
+            "the old town",
+            "the receptionist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-how-do-i-get",
+      "template": "How do I get to ___?",
+      "ruleRu": "«How do I get to…?» — «Как добраться до…?». После get to сразу идёт место, обычно с the.",
+      "items": [
+        {
+          "promptRu": "Спроси дорогу к музею",
+          "answer": "the museum",
+          "wrong": [
+            "at the museum",
+            "in the museum"
+          ]
+        },
+        {
+          "promptRu": "Спроси дорогу к автобусной остановке",
+          "answer": "the bus stop",
+          "wrong": [
+            "in the bus stop",
+            "on the bus stop"
+          ]
+        },
+        {
+          "promptRu": "Спроси дорогу к старому городу",
+          "answer": "the old town",
+          "wrong": [
+            "at the old town",
+            "on the old town"
+          ]
+        }
+      ]
+    }
+  ],
+  "branching": {
+    "id": "b-room",
+    "title": "Номер ещё не готов",
+    "introRu": "Ты приехала в отель раньше времени. Поговори с администратором и реши, чем заняться.",
+    "speakers": [
+      {
+        "id": "receptionist",
+        "name": "Receptionist",
+        "voice": "woman2"
+      }
+    ],
+    "start": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "speaker": "receptionist",
+        "text": "Good morning. Do you have a reservation?",
+        "ru": "Доброе утро. У вас есть бронь?",
+        "options": [
+          {
+            "text": "Yes, I do. My name is Anna Sokolova.",
+            "ru": "Да. Меня зовут Анна Соколова.",
+            "next": "ready",
+            "ok": true
+          },
+          {
+            "text": "No, I don't like hotels.",
+            "ru": "Нет, я не люблю отели.",
+            "next": "r-like",
+            "ok": false,
+            "hintRu": "Тебя спросили про бронь. Ответь просто: Yes, I do."
+          }
+        ]
+      },
+      {
+        "id": "r-like",
+        "speaker": "receptionist",
+        "text": "Oh! But you are in a hotel now. Do you have a reservation with us?",
+        "ru": "О! Но вы сейчас в отеле. У вас есть бронь у нас?",
+        "options": [
+          {
+            "text": "Sorry. Yes, I do. My name is Anna Sokolova.",
+            "ru": "Извините. Да. Меня зовут Анна Соколова.",
+            "next": "ready",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "ready",
+        "speaker": "receptionist",
+        "text": "Thank you. I'm sorry, but your room isn't ready. It will be ready at two o'clock.",
+        "ru": "Спасибо. К сожалению, ваш номер ещё не готов. Он будет готов к двум часам.",
+        "options": [
+          {
+            "text": "OK. Can I leave my suitcase here?",
+            "ru": "Хорошо. Можно оставить здесь чемодан?",
+            "next": "bag",
+            "ok": true
+          },
+          {
+            "text": "Is breakfast included?",
+            "ru": "Завтрак включён?",
+            "next": "breakfast",
+            "ok": true
+          },
+          {
+            "text": "Fix it, please!",
+            "ru": "Почините это, пожалуйста!",
+            "next": "r-fix",
+            "ok": false,
+            "hintRu": "Это звучит грубо, да и чинить нечего: номер просто убирают. Спроси, можно ли оставить чемодан."
+          }
+        ]
+      },
+      {
+        "id": "breakfast",
+        "speaker": "receptionist",
+        "text": "Yes, it is. But breakfast finished at ten.",
+        "ru": "Да. Но завтрак закончился в десять.",
+        "options": [
+          {
+            "text": "OK. Can I leave my suitcase here?",
+            "ru": "Хорошо. Можно оставить здесь чемодан?",
+            "next": "bag",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "r-fix",
+        "speaker": "receptionist",
+        "text": "Housekeeping is cleaning it now. Would you like to leave your bags with me?",
+        "ru": "Горничная сейчас его убирает. Хотите оставить вещи у меня?",
+        "options": [
+          {
+            "text": "Yes, please. Thank you.",
+            "ru": "Да, пожалуйста. Спасибо.",
+            "next": "bag",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "bag",
+        "speaker": "receptionist",
+        "text": "Of course. The museum is near here, if you want to walk.",
+        "ru": "Конечно. Рядом есть музей, если хотите прогуляться.",
+        "options": [
+          {
+            "text": "How do I get to the museum?",
+            "ru": "Как добраться до музея?",
+            "next": "way",
+            "ok": true
+          },
+          {
+            "text": "What's the Wi-Fi password?",
+            "ru": "Какой пароль от вайфая?",
+            "next": "wifi",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "wifi",
+        "speaker": "receptionist",
+        "text": "It's on your key card. Would you like to visit the museum?",
+        "ru": "Он на вашей ключ-карте. Хотите сходить в музей?",
+        "options": [
+          {
+            "text": "Yes! How do I get to the museum?",
+            "ru": "Да! Как добраться до музея?",
+            "next": "way",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "way",
+        "speaker": "receptionist",
+        "text": "Go straight and turn left at the bridge. It's ten minutes on foot.",
+        "ru": "Идите прямо и у моста поверните налево. Это десять минут пешком.",
+        "options": [
+          {
+            "text": "Thank you. See you at two o'clock.",
+            "ru": "Спасибо. Увидимся в два часа.",
+            "next": "end",
+            "ok": true
+          },
+          {
+            "text": "Thank you. See you at ten o'clock.",
+            "ru": "Спасибо. Увидимся в десять часов.",
+            "next": "r-time",
+            "ok": false,
+            "hintRu": "Номер будет готов к двум часам (two o'clock), а не к десяти."
+          }
+        ]
+      },
+      {
+        "id": "r-time",
+        "speaker": "receptionist",
+        "text": "Ten o'clock? Your room will be ready at two o'clock.",
+        "ru": "В десять? Ваш номер будет готов к двум часам.",
+        "options": [
+          {
+            "text": "Sorry! See you at two o'clock.",
+            "ru": "Извините! Увидимся в два часа.",
+            "next": "end",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "speaker": "receptionist",
+        "text": "See you later. Enjoy the museum!",
+        "ru": "До встречи. Хорошего вам похода в музей!",
+        "options": []
+      }
+    ]
+  },
+  "boss": {
+    "id": "boss-boat",
+    "title": "Успей на экскурсию",
+    "storyRu": "Экскурсия на лодке отходит через несколько минут, а тебе ещё нужно выйти из отеля и доехать до моста.",
+    "winRu": "Ты успела! Лодка отходит, и старый город уже проплывает слева.",
+    "loseRu": "Лодка ушла без тебя, но следующая через час. Как раз успеешь выпить кофе.",
+    "timeLimitSec": 300,
+    "steps": [
+      {
+        "storyRu": "Ты спускаешься на ресепшен. Что просит администратор?",
+        "type": "word_listen_choice",
+        "ref": [
+          "key-card"
+        ]
+      },
+      {
+        "storyRu": "Администратор уточняет номер твоей комнаты.",
+        "type": "numbers_listen",
+        "ref": [
+          "n-room"
+        ]
+      },
+      {
+        "storyRu": "На улице спроси дорогу у прохожего.",
+        "type": "pattern_builder",
+        "ref": [
+          "p-how-do-i-get"
+        ]
+      },
+      {
+        "storyRu": "Какой автобус тебе нужен?",
+        "type": "numbers_listen",
+        "ref": [
+          "n-bus-19"
+        ]
+      },
+      {
+        "storyRu": "Водитель объясняет, где выходить. Поймай слово.",
+        "type": "catch_the_word",
+        "ref": [
+          "d3#4"
+        ]
+      },
+      {
+        "storyRu": "Сколько ещё минут? Что прозвучало?",
+        "type": "minimal_pairs",
+        "ref": [
+          "fourteen-forty"
+        ]
+      },
+      {
+        "storyRu": "Ты на причале! Собери фразу, которую объявил гид.",
+        "type": "dictation_tiles",
+        "ref": [
+          "d4#2"
+        ]
+      },
+      {
+        "storyRu": "Гид говорит, сколько длится экскурсия. Запиши.",
+        "type": "dictation_typing",
+        "ref": [
+          "d4#1"
+        ]
+      }
+    ]
+  },
   "aiPrompt": "You are a hotel receptionist. I am a guest checking in. My English level is A2. Speak slowly and use simple words. Give me one small problem to solve, for example, my room is not ready. Ask me one question at a time. After about 10 messages, stop and tell me my 3 most important mistakes, in Russian, with correct examples.",
   "lessons": [
     {
       "id": "m1w2-l1",
       "day": 1,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
         { "type": "word_intro", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"] },
         { "type": "word_listen_choice", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"] },
         { "type": "dialog_comprehension", "ref": ["d1"] },
         { "type": "interactive_transcript", "ref": ["d1"] },
-        { "type": "minimal_pairs", "ref": ["fourteen-forty", "sixteen-sixty", "man-men"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#2", "d1#4", "d1#8"] }
+        { "type": "shadowing", "ref": ["d1#3", "d1#6"] },
+        { "type": "minimal_pairs", "ref": ["fourteen-forty", "sixteen-sixty", "man-men"], "params": {"count": 4} },
+        { "type": "pattern_builder", "ref": ["p-is-included"] },
+        { "type": "dictation_tiles", "ref": ["d1#2", "d1#4"] }
       ]
     },
     {
       "id": "m1w2-l2",
       "day": 2,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["reservation", "double-room", "included", "ground-floor", "floor", "key-card", "password"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"] },
         { "type": "word_listen_choice", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"] },
         { "type": "dialog_comprehension", "ref": ["d2"] },
         { "type": "interactive_transcript", "ref": ["d2"] },
+        { "type": "shadowing", "ref": ["d2#1", "d2#5"] },
         { "type": "numbers_listen", "ref": ["n-room", "n-breakfast", "n-price-night"] },
-        { "type": "dictation_tiles", "ref": ["d2#1", "d2#4", "d2#6"] }
+        { "type": "word_listen_spell", "ref": ["towel", "fix", "check-out"] },
+        { "type": "dictation_tiles", "ref": ["d2#1", "d2#6"] }
       ]
     },
     {
       "id": "m1w2-l3",
       "day": 3,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["receptionist", "air-conditioning", "isnt-working", "fix", "towel", "housekeeping", "check-out"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"] },
         { "type": "word_listen_choice", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"] },
         { "type": "dialog_comprehension", "ref": ["d3"] },
         { "type": "interactive_transcript", "ref": ["d3"] },
-        { "type": "minimal_pairs", "ref": ["cap-cup", "three-tree", "think-sink", "fourteen-forty"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d3#1", "d3#4", "d3#6"] }
+        { "type": "shadowing", "ref": ["d3#0", "d3#3"] },
+        { "type": "catch_the_word", "ref": ["d3#2", "d3#4", "d3#6"] },
+        { "type": "pattern_builder", "ref": ["p-how-do-i-get"] },
+        { "type": "dictation_tiles", "ref": ["d3#1", "d3#3"] }
       ]
     },
     {
       "id": "m1w2-l4",
       "day": 4,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"], "params": { "count": 5 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "ref": ["bus-stop", "across-the-street", "get-off", "how-long-does-it-take", "stop", "cost", "museum"], "params": {"count": 5} },
         { "type": "word_intro", "ref": ["old-town", "boat-tour", "adult", "bridge", "book-in-advance", "weekday", "at-the-weekend"] },
         { "type": "word_listen_choice", "ref": ["old-town", "boat-tour", "adult", "bridge", "book-in-advance", "weekday", "at-the-weekend"] },
         { "type": "dialog_comprehension", "ref": ["d4"] },
         { "type": "interactive_transcript", "ref": ["d4"] },
-        { "type": "numbers_listen", "ref": ["n-bus-19", "n-museum-opens", "n-tour-price", "n-every-15"] },
-        { "type": "dictation_tiles", "ref": ["d4#2", "d4#4", "d4#5"] }
+        { "type": "shadowing", "ref": ["d4#1", "d4#3"] },
+        { "type": "numbers_listen", "ref": ["n-bus-19", "n-museum-opens", "n-tour-price"] },
+        { "type": "word_listen_spell", "ref": ["bridge", "adult", "weekday"] },
+        { "type": "dictation_tiles", "ref": ["d4#2", "d4#6"] }
       ]
     },
     {
       "id": "m1w2-l5",
       "day": 5,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d1"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d2"], "params": { "speedDelta": 0.1 } },
-        { "type": "minimal_pairs", "ref": ["pull-pool", "chip-cheap", "cap-cup", "sixteen-sixty"], "params": { "count": 6 } },
-        { "type": "dictation_tiles", "ref": ["d1#5", "d1#7", "d2#2", "d2#3"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d1"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d2"], "params": {"speedDelta": 0.1} },
+        { "type": "speed_ladder", "ref": ["d1#2"] },
+        { "type": "catch_the_word", "ref": ["d1#5", "d2#4"] },
+        { "type": "dictation_typing", "ref": ["d1#3", "d2#1"] },
+        { "type": "say_it", "ref": ["d1#6", "d2#5"] }
       ]
     },
     {
       "id": "m1w2-l6",
       "day": 6,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 15 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "dialog_comprehension", "ref": ["d3"], "params": { "speedDelta": 0.1 } },
-        { "type": "dialog_comprehension", "ref": ["d4"], "params": { "speedDelta": 0.1 } },
-        { "type": "numbers_listen", "ref": ["n-room", "n-price-night", "n-bus-19", "n-wifi", "n-tour-price"] },
-        { "type": "dictation_tiles", "ref": ["d3#2", "d3#5", "d4#6", "d4#7"] }
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "match_pairs", "params": {"count": 5} },
+        { "type": "dialog_comprehension", "ref": ["d3"], "params": {"speedDelta": 0.1} },
+        { "type": "dialog_comprehension", "ref": ["d4"], "params": {"speedDelta": 0.1} },
+        { "type": "branching_dialog" },
+        { "type": "numbers_listen", "ref": ["n-wifi", "n-every-15", "n-price-night"] },
+        { "type": "dictation_typing", "ref": ["d3#3", "d4#1"] }
       ]
     },
     {
       "id": "m1w2-l7",
       "day": 7,
       "steps": [
-        { "type": "flashcard_swipe", "params": { "max": 25 } },
-        { "type": "word_listen_choice", "params": { "count": 12 } },
-        { "type": "match_pairs", "params": { "count": 5 } },
-        { "type": "minimal_pairs", "params": { "count": 8 } },
-        { "type": "numbers_listen", "params": { "count": 6 } },
+        { "type": "flashcard_swipe", "params": {"max": 15} },
+        { "type": "word_listen_choice", "params": {"count": 8} },
+        { "type": "boss_week" },
         { "type": "ai_conversation" }
       ]
     }

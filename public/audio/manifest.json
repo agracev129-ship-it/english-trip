@@ -11,6 +11,12 @@
   "duration": 2.42,
   "timings": true
  },
+ "016558c438c3": {
+  "voice": "bf_isabella",
+  "text": "Here you are. Thank you very much.",
+  "duration": 2.01,
+  "timings": true
+ },
  "01657dd7b58b": {
   "voice": "bf_emma",
   "text": "on foot",
@@ -21,6 +27,12 @@
   "voice": "bm_george",
   "text": "Yes, I can see it. Can you make it a bit bigger?",
   "duration": 3.13,
+  "timings": true
+ },
+ "0220450811e6": {
+  "voice": "bf_emma",
+  "text": "Do you have this in a medium?",
+  "duration": 1.64,
   "timings": true
  },
  "035cd374cd13": {
@@ -65,6 +77,12 @@
   "duration": 3.28,
   "timings": true
  },
+ "05ac8eb54d29": {
+  "voice": "bf_isabella",
+  "text": "Perfect. Can you send me a link?",
+  "duration": 1.92,
+  "timings": true
+ },
  "05fa90610a20": {
   "voice": "bf_emma",
   "text": "Housekeeping cleans the rooms every morning.",
@@ -82,6 +100,12 @@
   "text": "email",
   "duration": 0.79,
   "timings": false
+ },
+ "07a3716cb33b": {
+  "voice": "bm_george",
+  "text": "Bye, Anna!",
+  "duration": 1.19,
+  "timings": true
  },
  "07cd47d88e8d": {
   "voice": "bm_daniel",
@@ -106,6 +130,12 @@
   "text": "password",
   "duration": 0.82,
   "timings": false
+ },
+ "087e49ab0a87": {
+  "voice": "bm_george",
+  "text": "Yes, follow me, please. Here's the menu. What can I get you?",
+  "duration": 3.87,
+  "timings": true
  },
  "08e2c39b6e54": {
   "voice": "bf_emma",
@@ -155,6 +185,12 @@
   "duration": 0.85,
   "timings": false
  },
+ "0bb4d2fb4b34": {
+  "voice": "bf_emma",
+  "text": "Can I have a large latte, please?",
+  "duration": 2.07,
+  "timings": true
+ },
  "0c252fc4d0d3": {
   "voice": "bf_emma",
   "text": "A medium, please.",
@@ -197,6 +233,12 @@
   "duration": 0.87,
   "timings": false
  },
+ "0d8ebe4b57fb": {
+  "voice": "bm_george",
+  "text": "OK, I'll ask them today. Are you free on Thursday at three?",
+  "duration": 3.93,
+  "timings": true
+ },
  "0df72534dde8": {
   "voice": "bf_emma",
   "text": "cancelled",
@@ -207,6 +249,18 @@
   "voice": "bf_isabella",
   "text": "The air conditioning isn't working.",
   "duration": 2.07,
+  "timings": true
+ },
+ "0f057f7b6d2c": {
+  "voice": "bf_emma",
+  "text": "How do I get to the bus stop?",
+  "duration": 1.72,
+  "timings": true
+ },
+ "0f500b9e841b": {
+  "voice": "bf_isabella",
+  "text": "Thanks. How long does it take on foot?",
+  "duration": 2.09,
   "timings": true
  },
  "0f6c37793f0f": {
@@ -251,10 +305,28 @@
   "duration": 3.21,
   "timings": true
  },
+ "13037c470c7b": {
+  "voice": "bf_isabella",
+  "text": "Thank you. See you at ten o'clock.",
+  "duration": 1.94,
+  "timings": true
+ },
+ "137a83eb5489": {
+  "voice": "bf_isabella",
+  "text": "OK, thanks. I need the numbers from the sales team first.",
+  "duration": 3.6,
+  "timings": true
+ },
  "1395c428b96b": {
   "voice": "bf_emma",
   "text": "I have a headache.",
   "duration": 1.2,
+  "timings": true
+ },
+ "13d9d29ae36d": {
+  "voice": "bf_isabella",
+  "text": "Yes, that's much better.",
+  "duration": 1.65,
   "timings": true
  },
  "140a5343d3b5": {
@@ -267,6 +339,12 @@
   "voice": "bf_emma",
   "text": "How much is it?",
   "duration": 1.25,
+  "timings": true
+ },
+ "15d9b4c4264c": {
+  "voice": "bm_george",
+  "text": "No problem. I'll send it now. The deadline is Friday morning.",
+  "duration": 4.23,
   "timings": true
  },
  "16033eb1151f": {
@@ -285,6 +363,18 @@
   "voice": "bf_emma",
   "text": "I'll send you a draft on Thursday.",
   "duration": 1.98,
+  "timings": true
+ },
+ "183dd632c9fa": {
+  "voice": "bf_emma",
+  "text": "How do I get to the museum?",
+  "duration": 1.77,
+  "timings": true
+ },
+ "189c62f3af3b": {
+  "voice": "bf_isabella",
+  "text": "How long does it take on foot?",
+  "duration": 1.89,
   "timings": true
  },
  "18a3fb1d3581": {
@@ -321,6 +411,24 @@
   "voice": "bf_emma",
   "text": "How much is it altogether?",
   "duration": 1.78,
+  "timings": true
+ },
+ "1bb605b21aff": {
+  "voice": "bf_lily",
+  "text": "Good morning. Do you have a reservation?",
+  "duration": 2.43,
+  "timings": true
+ },
+ "1c004d224887": {
+  "voice": "bf_lily",
+  "text": "Oh! But you are in a hotel now. Do you have a reservation with us?",
+  "duration": 3.63,
+  "timings": true
+ },
+ "1c1617f5d7c3": {
+  "voice": "bf_isabella",
+  "text": "Sorry, I have a call at three. Is four OK?",
+  "duration": 2.87,
   "timings": true
  },
  "1c449d85d027": {
@@ -371,6 +479,12 @@
   "duration": 2.74,
   "timings": true
  },
+ "2108ebf30051": {
+  "voice": "bf_isabella",
+  "text": "Sorry! Yes, I can hear you.",
+  "duration": 1.77,
+  "timings": true
+ },
  "216a3149d6b2": {
   "voice": "bm_george",
   "text": "This is Kate. She works in marketing.",
@@ -383,6 +497,18 @@
   "duration": 1.9,
   "timings": true
  },
+ "228290204530": {
+  "voice": "bf_lily",
+  "text": "Go straight and turn left at the bridge. It's ten minutes on foot.",
+  "duration": 3.72,
+  "timings": true
+ },
+ "22b3f7b16058": {
+  "voice": "bf_isabella",
+  "text": "OK. Can I leave my suitcase here?",
+  "duration": 2.23,
+  "timings": true
+ },
  "22fe6e1201d2": {
   "voice": "bf_isabella",
   "text": "Should we meet in the office or online?",
@@ -393,6 +519,12 @@
   "voice": "bf_emma",
   "text": "I need to check in for my flight.",
   "duration": 1.95,
+  "timings": true
+ },
+ "243849026df6": {
+  "voice": "bf_lily",
+  "text": "About five minutes. You have a lot of time.",
+  "duration": 2.53,
   "timings": true
  },
  "264340624305": {
@@ -455,6 +587,12 @@
   "duration": 2.58,
   "timings": true
  },
+ "2bf953a45955": {
+  "voice": "bf_emma",
+  "text": "Can you say that again, please?",
+  "duration": 1.87,
+  "timings": true
+ },
  "2c9871209b1c": {
   "voice": "bf_emma",
   "text": "It's five minutes on foot.",
@@ -503,6 +641,12 @@
   "duration": 0.77,
   "timings": false
  },
+ "2fe9d83d0ab7": {
+  "voice": "bm_george",
+  "text": "On sale? No, it's a report! Is Friday possible?",
+  "duration": 3.47,
+  "timings": true
+ },
  "309a2dd231ca": {
   "voice": "bf_emma",
   "text": "isn't working",
@@ -513,6 +657,18 @@
   "voice": "bf_emma",
   "text": "Take out your phone, please.",
   "duration": 1.77,
+  "timings": true
+ },
+ "317a8e6d52d4": {
+  "voice": "bf_isabella",
+  "text": "Sorry! See you at two o'clock.",
+  "duration": 1.83,
+  "timings": true
+ },
+ "323f023ff094": {
+  "voice": "bf_emma",
+  "text": "Could I have an aisle seat, please?",
+  "duration": 1.86,
   "timings": true
  },
  "32fa2beed9bf": {
@@ -569,10 +725,28 @@
   "duration": 1,
   "timings": false
  },
+ "38b25bf540c0": {
+  "voice": "bf_isabella",
+  "text": "Yes, it was very good. Could we have the bill, please?",
+  "duration": 2.98,
+  "timings": true
+ },
+ "3967c2170c31": {
+  "voice": "bm_george",
+  "text": "Here you are. Was everything OK?",
+  "duration": 2.52,
+  "timings": true
+ },
  "3982062bc906": {
   "voice": "bf_emma",
   "text": "I have a sore throat.",
   "duration": 1.48,
+  "timings": true
+ },
+ "3a2e25683e66": {
+  "voice": "bf_isabella",
+  "text": "Is it on sale?",
+  "duration": 1.35,
   "timings": true
  },
  "3abc3fae4dd8": {
@@ -617,6 +791,12 @@
   "duration": 0.76,
   "timings": false
  },
+ "3d03ff4fa043": {
+  "voice": "bf_emma",
+  "text": "Do you have this in blue?",
+  "duration": 1.47,
+  "timings": true
+ },
  "3d659158f140": {
   "voice": "bf_emma",
   "text": "Gate thirty is closed. Please go to gate thirteen.",
@@ -633,6 +813,12 @@
   "voice": "bf_emma",
   "text": "Sorry, I don't have any cash.",
   "duration": 1.78,
+  "timings": true
+ },
+ "3efe7b0e057c": {
+  "voice": "bf_lily",
+  "text": "Hello. Can I help you?",
+  "duration": 1.69,
   "timings": true
  },
  "3f05ed1619e4": {
@@ -665,6 +851,12 @@
   "duration": 2.14,
   "timings": true
  },
+ "41204245e6a6": {
+  "voice": "bf_isabella",
+  "text": "Thank you. Which gate is it now?",
+  "duration": 1.92,
+  "timings": true
+ },
  "4190c90fba21": {
   "voice": "bf_emma",
   "text": "bigger",
@@ -695,10 +887,22 @@
   "duration": 2.42,
   "timings": true
  },
+ "42e1ab231d6b": {
+  "voice": "bf_isabella",
+  "text": "Nice to meet you.",
+  "duration": 1.32,
+  "timings": true
+ },
  "42f99b90863a": {
   "voice": "bf_isabella",
   "text": "Great. What's the Wi-Fi password?",
   "duration": 2.13,
+  "timings": true
+ },
+ "42fa1b141156": {
+  "voice": "bm_george",
+  "text": "I said, can you hear me now?",
+  "duration": 1.92,
   "timings": true
  },
  "43996f94eb68": {
@@ -761,6 +965,12 @@
   "duration": 2.92,
   "timings": true
  },
+ "47d5124bfa9d": {
+  "voice": "bf_isabella",
+  "text": "What's the Wi-Fi password?",
+  "duration": 1.81,
+  "timings": true
+ },
  "47ef34be6071": {
   "voice": "bf_emma",
   "text": "announcement",
@@ -791,6 +1001,12 @@
   "duration": 2.5,
   "timings": true
  },
+ "498bc1cb3922": {
+  "voice": "bm_george",
+  "text": "Yes, I'll send you a link. See you on Thursday.",
+  "duration": 3.18,
+  "timings": true
+ },
  "4a581cde1015": {
   "voice": "bf_emma",
   "text": "fail",
@@ -808,6 +1024,18 @@
   "text": "team",
   "duration": 0.74,
   "timings": false
+ },
+ "4ae11b8bb639": {
+  "voice": "bf_isabella",
+  "text": "See you on Thursday. Thanks, Tom!",
+  "duration": 2.24,
+  "timings": true
+ },
+ "4b973e982fae": {
+  "voice": "bf_emma",
+  "text": "Can I have the bill, please?",
+  "duration": 1.67,
+  "timings": true
  },
  "4b988de9af58": {
   "voice": "bf_emma",
@@ -832,6 +1060,12 @@
   "text": "feel",
   "duration": 0.7,
   "timings": false
+ },
+ "4cf021bdf6b2": {
+  "voice": "bm_george",
+  "text": "Not today, I'm afraid! So, anything to drink?",
+  "duration": 3.28,
+  "timings": true
  },
  "4de312ad62ed": {
   "voice": "bf_emma",
@@ -873,6 +1107,18 @@
   "voice": "bf_emma",
   "text": "Can I have it with oat milk?",
   "duration": 1.77,
+  "timings": true
+ },
+ "51202d870953": {
+  "voice": "bm_george",
+  "text": "We met last week, Anna! Can you hear me well?",
+  "duration": 3.04,
+  "timings": true
+ },
+ "5190f21e3c91": {
+  "voice": "bf_isabella",
+  "text": "Three works for me. Should we meet online?",
+  "duration": 2.25,
   "timings": true
  },
  "51b4819933a1": {
@@ -995,6 +1241,12 @@
   "duration": 0.72,
   "timings": false
  },
+ "5ffad4c697f9": {
+  "voice": "bm_george",
+  "text": "Great. Did you get my email about the report?",
+  "duration": 2.87,
+  "timings": true
+ },
  "6065c621f6dd": {
   "voice": "bf_emma",
   "text": "weekday",
@@ -1011,6 +1263,18 @@
   "voice": "bf_emma",
   "text": "Sorry, you're on mute.",
   "duration": 1.48,
+  "timings": true
+ },
+ "62142991df41": {
+  "voice": "bf_lily",
+  "text": "Of course. Gate eighteen. One, eight.",
+  "duration": 2.45,
+  "timings": true
+ },
+ "622a400dd42c": {
+  "voice": "bf_lily",
+  "text": "Of course. The museum is near here, if you want to walk.",
+  "duration": 3.34,
   "timings": true
  },
  "62e4f134cadf": {
@@ -1061,10 +1325,22 @@
   "duration": 2.61,
   "timings": true
  },
+ "67dd32cd7bc1": {
+  "voice": "bf_emma",
+  "text": "Are you free on Friday morning?",
+  "duration": 1.87,
+  "timings": true
+ },
  "684781c105d6": {
   "voice": "bf_emma",
   "text": "I'm sorry, the flight is cancelled.",
   "duration": 2.06,
+  "timings": true
+ },
+ "688b7a27919c": {
+  "voice": "bf_lily",
+  "text": "Sorry, the blankets are on the plane. Is there anything else?",
+  "duration": 3.26,
   "timings": true
  },
  "68aa186e14be": {
@@ -1085,6 +1361,12 @@
   "duration": 1.97,
   "timings": true
  },
+ "6a1a50dace5c": {
+  "voice": "bf_isabella",
+  "text": "Good night!",
+  "duration": 0.95,
+  "timings": true
+ },
  "6ae90c5ffcce": {
   "voice": "bf_emma",
   "text": "hot",
@@ -1103,6 +1385,12 @@
   "duration": 1.61,
   "timings": true
  },
+ "6bcecf91e7de": {
+  "voice": "bf_lily",
+  "text": "Yes, it is. But breakfast finished at ten.",
+  "duration": 2.74,
+  "timings": true
+ },
  "6bf1d4e24e75": {
   "voice": "bf_emma",
   "text": "Your room is four oh six.",
@@ -1113,6 +1401,18 @@
   "voice": "bf_emma",
   "text": "It's twelve pounds for adults.",
   "duration": 1.85,
+  "timings": true
+ },
+ "6cbfde9dd054": {
+  "voice": "bf_emma",
+  "text": "Can you share your screen, please?",
+  "duration": 1.91,
+  "timings": true
+ },
+ "6d43318fd989": {
+  "voice": "bm_george",
+  "text": "A table? I'm talking about the report, Anna.",
+  "duration": 2.9,
   "timings": true
  },
  "6dd5d0705268": {
@@ -1181,10 +1481,22 @@
   "duration": 1.86,
   "timings": true
  },
+ "75098bd03431": {
+  "voice": "bf_isabella",
+  "text": "Could you say the gate number again, please?",
+  "duration": 2.3,
+  "timings": true
+ },
  "757bb4424c16": {
   "voice": "bm_george",
   "text": "Hi, Anna, it's Tom.",
   "duration": 1.84,
+  "timings": true
+ },
+ "75e114e141ed": {
+  "voice": "bm_george",
+  "text": "Of course. Anything to drink?",
+  "duration": 2.14,
   "timings": true
  },
  "75ece8980c34": {
@@ -1199,10 +1511,22 @@
   "duration": 1.08,
   "timings": false
  },
+ "77a047fd6fde": {
+  "voice": "bf_isabella",
+  "text": "No, thank you. Goodbye!",
+  "duration": 1.7,
+  "timings": true
+ },
  "7941edbb84a4": {
   "voice": "bf_emma",
   "text": "get off",
   "duration": 0.8,
+  "timings": true
+ },
+ "7963e4a5d8e3": {
+  "voice": "bf_isabella",
+  "text": "Yes, thanks. Can I pay by card?",
+  "duration": 2.19,
   "timings": true
  },
  "799e86e05331": {
@@ -1289,6 +1613,12 @@
   "duration": 2.59,
   "timings": true
  },
+ "7fce66fa37dd": {
+  "voice": "bf_emma",
+  "text": "Could I have some water, please?",
+  "duration": 1.77,
+  "timings": true
+ },
  "8037a5005d39": {
   "voice": "bf_emma",
   "text": "Take two tablets with water.",
@@ -1307,6 +1637,12 @@
   "duration": 2.26,
   "timings": true
  },
+ "81a83ccbc507": {
+  "voice": "bf_emma",
+  "text": "How do I get to the old town?",
+  "duration": 1.88,
+  "timings": true
+ },
  "847c810b4f27": {
   "voice": "bf_emma",
   "text": "museum",
@@ -1319,10 +1655,28 @@
   "duration": 1.95,
   "timings": true
  },
+ "84c63c3f157e": {
+  "voice": "bf_lily",
+  "text": "Thank you. I'm sorry, but your room isn't ready. It will be ready at two o'clock.",
+  "duration": 4.24,
+  "timings": true
+ },
  "85a6d5db6d3e": {
   "voice": "bf_emma",
   "text": "at the weekend",
   "duration": 1.31,
+  "timings": true
+ },
+ "85b84ed32ee6": {
+  "voice": "bf_isabella",
+  "text": "Sorry. Is the flight to London delayed?",
+  "duration": 2.33,
+  "timings": true
+ },
+ "867117f018b5": {
+  "voice": "bf_isabella",
+  "text": "Sorry, not yet. Can you send it again?",
+  "duration": 2.19,
   "timings": true
  },
  "867ec7c96794": {
@@ -1336,6 +1690,12 @@
   "text": "pepper",
   "duration": 0.67,
   "timings": false
+ },
+ "87d0e58cf741": {
+  "voice": "bf_lily",
+  "text": "You're welcome. Have a good flight!",
+  "duration": 2.11,
+  "timings": true
  },
  "87e8c9c2b6e8": {
   "voice": "bf_isabella",
@@ -1421,6 +1781,12 @@
   "duration": 0.68,
   "timings": false
  },
+ "8e94e08df1c5": {
+  "voice": "bf_isabella",
+  "text": "OK, I'll have that, please.",
+  "duration": 1.88,
+  "timings": true
+ },
  "8f96f7f9ffc5": {
   "voice": "bf_emma",
   "text": "cap",
@@ -1449,6 +1815,12 @@
   "voice": "bf_emma",
   "text": "key card",
   "duration": 0.9,
+  "timings": true
+ },
+ "918abff2bd15": {
+  "voice": "bf_emma",
+  "text": "Do I need to take out my laptop?",
+  "duration": 1.99,
   "timings": true
  },
  "91eea7af0c11": {
@@ -1487,6 +1859,12 @@
   "duration": 1.51,
   "timings": true
  },
+ "931c05957977": {
+  "voice": "bm_george",
+  "text": "It's fourteen pounds.",
+  "duration": 1.7,
+  "timings": true
+ },
  "9401635d6043": {
   "voice": "bf_emma",
   "text": "developer",
@@ -1511,6 +1889,18 @@
   "duration": 0.74,
   "timings": false
  },
+ "94aedca98c01": {
+  "voice": "bm_george",
+  "text": "The fish of the day is very good. It comes with salad.",
+  "duration": 3.57,
+  "timings": true
+ },
+ "950ee2f146eb": {
+  "voice": "bf_lily",
+  "text": "See you later. Enjoy the museum!",
+  "duration": 2.43,
+  "timings": true
+ },
  "951fe44f8f0f": {
   "voice": "bf_alice",
   "text": "Thank you. Do you have any bags to check in?",
@@ -1533,6 +1923,12 @@
   "voice": "bf_emma",
   "text": "Is there an aisle seat?",
   "duration": 1.51,
+  "timings": true
+ },
+ "9630a72c6744": {
+  "voice": "bm_george",
+  "text": "Yes, of course. That's twenty-two pounds fifty.",
+  "duration": 3.05,
   "timings": true
  },
  "965b2ec8f307": {
@@ -1563,6 +1959,12 @@
   "voice": "bf_emma",
   "text": "Do you have a table for two?",
   "duration": 1.64,
+  "timings": true
+ },
+ "9a0531e1731c": {
+  "voice": "bf_isabella",
+  "text": "I'll have that, please.",
+  "duration": 1.53,
   "timings": true
  },
  "9aac91fa215e": {
@@ -1601,11 +2003,29 @@
   "duration": 1.88,
   "timings": true
  },
+ "9d5ab69221cc": {
+  "voice": "bf_lily",
+  "text": "It's on your key card. Would you like to visit the museum?",
+  "duration": 3.33,
+  "timings": true
+ },
  "9dae2a91f1cd": {
   "voice": "bf_emma",
   "text": "pull",
   "duration": 0.62,
   "timings": false
+ },
+ "9e29f36c3a56": {
+  "voice": "bf_isabella",
+  "text": "No, I don't like hotels.",
+  "duration": 1.82,
+  "timings": true
+ },
+ "9fa3c8d55482": {
+  "voice": "bf_isabella",
+  "text": "Yes. Is the flight to London delayed?",
+  "duration": 2.29,
+  "timings": true
  },
  "a0049ab2baef": {
   "voice": "bf_emma",
@@ -1643,6 +2063,12 @@
   "duration": 2.91,
   "timings": true
  },
+ "a4449f419363": {
+  "voice": "bf_isabella",
+  "text": "It's thirty percent off.",
+  "duration": 1.76,
+  "timings": true
+ },
  "a4da47c05d94": {
   "voice": "bf_emma",
   "text": "angry",
@@ -1667,6 +2093,12 @@
   "duration": 1.51,
   "timings": true
  },
+ "a656f806f6cb": {
+  "voice": "bm_george",
+  "text": "Sorry? I asked about a reservation. Do you have one?",
+  "duration": 3.37,
+  "timings": true
+ },
  "a662ffa9763f": {
   "voice": "bm_daniel",
   "text": "The flight will now leave from gate eighteen.",
@@ -1679,6 +2111,12 @@
   "duration": 1.94,
   "timings": true
  },
+ "a762fb5297ad": {
+  "voice": "bf_isabella",
+  "text": "Sorry! Yes, I did. When is the deadline?",
+  "duration": 2.51,
+  "timings": true
+ },
  "a774a4c6eebe": {
   "voice": "bf_emma",
   "text": "passport",
@@ -1689,6 +2127,12 @@
   "voice": "bf_emma",
   "text": "sore throat",
   "duration": 0.96,
+  "timings": true
+ },
+ "a84f6458f03d": {
+  "voice": "bf_lily",
+  "text": "It's gate eighteen. Go straight and turn left after the café.",
+  "duration": 3.56,
   "timings": true
  },
  "a8663874c33e": {
@@ -1709,10 +2153,28 @@
   "duration": 1.2,
   "timings": true
  },
+ "aadc76ab9884": {
+  "voice": "bf_isabella",
+  "text": "Two coffees, please.",
+  "duration": 1.55,
+  "timings": true
+ },
  "aba6c5fc2d79": {
   "voice": "bf_emma",
   "text": "sales team",
   "duration": 1.12,
+  "timings": true
+ },
+ "ace1f733e991": {
+  "voice": "bf_isabella",
+  "text": "I have a headache.",
+  "duration": 1.29,
+  "timings": true
+ },
+ "ad2a25f0e820": {
+  "voice": "bf_emma",
+  "text": "Do I need to check in for my flight?",
+  "duration": 2.03,
   "timings": true
  },
  "ad869a5d3524": {
@@ -1727,11 +2189,23 @@
   "duration": 1.97,
   "timings": true
  },
+ "ade8a97244c0": {
+  "voice": "bf_isabella",
+  "text": "Thank you. See you at two o'clock.",
+  "duration": 1.92,
+  "timings": true
+ },
  "ae81439f8215": {
   "voice": "bf_emma",
   "text": "three",
   "duration": 0.66,
   "timings": false
+ },
+ "ae9421b9a84f": {
+  "voice": "bf_isabella",
+  "text": "Sorry! Yes, but I need the numbers from the sales team first.",
+  "duration": 3.43,
+  "timings": true
  },
  "b0e0a3aacece": {
   "voice": "bf_emma",
@@ -1751,6 +2225,12 @@
   "duration": 0.72,
   "timings": false
  },
+ "b228045d5d8f": {
+  "voice": "bf_isabella",
+  "text": "How much is it?",
+  "duration": 1.26,
+  "timings": true
+ },
  "b2b07c8ddf43": {
   "voice": "bf_alice",
   "text": "Is that to eat in or take away?",
@@ -1761,6 +2241,18 @@
   "voice": "bf_emma",
   "text": "Take them twice a day.",
   "duration": 1.51,
+  "timings": true
+ },
+ "b30b9a47a3e9": {
+  "voice": "bf_isabella",
+  "text": "Sorry. Yes, I do. My name is Anna Sokolova.",
+  "duration": 2.91,
+  "timings": true
+ },
+ "b358d1bdd6a4": {
+  "voice": "bf_isabella",
+  "text": "Yes, but I need the numbers from the sales team first.",
+  "duration": 2.96,
   "timings": true
  },
  "b3de3b794903": {
@@ -1805,11 +2297,23 @@
   "duration": 1.17,
   "timings": true
  },
+ "b5546d5514e5": {
+  "voice": "bf_isabella",
+  "text": "I'll have the fish of the day, please.",
+  "duration": 2.02,
+  "timings": true
+ },
  "b6806ecf60fe": {
   "voice": "bf_emma",
   "text": "free",
   "duration": 0.68,
   "timings": false
+ },
+ "b6f4eebc31e0": {
+  "voice": "bf_isabella",
+  "text": "Yes, I can hear you.",
+  "duration": 1.44,
+  "timings": true
  },
  "b6ff292f8dd1": {
   "voice": "bf_emma",
@@ -1833,6 +2337,24 @@
   "voice": "bf_emma",
   "text": "bus stop",
   "duration": 0.9,
+  "timings": true
+ },
+ "b93506c4f518": {
+  "voice": "bf_isabella",
+  "text": "Yes, please. Thank you.",
+  "duration": 1.61,
+  "timings": true
+ },
+ "b9af857d1c56": {
+  "voice": "bf_isabella",
+  "text": "Yes! How do I get to the museum?",
+  "duration": 1.95,
+  "timings": true
+ },
+ "ba113e2f50fa": {
+  "voice": "bm_george",
+  "text": "Oh, I'm sorry. Would you like some water? And what would you like to eat?",
+  "duration": 4.35,
   "timings": true
  },
  "ba2f56470a14": {
@@ -1919,6 +2441,12 @@
   "duration": 0.72,
   "timings": false
  },
+ "c2206d6b74b3": {
+  "voice": "bf_isabella",
+  "text": "Yes, a table for two.",
+  "duration": 1.69,
+  "timings": true
+ },
  "c22cb7864bb0": {
   "voice": "bf_isabella",
   "text": "Excuse me, how do I get to the museum?",
@@ -1954,6 +2482,12 @@
   "text": "arrivals",
   "duration": 0.94,
   "timings": false
+ },
+ "c345330d1886": {
+  "voice": "bf_isabella",
+  "text": "Great. Thank you very much!",
+  "duration": 1.66,
+  "timings": true
  },
  "c349d8774971": {
   "voice": "bf_emma",
@@ -2027,6 +2561,12 @@
   "duration": 1.76,
   "timings": true
  },
+ "c9b90f3391df": {
+  "voice": "bf_emma",
+  "text": "Are you free at three o'clock?",
+  "duration": 1.62,
+  "timings": true
+ },
  "ca9e859d32ab": {
   "voice": "bf_isabella",
   "text": "Sorry, you're breaking up. Can you say that again?",
@@ -2093,6 +2633,12 @@
   "duration": 1.84,
   "timings": true
  },
+ "d13815a2d5e8": {
+  "voice": "bf_isabella",
+  "text": "Sorry. No, we don't. Do you have a table for two?",
+  "duration": 2.78,
+  "timings": true
+ },
  "d180c2c28659": {
   "voice": "bf_emma",
   "text": "cold",
@@ -2115,6 +2661,18 @@
   "voice": "bf_lily",
   "text": "Not anymore. It moved to gate eighteen.",
   "duration": 2.6,
+  "timings": true
+ },
+ "d23942cd4c7f": {
+  "voice": "bf_isabella",
+  "text": "Sorry. Just some tap water, please.",
+  "duration": 2.2,
+  "timings": true
+ },
+ "d2452122a239": {
+  "voice": "bm_george",
+  "text": "Thank you. Have a nice evening!",
+  "duration": 2.15,
   "timings": true
  },
  "d3cc36e8cb72": {
@@ -2147,6 +2705,24 @@
   "duration": 0.64,
   "timings": false
  },
+ "d673288200e7": {
+  "voice": "bf_isabella",
+  "text": "Fix it, please!",
+  "duration": 1.3,
+  "timings": true
+ },
+ "d6d3aaeeacb6": {
+  "voice": "bf_emma",
+  "text": "Is the boat tour included?",
+  "duration": 1.8,
+  "timings": true
+ },
+ "d72e1ebf3494": {
+  "voice": "bf_isabella",
+  "text": "Yes, a large latte.",
+  "duration": 1.67,
+  "timings": true
+ },
  "d7e0cc5d654e": {
   "voice": "bf_emma",
   "text": "bridge",
@@ -2175,6 +2751,18 @@
   "voice": "bf_emma",
   "text": "Could I have a blanket, please?",
   "duration": 1.83,
+  "timings": true
+ },
+ "daa6dfd105a1": {
+  "voice": "bf_isabella",
+  "text": "Just some tap water, please.",
+  "duration": 1.94,
+  "timings": true
+ },
+ "dc205521d5dd": {
+  "voice": "bf_lily",
+  "text": "Good night? It's only ten o'clock in the morning! Do you want to know the gate?",
+  "duration": 3.66,
   "timings": true
  },
  "dc4058f14e72": {
@@ -2213,6 +2801,18 @@
   "duration": 0.97,
   "timings": false
  },
+ "ddc3e3b00e3f": {
+  "voice": "bf_lily",
+  "text": "Yes, it is. The new departure time is eleven forty.",
+  "duration": 3.6,
+  "timings": true
+ },
+ "ddf3d6b2e9af": {
+  "voice": "bf_isabella",
+  "text": "Yes, I did. When is the deadline?",
+  "duration": 2.17,
+  "timings": true
+ },
  "de1adb37d545": {
   "voice": "bf_isabella",
   "text": "A window seat, please.",
@@ -2229,6 +2829,12 @@
   "voice": "bm_george",
   "text": "I said, can you share your screen?",
   "duration": 2.25,
+  "timings": true
+ },
+ "e0719cba64a7": {
+  "voice": "bf_lily",
+  "text": "Ten o'clock? Your room will be ready at two o'clock.",
+  "duration": 2.89,
   "timings": true
  },
  "e0997db7ce79": {
@@ -2285,6 +2891,24 @@
   "duration": 1.57,
   "timings": true
  },
+ "e3f7875aaa70": {
+  "voice": "bf_emma",
+  "text": "Is the Wi-Fi included?",
+  "duration": 1.72,
+  "timings": true
+ },
+ "e40d5a41183a": {
+  "voice": "bf_emma",
+  "text": "Can you send me a link, please?",
+  "duration": 1.73,
+  "timings": true
+ },
+ "e490bbaf3182": {
+  "voice": "bf_isabella",
+  "text": "Give me a blanket.",
+  "duration": 1.35,
+  "timings": true
+ },
  "e4fa1cff45b6": {
   "voice": "bm_daniel",
   "text": "Today, all jackets and coats are thirty percent off.",
@@ -2301,6 +2925,12 @@
   "voice": "bf_emma",
   "text": "The plane takes off in ten minutes.",
   "duration": 2.04,
+  "timings": true
+ },
+ "e6f70ddb5831": {
+  "voice": "bm_george",
+  "text": "Four works for me. Let's meet online.",
+  "duration": 2.69,
   "timings": true
  },
  "e788547dad68": {
@@ -2333,10 +2963,22 @@
   "duration": 0.72,
   "timings": false
  },
+ "e824db064df8": {
+  "voice": "bf_isabella",
+  "text": "Is breakfast included?",
+  "duration": 1.69,
+  "timings": true
+ },
  "e8ad3befdf66": {
   "voice": "bf_lily",
   "text": "I'm sorry about that. I'll send someone to fix it.",
   "duration": 3,
+  "timings": true
+ },
+ "e8b6894b6ae0": {
+  "voice": "bf_isabella",
+  "text": "How do I get to the museum?",
+  "duration": 1.73,
   "timings": true
  },
  "e8e92743a4e3": {
@@ -2356,6 +2998,12 @@
   "text": "reservation",
   "duration": 1.07,
   "timings": false
+ },
+ "ea27ab4fdb62": {
+  "voice": "bf_isabella",
+  "text": "Yes, I do. My name is Anna Sokolova.",
+  "duration": 2.55,
+  "timings": true
  },
  "ea2b25f3b01c": {
   "voice": "bf_alice",
@@ -2387,6 +3035,12 @@
   "duration": 2.17,
   "timings": true
  },
+ "eb7bfda2824f": {
+  "voice": "bf_emma",
+  "text": "Do I need to go to gate eighteen?",
+  "duration": 1.9,
+  "timings": true
+ },
  "ec375a398cd6": {
   "voice": "bm_george",
   "text": "Online is easier. I'll send you a link.",
@@ -2397,6 +3051,12 @@
   "voice": "bf_lily",
   "text": "Housekeeping will bring some towels in ten minutes.",
   "duration": 2.96,
+  "timings": true
+ },
+ "ecb353e4cfea": {
+  "voice": "bf_isabella",
+  "text": "Yes, please. What do you recommend?",
+  "duration": 1.97,
   "timings": true
  },
  "eccd66e75490": {
@@ -2435,11 +3095,23 @@
   "duration": 1.84,
   "timings": true
  },
+ "f03b9a8849b9": {
+  "voice": "bf_lily",
+  "text": "Housekeeping is cleaning it now. Would you like to leave your bags with me?",
+  "duration": 3.98,
+  "timings": true
+ },
  "f0805af9a9b5": {
   "voice": "bf_emma",
   "text": "recommend",
   "duration": 1.02,
   "timings": false
+ },
+ "f096f2b7ec40": {
+  "voice": "bf_lily",
+  "text": "Sorry, this is the gate, not a café. Do you have a question about your flight?",
+  "duration": 4.18,
+  "timings": true
  },
  "f0a02469bec5": {
   "voice": "bf_emma",
@@ -2567,6 +3239,12 @@
   "duration": 1.9,
   "timings": true
  },
+ "fa551d276922": {
+  "voice": "bm_george",
+  "text": "It's Friday morning. Is that possible?",
+  "duration": 2.83,
+  "timings": true
+ },
  "fa6cb7620620": {
   "voice": "bf_emma",
   "text": "Please send the report by the nineteenth.",
@@ -2596,6 +3274,12 @@
   "text": "housekeeping",
   "duration": 0.97,
   "timings": false
+ },
+ "fca9607726f7": {
+  "voice": "bf_isabella",
+  "text": "Yes, please. Which gate is it now?",
+  "duration": 2.12,
+  "timings": true
  },
  "fe0654df36bd": {
   "voice": "bf_emma",

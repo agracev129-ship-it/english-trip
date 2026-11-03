@@ -268,7 +268,20 @@ export function ProfileScreen() {
               label="Вибрация"
             />
           </div>
-          <p className="mt-1 text-xs text-muted">Звуки интерфейса и напоминания появятся позже.</p>
+          <div className="mt-3 flex min-h-12 items-center justify-between gap-3">
+            <span className="text-base font-semibold">Задание «Скажи фразу»</span>
+            <Toggle
+              on={!!settings.speechRecognition}
+              onChange={(v) => updateSettings({ speechRecognition: v })}
+              label="Задание «Скажи фразу»"
+            />
+          </div>
+          <p className="mt-1 text-xs text-muted">
+            Телефон сам проверяет произношение. Для этого голос отправляется на серверы Google,
+            нужен интернет, в России может работать нестабильно. Появится в новых уроках. Запись в
+            шэдоуинге работает без этого и остаётся только в телефоне.
+          </p>
+          <p className="mt-3 text-xs text-muted">Звуки интерфейса и напоминания появятся позже.</p>
         </Card>
       )}
 
@@ -313,7 +326,7 @@ export function ProfileScreen() {
         <RotateCcw size={20} aria-hidden /> Сбросить прогресс
       </button>
 
-      <p className="pb-4 text-center text-xs font-semibold text-muted">English Trip · версия 0.5</p>
+      <p className="pb-4 text-center text-xs font-semibold text-muted">English Trip · версия 0.6</p>
 
       {/* Имя */}
       <BottomSheet open={nameOpen} onClose={() => setNameOpen(false)} title="Как тебя зовут?">
